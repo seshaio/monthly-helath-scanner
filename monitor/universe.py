@@ -138,6 +138,32 @@ def _sibling_names():
     return out
 
 
+def _english_names(codes):
+    """
+    English display names from the price feed, cached.
+
+    The sibling cache covers Prime equities only, so every ETF arrives here
+    without one. This is still a lookup against a data source, not a name
+    typed from memory — and a failure just leaves the JPX name in place.
+    """
+    cached = common.cache_get("names_en", ttl_hours=24 * 30) or {}
+    missing = [c for c in codes if c not in cached]
+    if not missing:
+        return cached
+
+    import yfinance as yf
+    throttle = common.Throttle(config.REQUEST_DELAY_SECONDS)
+    for code in missing:
+        throttle.wait()
+        try:
+            info = yf.Ticker(common.yahoo_symbol(code)).info
+            cached[code] = info.get("longName") or info.get("shortName") or None
+        except Exception:                            # noqa: BLE001 - optional
+            cached[code] = None
+    common.cache_put("names_en", cached)
+    return cached
+
+
 def resolve(items=None):
     """Attach name and segment to each instrument. Unresolved stays unresolved."""
     items = items if items is not None else load_config()
@@ -164,6 +190,13 @@ def resolve(items=None):
         # English report. An English name is display sugar only: it never
         # replaces the JPX name and its absence is never an error.
         item["name_en"] = sibling.get(code)
+
+    unnamed = [i["code"] for i in items if not i.get("name_en")]
+    if unnamed:
+        found = _english_names(unnamed)
+        for item in items:
+            if not item.get("name_en"):
+                item["name_en"] = found.get(item["code"])
     return items
 
 
