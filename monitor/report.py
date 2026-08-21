@@ -22,13 +22,13 @@ from monitor import indicators
 from monitor import universe as universe_mod
 from monitor import valuation as valuation_mod
 from monitor import etf as etf_mod
+from monitor import health as health_mod
 from monitor import verdict as verdict_mod
 
 
 # Components not yet built. Each one contributes to the score, so while any
 # is outstanding the score is partial and the verdict is withheld.
 PENDING = {
-    "health": ("business health ladder and triggers", 4),
     "macro": ("macro dashboard and the five lenses", None),
     "portfolio": ("correlation clusters and FX exposure", None),
     "earnings": ("earnings calendar and the defer gate", None),
@@ -133,27 +133,28 @@ def _etf_reason(row):
 def _equity_table(rows, add):
     add("## Equities")
     add("")
-    add(f"Health is not built, so these carry {EQUITY_IMPLEMENTED}"
-        f" of 10 points and no verdict.")
+    add("**Health** is the ladder: INTACT, WATCH, IMPAIRED, BROKEN. Its "
+        "triggers are fixed in `config.py` before any data is fetched, and a "
+        "trigger can be argued with but not un-fired.")
     add("")
-    add("| Ticker | Name | Price | 12M | Valuation | Trend | Score | Verdict | Why |")
-    add("| --- | --- | ---: | ---: | :-: | :-: | :-: | :-: | --- |")
+    add("| Ticker | Name | Price | 12M | Health | Valuation | Trend | Score | Verdict | Why |")
+    add("| --- | --- | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
 
-    def partial(r):
-        v = (r.get("valuation") or {}).get("valuation_score")
-        t = r.get("trend_score")
-        return None if (v is None and t is None) else (v or 0) + (t or 0)
-
-    for r in sorted(rows, key=lambda r: (-(partial(r) or -1),
+    for r in sorted(rows, key=lambda r: (-(r.get("_score") or -1),
                                          -(r.get("return_12m_pct") or -999))):
         val = r.get("valuation") or {}
-        vscore, trend, p = val.get("valuation_score"), r.get("trend_score"), partial(r)
+        health = r.get("health") or {}
+        hscore, vscore = health.get("health_score"), val.get("valuation_score")
+        trend, score = r.get("trend_score"), r.get("_score")
+        health_cell = ("—" if hscore is None
+                       else f"{health['status']} {hscore}/4")
         add(f"| {r['code']} | {universe_mod.display_name(r)} | "
             f"{_fmt(r.get('last_price'))} | {_fmt(r.get('return_12m_pct'), 0, '%')} | "
+            f"{health_cell} | "
             f"{'—' if vscore is None else f'{vscore}/4'} | "
             f"{'—' if trend is None else f'{trend}/2'} | "
-            f"{'—' if p is None else f'**{p}**/{EQUITY_IMPLEMENTED}'} | — | "
-            f"{_equity_reason(r)} |")
+            f"{'—' if score is None else f'**{score}**/10'} | "
+            f"**{r.get('_verdict', '—')}** | {_equity_reason(r)} |")
     add("")
 
 
@@ -201,11 +202,11 @@ def render(rows, as_of, prior=None):
 
     add(f"# Monthly Status Check — {as_of}")
     add("")
-    add("> **⚠ PARTIAL RUN.** ETFs are fully scored and carry verdicts. "
-        "Equities do not: the business health ladder is 4 of their 10 points "
-        "and is the half that can reach SELL, so issuing equity calls now "
-        "would mean issuing them from the half of the model that cannot say "
-        "no. Everything shown is computed and real.")
+    add("> **⚠ PARTIAL RUN.** Every name now carries a score and a verdict. "
+        "Still missing: the macro lenses, portfolio correlation, the earnings "
+        "calendar, month-over-month deltas, and the scorecard. Verdicts here "
+        "are the mechanical output of thresholds fixed before the data was "
+        "fetched — they are a starting point for reading, not a conclusion.")
     add("")
     add("# Market Score: not yet computed")
     add("")
@@ -223,7 +224,8 @@ def render(rows, as_of, prior=None):
     dear = [r for r in equities if vscore(r) == 0]
     cheap = [r for r in equities if vscore(r) is not None and vscore(r) >= 3]
     disagree = [r for r in equities if (r.get("valuation") or {}).get("anchors_disagree")]
-    trims = [r for r in etfs if r.get("_etf_verdict") == verdict_mod.TRIM]
+    trims = ([r for r in etfs if r.get("_etf_verdict") == verdict_mod.TRIM]
+             + [r for r in equities if r.get("_verdict") == verdict_mod.TRIM])
 
     if suspect:
         add(f"- **{len(suspect)} price series unusable** — "
@@ -237,9 +239,31 @@ def render(rows, as_of, prior=None):
     if disagree:
         add(f"- **Anchors disagree** on {', '.join(r['code'] for r in disagree)} "
             f"— the mean describes none of them, so read the anchors, not the score.")
+    impaired = [r for r in equities
+                if (r.get("health") or {}).get("status")
+                in (config.HEALTH_IMPAIRED, config.HEALTH_BROKEN)]
+    watch = [r for r in equities
+             if (r.get("health") or {}).get("status") == config.HEALTH_WATCH]
+    sells = [r for r in rows if r.get("_verdict") == verdict_mod.SELL
+             or r.get("_etf_verdict") == verdict_mod.SELL]
+
+    if sells:
+        add(f"- **SELL:** {', '.join(r['code'] for r in sells)}")
+    knife_edge = [r for r in equities if (r.get("health") or {}).get("marginal_trigger")]
+    if knife_edge:
+        add(f"- **Balanced on a threshold:** "
+            + ", ".join(r["code"] for r in knife_edge)
+            + " — a trigger fired within a hair of its cut-off, so the verdict "
+              "would change if it had not. See the triggers section.")
+    if impaired:
+        add(f"- **Health impaired:** " + ", ".join(
+            f"{r['code']} ({len(r['health']['fired'])} triggers)" for r in impaired))
+    if watch:
+        add(f"- **Health on watch:** " + ", ".join(
+            f"{r['code']} ({r['health']['fired'][0]['trigger']})" for r in watch))
     if trims:
-        add(f"- **Funds flagged TRIM:** {', '.join(r['code'] for r in trims)} "
-            f"— sound vehicles, dear underlying index.")
+        add(f"- **TRIM:** {', '.join(r['code'] for r in trims)} — sound, but "
+            f"priced at an extreme. Reduce, not exit.")
     add("")
     add("---")
     add("")
@@ -250,6 +274,27 @@ def render(rows, as_of, prior=None):
     _etf_table(etfs, add)
     add("---")
     add("")
+
+    fired_rows = [r for r in equities if (r.get("health") or {}).get("fired")]
+    if fired_rows:
+        add("### Health triggers fired")
+        add("")
+        for r in fired_rows:
+            health = r["health"]
+            add(f"**{r['code']} {universe_mod.display_name(r)} — "
+                f"{health['status']}**")
+            for t in health["fired"]:
+                flag = " *(marginal)*" if t.get("marginal") else ""
+                add(f"- {t['detail']}{flag}")
+            marginal = health.get("marginal_trigger")
+            if marginal:
+                add("")
+                add(f"  > ⚠ **This verdict rests on a hair.** {marginal['detail']}. "
+                    f"Without it the name would read {marginal['would_be']}, and "
+                    f"the verdict would change. The threshold is not wrong — but "
+                    f"a call balanced on it is worth checking against the filing "
+                    f"before acting.")
+            add("")
 
     add("### Still to build")
     add("")
@@ -287,6 +332,26 @@ def render(rows, as_of, prior=None):
     return "\n".join(out) + "\n"
 
 
+def _score_equities(rows):
+    """Health + valuation + trend, then the overrides."""
+    for row in rows:
+        if row["asset_type"] != "Equity":
+            continue
+        health = row.get("health") or {}
+        val = row.get("valuation") or {}
+        score = verdict_mod.total(health.get("health_score"),
+                                  val.get("valuation_score"),
+                                  row.get("trend_score"))
+        row["_score"] = score
+        row["_verdict"] = verdict_mod.decide(
+            score,
+            soundness=health.get("health_score"),
+            expensive_anchors=val.get("anchors_expensive", 0),
+            broken=health.get("status") == config.HEALTH_BROKEN,
+        )
+    return rows
+
+
 def _score_etfs(rows):
     """
     Funds have every component, so they get real verdicts now.
@@ -318,7 +383,9 @@ def main(argv=None):
     rows = indicators.build(keep_series=True)
     rows = valuation_mod.build(rows)
     rows = etf_mod.build(rows)
+    rows = health_mod.build(rows)
     _score_etfs(rows)
+    _score_equities(rows)
     dates = sorted({r["as_of"] for r in rows if r.get("as_of")})
     as_of = dates[-1] if dates else datetime.now().strftime("%Y-%m-%d")
 

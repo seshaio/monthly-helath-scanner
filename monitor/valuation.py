@@ -48,7 +48,9 @@ def _row(frame, *names):
 
 def fetch_fundamentals(code):
     """Annual statements, share count and dividend history for one equity."""
-    cache_key = f"fundamentals_{code}"
+    # Versioned: adding a field to the payload must not read a stale cache
+    # entry that predates it.
+    cache_key = f"fundamentals_v2_{code}"
     cached = common.cache_get(cache_key)
     if cached is not None:
         return _revive(cached)
@@ -70,6 +72,9 @@ def fetch_fundamentals(code):
         "net_income": _series_to_dict(_row(raw["income"], "Net Income Common Stockholders", "Net Income")),
         "shares": _series_to_dict(_row(raw["income"], "Diluted Average Shares")),
         "ebit": _series_to_dict(_row(raw["income"], "EBIT", "Operating Income")),
+        "revenue": _series_to_dict(_row(raw["income"], "Total Revenue")),
+        "operating_income": _series_to_dict(_row(raw["income"], "Operating Income", "EBIT")),
+        "ebitda": _series_to_dict(_row(raw["income"], "EBITDA", "Normalized EBITDA")),
         "equity": _series_to_dict(_row(raw["balance"], "Stockholders Equity", "Total Equity Gross Minority Interest")),
         "debt": _series_to_dict(_row(raw["balance"], "Total Debt")),
         "cash_eq": _series_to_dict(_row(raw["balance"], "Cash And Cash Equivalents", "Cash Cash Equivalents And Short Term Investments")),
@@ -92,7 +97,8 @@ def _series_to_dict(series):
 def _revive(payload):
     out = dict(payload)
     for key in ("eps", "net_income", "shares", "ebit", "equity", "debt",
-                "cash_eq", "fcf", "dividends"):
+                "cash_eq", "fcf", "dividends", "revenue", "operating_income",
+                "ebitda"):
         raw = payload.get(key) or {}
         out[key] = pd.Series(
             {pd.Timestamp(k): v for k, v in raw.items()}, dtype=float

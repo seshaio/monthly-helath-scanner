@@ -116,6 +116,37 @@ HEALTH_SEVERE_TRIGGERS = {
     "guidance_cut_twice_running",
 }
 
+# Leverage measured against EBITDA is meaningless when deposits and reserves
+# are raw material rather than borrowing, so financials skip that trigger for
+# the same reason they skip EV/EBIT.
+FINANCIAL_EXCLUDED_HEALTH_TRIGGERS = ("net_debt_to_ebitda_above",)
+
+# Severe events cannot be computed from a price feed — they live in filings
+# and disclosures. They are declared by hand in universe.toml, verified
+# against the issuer, exactly like a corporate action.
+#
+# A severe trigger alone reaches IMPAIRED. BROKEN is never inferred: calling
+# a business structurally broken is a judgement a human makes deliberately,
+# so it needs its own explicit declaration.
+HEALTH_BROKEN_TRIGGERS = {"going_concern_doubt", "fraud"}
+
+# At least this many annual periods, or health is reported as unassessed
+# rather than computed from a single year with nothing to compare against.
+HEALTH_MIN_PERIODS = 2
+
+# And at least this many of the five triggers must actually be testable.
+# Silence from a field the feed never returned is not a clean bill of health,
+# so a name with too little to test on is reported unassessed and gets no
+# verdict, rather than defaulting to INTACT because nothing could fire.
+HEALTH_MIN_TRIGGERS_TESTED = 3
+
+# A trigger that fires this close to its threshold is flagged as marginal.
+# Asahi on the first live run fired the leverage trigger at 4.01x against a
+# 4.0x threshold — and that single hundredth was the difference between WATCH
+# and IMPAIRED, which was the difference between KEEP and SELL. The threshold
+# is not wrong; a verdict balanced on it just has to say so out loud.
+HEALTH_MARGINAL_BAND_PCT = 5.0
+
 HEALTH_SCORE = {
     HEALTH_INTACT: 4,
     HEALTH_WATCH: 2,

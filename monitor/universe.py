@@ -82,6 +82,36 @@ def corrections(path=None):
     return out
 
 
+def concerns(path=None):
+    """
+    Severe events declared by hand, verified against the issuer's own
+    disclosure. Returns {code: [{"type": ..., "date": ..., "note": ...}]}.
+
+    These cannot be computed from a price feed — a restatement or an auditor
+    change lives in a filing. Declaring one is a deliberate act, and the run
+    records it alongside the computed triggers rather than blending them.
+    """
+    path = path or config.UNIVERSE_FILE
+    with open(path, "rb") as fh:
+        raw = tomllib.load(fh)
+
+    out = {}
+    for entry in raw.get("concern", []):
+        kind = str(entry["type"])
+        known = set(config.HEALTH_SEVERE_TRIGGERS) | set(config.HEALTH_BROKEN_TRIGGERS)
+        if kind not in known:
+            raise ValueError(
+                f"unknown concern type {kind!r} for {entry['code']}. "
+                f"Known types: {sorted(known)}"
+            )
+        out.setdefault(str(entry["code"]), []).append({
+            "type": kind,
+            "date": str(entry.get("date", "")),
+            "note": entry.get("note", ""),
+        })
+    return out
+
+
 def _jpx_table():
     """Fetch and cache JPX's listed-issues workbook as {code: (name, segment)}."""
     cached = common.cache_get("jpx_listed", ttl_hours=24 * 7)
