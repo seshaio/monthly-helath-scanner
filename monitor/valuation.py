@@ -50,7 +50,7 @@ def fetch_fundamentals(code):
     """Annual statements, share count and dividend history for one equity."""
     # Versioned: adding a field to the payload must not read a stale cache
     # entry that predates it.
-    cache_key = f"fundamentals_v2_{code}"
+    cache_key = f"fundamentals_v3_{code}"
     cached = common.cache_get(cache_key)
     if cached is not None:
         return _revive(cached)
@@ -83,6 +83,16 @@ def fetch_fundamentals(code):
                      if raw["dividends"] is not None and len(raw["dividends"]) else {},
         "sector": raw["info"].get("sector"),
         "industry": raw["info"].get("industry"),
+        # Sell-side consensus, kept demoted by design: shown with dispersion,
+        # never scored. The mean is structurally bullish and revises after
+        # prices move as often as before; the high/low spread is the honest
+        # part of the figure.
+        "targets": {
+            "mean": raw["info"].get("targetMeanPrice") or None,
+            "high": raw["info"].get("targetHighPrice") or None,
+            "low": raw["info"].get("targetLowPrice") or None,
+            "analysts": raw["info"].get("numberOfAnalystOpinions") or None,
+        },
     }
     common.cache_put(cache_key, payload)
     return _revive(payload)
@@ -295,6 +305,7 @@ def build(rows):
         throttle.wait()
         fundamentals = fetch_fundamentals(row["code"])
         row["valuation"] = assess(row["code"], row["_close"], fundamentals)
+        row["targets"] = fundamentals.get("targets") or {}
     return rows
 
 

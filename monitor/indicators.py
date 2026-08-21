@@ -19,6 +19,43 @@ import config
 from monitor import universe as universe_mod
 
 
+def tick_size(price):
+    """Valid TSE price increment at this price level."""
+    for ceiling, tick in config.TSE_TICK_TABLE:
+        if price <= ceiling:
+            return tick
+    return config.TSE_TICK_TABLE[-1][1]
+
+
+def round_to_tick(price, *, up):
+    """
+    Snap a price to the tick grid — down for a buy limit, up for a sell.
+
+    The tick is taken at the candidate price itself, not the last trade: a
+    name trading at 5,100 with a buy band at 4,700 ticks in ¥5, not ¥10.
+    Rounding conservatively (buy down, sell up) means the printed figure is
+    always placeable and never inside the band it claims to mark.
+    """
+    tick = tick_size(price)
+    steps = np.floor(price / tick) if not up else np.ceil(price / tick)
+    return float(steps * tick)
+
+
+def limit_band(price, volatility_1y_pct):
+    """
+    One-month limit-order band from realised volatility.
+
+    Monthly sigma is the annualised figure over sqrt(12). This is a
+    statistical band, not a forecast: it says where a typical month's close
+    lands if volatility stays put, and nothing about direction.
+    """
+    if price is None or volatility_1y_pct is None or np.isnan(volatility_1y_pct):
+        return None, None
+    sigma_month = volatility_1y_pct / 100 / np.sqrt(12) * config.LIMIT_BAND_SIGMAS
+    return (round_to_tick(price * (1 - sigma_month), up=False),
+            round_to_tick(price * (1 + sigma_month), up=True))
+
+
 def wilder_rsi(close, period=None):
     """
     Wilder's RSI — the original 1978 definition, not an EMA approximation.
@@ -200,6 +237,10 @@ def compute(close):
     daily = close.pct_change().dropna().tail(window)
     out["volatility_1y_pct"] = float(daily.std() * np.sqrt(252) * 100)
     out["max_drawdown_2y_pct"] = _max_drawdown(close.tail(504))
+
+    buy, sell = limit_band(out["last_price"], out["volatility_1y_pct"])
+    out["buy_limit_1m"] = buy
+    out["sell_limit_1m"] = sell
     return out
 
 
@@ -229,6 +270,16 @@ def fetch_history(items):
     symbols = [common.yahoo_symbol(i["code"]) for i in items]
     period = f"{config.HISTORY_YEARS}y"
 
+    # Same-day cache only. Never extended incrementally — adjusted prices
+    # change retroactively with every dividend, so an appended series would
+    # silently diverge from a clean fetch. See config.PRICE_CACHE_TTL_HOURS.
+    cached = common.cache_get("price_history",
+                              ttl_hours=config.PRICE_CACHE_TTL_HOURS)
+    if cached and set(symbols) <= set(cached["series"]):
+        idx = pd.DatetimeIndex([pd.Timestamp(d) for d in cached["dates"]])
+        return pd.DataFrame(
+            {sym: cached["series"][sym] for sym in symbols}, index=idx)
+
     def fetch():
         return yf.download(
             symbols, period=period, interval="1d",
@@ -245,6 +296,12 @@ def fetch_history(items):
     close = frame["Close"] if "Close" in frame.columns.get_level_values(0) else frame
     if isinstance(close, pd.Series):
         close = close.to_frame(symbols[0])
+
+    common.cache_put("price_history", {
+        "dates": [ts.isoformat() for ts in close.index],
+        "series": {sym: [None if pd.isna(v) else float(v)
+                         for v in close[sym]] for sym in close.columns},
+    })
     return close
 
 

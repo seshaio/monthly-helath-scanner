@@ -48,6 +48,14 @@ RETRY_BACKOFF_SECONDS = 2.0
 # --------------------------------------------------------------------------
 
 HISTORY_YEARS = 5              # valuation percentiles need the full window
+
+# Price history is cached for same-day re-runs only. It is never extended
+# incrementally: auto-adjusted prices change retroactively every time a
+# dividend is paid, so appending fresh days onto saved old days produces a
+# series that diverges silently from what a clean fetch would return. A full
+# monthly refetch is one batched call for the whole universe — cheap, and
+# always internally consistent.
+PRICE_CACHE_TTL_HOURS = 24
 RSI_PERIOD = 14                # Wilder's smoothing, not simple MA
 MOVING_AVERAGE_DAYS = 200
 VOLATILITY_WINDOW_DAYS = 252
@@ -227,6 +235,31 @@ VALUATION_DISPERSION_THRESHOLD = 50
 
 TREND_ABOVE_MA_POINTS = 1
 TREND_POSITIVE_12M_POINTS = 1
+
+# --------------------------------------------------------------------------
+# One-month limit band
+# --------------------------------------------------------------------------
+# A mechanical band for placing limit orders: one monthly standard deviation
+# around the last price, from the name's own 1-year realised volatility.
+# Statistics, not prediction — if volatility stays put, roughly two months in
+# three close inside the band. It says nothing about direction.
+#
+# Prices are rounded to valid TSE tick sizes (buy down, sell up) so the
+# figure can be entered as-is. The table below is the standard non-TOPIX100
+# grid; TOPIX100 names trade on finer ticks, but every multiple of a coarser
+# tick is valid on a finer grid, so rounding here is always placeable.
+
+LIMIT_BAND_SIGMAS = 1.0
+
+TSE_TICK_TABLE = [
+    (3_000, 1),
+    (5_000, 5),
+    (30_000, 10),
+    (50_000, 50),
+    (300_000, 100),
+    (500_000, 500),
+    (3_000_000, 1_000),
+]
 
 # --------------------------------------------------------------------------
 # Verdicts

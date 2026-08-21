@@ -89,6 +89,16 @@ def _ordinal(value):
     return f"{n}{suffix}"
 
 
+def _target_cell(row):
+    """Consensus mean with implied move. Demoted: shown, never scored."""
+    tgt = row.get("targets") or {}
+    mean, price = tgt.get("mean"), row.get("last_price")
+    if not mean or not price:
+        return "—"
+    implied = (mean / price - 1) * 100
+    return f"{mean:,.0f} ({implied:+.0f}%)"
+
+
 def _fmt(v, nd=1, suffix=""):
     if v is None or (isinstance(v, float) and pd.isna(v)):
         return "—"
@@ -135,10 +145,15 @@ def _equity_table(rows, add):
     add("")
     add("**Health** is the ladder: INTACT, WATCH, IMPAIRED, BROKEN. Its "
         "triggers are fixed in `config.py` before any data is fetched, and a "
-        "trigger can be argued with but not un-fired.")
+        "trigger can be argued with but not un-fired. **Buy ≤ / Sell ≥** is a "
+        "one-sigma monthly band from the name's own realised volatility, "
+        "rounded to valid TSE ticks — a statistical band for limit orders, "
+        "not a forecast; it says nothing about direction. **12M Tgt** is the "
+        "sell-side consensus mean — third-party opinion, shown with its "
+        "high/low range in the run file, and it does not score.")
     add("")
-    add("| Ticker | Name | Price | 12M | Health | Valuation | Trend | Score | Verdict | Why |")
-    add("| --- | --- | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
+    add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | 12M Tgt | Health | Valuation | Trend | Score | Verdict | Why |")
+    add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
 
     for r in sorted(rows, key=lambda r: (-(r.get("_score") or -1),
                                          -(r.get("return_12m_pct") or -999))):
@@ -149,7 +164,11 @@ def _equity_table(rows, add):
         health_cell = ("—" if hscore is None
                        else f"{health['status']} {hscore}/4")
         add(f"| {r['code']} | {universe_mod.display_name(r)} | "
-            f"{_fmt(r.get('last_price'))} | {_fmt(r.get('return_12m_pct'), 0, '%')} | "
+            f"{_fmt(r.get('last_price'))} | "
+            f"{_fmt(r.get('buy_limit_1m'), 0)} | "
+            f"{_fmt(r.get('sell_limit_1m'), 0)} | "
+            f"{_fmt(r.get('return_12m_pct'), 0, '%')} | "
+            f"{_target_cell(r)} | "
             f"{health_cell} | "
             f"{'—' if vscore is None else f'{vscore}/4'} | "
             f"{'—' if trend is None else f'{trend}/2'} | "
@@ -167,8 +186,8 @@ def _etf_table(rows, add):
         "it tracks. **Underlying** is the index multiple against a long-run "
         "reference declared in `config.py` — a judgement, not a fact.")
     add("")
-    add("| Ticker | Name | Price | 12M | AUM ¥bn | Structure | Underlying | Trend | Score | Verdict | Why |")
-    add("| --- | --- | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
+    add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | AUM ¥bn | Structure | Underlying | Trend | Score | Verdict | Why |")
+    add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
 
     for r in sorted(rows, key=lambda r: -(r.get("_etf_score") or -1)):
         etf = r.get("etf") or {}
@@ -178,7 +197,10 @@ def _etf_table(rows, add):
         trend = r.get("trend_score")
         score = r.get("_etf_score")
         add(f"| {r['code']} | {universe_mod.display_name(r)} | "
-            f"{_fmt(r.get('last_price'))} | {_fmt(r.get('return_12m_pct'), 0, '%')} | "
+            f"{_fmt(r.get('last_price'))} | "
+            f"{_fmt(r.get('buy_limit_1m'), 0)} | "
+            f"{_fmt(r.get('sell_limit_1m'), 0)} | "
+            f"{_fmt(r.get('return_12m_pct'), 0, '%')} | "
             f"{_fmt(aum / 1e9, 0) if aum else '—'} | "
             f"{'—' if structural is None else f'{structural}/4'} | "
             f"{'—' if vscore is None else f'{vscore}/4'} | "
