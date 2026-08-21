@@ -1,0 +1,142 @@
+# The list under review.
+#
+# This is the one file you are expected to edit routinely. Add or remove a
+# ticker here and nothing else changes — no code edit, no threshold change.
+#
+# Keep it separate from config.py on purpose: the *list* is allowed to move,
+# the *rules* are not. A month where both changed is uninterpretable, because
+# you cannot tell whether a verdict moved because the company did or because
+# you moved the goalposts.
+#
+#   code   TSE ticker. Quote it — some are alphanumeric ("315A") and some have
+#          leading zeros, both of which a bare TOML number would destroy.
+#   held   true if you own it, false to watch it without owning it.
+#   note   free text, for you. Never read by the code.
+#   fx     ETFs only. "usd_unhedged" | "usd_hedged" | "jpy". Feeds the
+#          portfolio FX exposure calculation.
+
+[[equity]]
+code = "7532"
+held = true
+note = "Pan Pacific / Don Quijote — domestic retail"
+
+[[equity]]
+code = "6383"
+held = true
+note = "Daifuku — logistics automation, sells into semi capex"
+
+[[equity]]
+code = "8001"
+held = true
+note = "Itochu — trading house"
+
+[[equity]]
+code = "8002"
+held = true
+note = "Marubeni — trading house"
+
+[[equity]]
+code = "8053"
+held = true
+note = "Sumitomo — trading house"
+
+[[equity]]
+code = "8031"
+held = true
+note = "Mitsui — trading house"
+
+[[equity]]
+code = "1944"
+held = true
+note = "Kinden — electrical contracting"
+
+[[equity]]
+code = "2502"
+held = true
+note = "Asahi Group — beverages"
+
+[[equity]]
+code = "7974"
+held = true
+note = "Nintendo"
+
+[[equity]]
+code = "8766"
+held = true
+note = "Tokio Marine — non-life insurance"
+
+[[etf]]
+code = "1540"
+held = true
+fx = "usd_unhedged"
+note = "Physical gold, JPY-listed but USD-priced underlying"
+
+[[etf]]
+code = "315A"
+held = true
+fx = "jpy"
+note = "Global X Japan Banks High Dividend — rate-sensitive financials"
+
+[[etf]]
+code = "1478"
+held = true
+fx = "jpy"
+note = "Japan high dividend"
+
+[[etf]]
+code = "2559"
+held = true
+fx = "usd_unhedged"
+note = "All-country world — overlaps 1655"
+
+[[etf]]
+code = "1655"
+held = true
+fx = "usd_unhedged"
+note = "S&P 500"
+
+[[etf]]
+code = "1658"
+held = true
+fx = "foreign_unhedged"
+note = "iShares Core MSCI Emerging Markets — EM basket, not USD-pure"
+
+# --------------------------------------------------------------------------
+# Corporate actions the feed got wrong
+# --------------------------------------------------------------------------
+# Detection is automatic; correction is deliberate. The run flags any single
+# session move too large to be a market event, and refuses to score that name
+# until a human says what actually happened. Nothing is auto-repaired —
+# silently rescaling history is how a confident wrong report gets produced.
+#
+# Verify each one against the issuer's own disclosure before adding it.
+#
+#   [[split]]     prices BEFORE `date` are divided by `ratio`
+#   [[bad_print]] that single session is dropped from the series
+
+# Both found by the integrity guard on the first live run, 2026-08-21.
+# yfinance reports no split for either, so auto_adjust did nothing.
+
+# 1655 was flagged as a 10:1 split by ratio, but the series returns to its
+# old level two sessions later — so these are bad prints, not a split.
+# Verified by inspection: ~342 before, 33.96 / 35.76, then ~361 after.
+[[bad_print]]
+code = "1655"
+date = "2022-02-08"
+note = "Printed 33.96 against a ~342 series"
+
+[[bad_print]]
+code = "1655"
+date = "2022-02-09"
+note = "Printed 35.76 against a ~342 series; recovered 2022-02-10"
+
+[[split]]
+code = "2559"
+date = "2026-06-05"
+ratio = 10
+note = "MAXIS ACWI — 1:10 split, absent from the feed's split table"
+
+[[bad_print]]
+code = "2559"
+date = "2026-06-08"
+note = "Printed 299.6 against a ~3000 series; recovered next session"

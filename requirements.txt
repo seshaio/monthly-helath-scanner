@@ -1,0 +1,27 @@
+# Exact versions this project was built and verified against.
+# Built on Python 3.13.3 (macOS).
+#
+# Pinned with == deliberately, for the same reason as the sibling screener:
+# this runs about once a month, so an unpinned upgrade would land silently
+# between runs and the first sign of trouble would be a changed report.
+#
+#   python3 -m venv .venv
+#   .venv/bin/pip install -r requirements.txt
+
+yfinance==1.6.0
+pandas==3.0.5
+numpy==2.5.2
+requests==2.34.2
+
+# JPX publishes its listed-issues workbook as legacy .xls; openpyxl covers
+# .xlsx if they ever switch.
+xlrd==2.0.2
+openpyxl==3.1.5
+lxml==6.1.2
+
+# The universe file is TOML, read with the standard library's tomllib
+# (Python 3.11+). No dependency needed for it on purpose — the one file you
+# are expected to edit routinely should never be able to break on an import.
+#
+# Tests use unittest from the standard library, so a monthly run never needs
+# a test framework installed.
