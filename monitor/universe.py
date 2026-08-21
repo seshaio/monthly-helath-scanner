@@ -112,6 +112,35 @@ def concerns(path=None):
     return out
 
 
+ASSUMPTION_FIELDS = {"reference_pe"}
+
+
+def assumptions(path=None):
+    """
+    Declared theses that adjust scoring, from universe.toml.
+
+    Returns {code: {field: {"value", "date", "note"}}}. Unknown fields are an
+    error, not a silent no-op — a mistyped assumption that does nothing is
+    worse than one that crashes.
+    """
+    path = path or config.UNIVERSE_FILE
+    with open(path, "rb") as fh:
+        raw = tomllib.load(fh)
+
+    out = {}
+    for entry in raw.get("assumption", []):
+        field = str(entry["field"])
+        if field not in ASSUMPTION_FIELDS:
+            raise ValueError(f"unknown assumption field {field!r} for "
+                             f"{entry['code']}; known: {sorted(ASSUMPTION_FIELDS)}")
+        out.setdefault(str(entry["code"]), {})[field] = {
+            "value": float(entry["value"]),
+            "date": str(entry.get("date", "")),
+            "note": entry.get("note", ""),
+        }
+    return out
+
+
 def _jpx_table():
     """Fetch and cache JPX's listed-issues workbook as {code: (name, segment)}."""
     cached = common.cache_get("jpx_listed", ttl_hours=24 * 7)

@@ -111,10 +111,16 @@ def structural_score(profile, price):
     return max(0, score), notes
 
 
-def underlying_valuation(code, profile):
-    """Current index multiple against its declared long-run reference."""
+def underlying_valuation(code, profile, assumption=None):
+    """
+    Current index multiple against its long-run reference.
+
+    A declared assumption from universe.toml can override the reference —
+    applied mechanically and labelled in the output, so the report always
+    shows WHICH multiple the score was measured against and why.
+    """
     out = {"index_pe": None, "reference_pe": None, "ratio": None,
-           "score": None, "label": None, "suspect": False}
+           "score": None, "label": None, "suspect": False, "assumption": None}
 
     if code in config.ETF_NO_EARNINGS:
         out["label"] = "no earnings — commodity"
@@ -122,6 +128,10 @@ def underlying_valuation(code, profile):
 
     pe = profile.get("index_pe")
     reference = config.ETF_REFERENCE_PE.get(code)
+    override = (assumption or {}).get("reference_pe")
+    if override and reference is not None:
+        out["assumption"] = override
+        reference = override["value"]
     if pe is None or reference is None:
         out["label"] = "no index multiple available"
         return out
@@ -143,16 +153,20 @@ def underlying_valuation(code, profile):
             break
     out["label"] = (f"index at {pe:.1f}x vs {reference:.0f}x reference "
                     f"({ratio - 1:+.0%})")
+    if out["assumption"]:
+        out["label"] += (f" — scenario reference, declared "
+                         f"{out['assumption']['date']}: "
+                         f"{out['assumption']['note'][:60]}…")
     return out
 
 
-def assess(row):
+def assess(row, assumption=None):
     """Full ETF assessment for one row."""
     profile = fetch_profile(row["code"])
     price = row.get("last_price")
 
     structural, notes = structural_score(profile, price)
-    valuation = underlying_valuation(row["code"], profile)
+    valuation = underlying_valuation(row["code"], profile, assumption)
 
     return {
         "profile": profile,
@@ -168,6 +182,7 @@ def assess(row):
 
 def build(rows):
     """Attach an ETF assessment to every ETF row."""
+    declared = universe_mod.assumptions()
     throttle = common.Throttle(config.REQUEST_DELAY_SECONDS)
     for row in rows:
         if row["asset_type"] != "ETF":
@@ -177,7 +192,7 @@ def build(rows):
                           "structural_notes": ["price series unusable"]}
             continue
         throttle.wait()
-        row["etf"] = assess(row)
+        row["etf"] = assess(row, declared.get(row["code"]))
     return rows
 
 

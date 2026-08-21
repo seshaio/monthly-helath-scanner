@@ -140,3 +140,18 @@ note = "MAXIS ACWI — 1:10 split, absent from the feed's split table"
 code = "2559"
 date = "2026-06-08"
 note = "Printed 299.6 against a ~3000 series; recovered next session"
+
+# --------------------------------------------------------------------------
+# Declared assumptions
+# --------------------------------------------------------------------------
+# A thesis that changes how a name is scored, stated out loud instead of
+# leaking silently into a threshold. Each one is dated, applied mechanically,
+# and shows up labelled in the report — so when the thesis dies, deleting one
+# block restores the base rules and the delta shows what it was worth.
+
+[[assumption]]
+code = "315A"
+field = "reference_pe"
+value = 13.0
+date = "2026-08-21"
+note = "BOJ normalization: policy rate 0.75% and rising; bank NIMs expand in a positive-rate regime, so the justified multiple sits above the zero-rate era's 11x"

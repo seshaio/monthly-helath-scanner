@@ -76,6 +76,29 @@ class Underlying(unittest.TestCase):
             self.assertNotIn(code, config.ETF_NO_EARNINGS)
 
 
+class Assumptions(unittest.TestCase):
+    """A declared thesis moves the score mechanically and is always labelled."""
+
+    ASSUMPTION = {"reference_pe": {"value": 13.0, "date": "2026-08-21",
+                                   "note": "BOJ normalization"}}
+
+    def test_override_changes_the_score(self):
+        base = etf.underlying_valuation("315A", profile(pe=16.0))
+        scenario = etf.underlying_valuation("315A", profile(pe=16.0),
+                                            self.ASSUMPTION)
+        self.assertEqual(base["score"], 0)        # 16.0 / 11 = +45%
+        self.assertEqual(scenario["score"], 1)    # 16.0 / 13 = +23%
+
+    def test_override_is_always_labelled(self):
+        out = etf.underlying_valuation("315A", profile(pe=16.0), self.ASSUMPTION)
+        self.assertIn("scenario reference", out["label"])
+        self.assertIn("2026-08-21", out["label"])
+
+    def test_no_assumption_means_base_rules(self):
+        out = etf.underlying_valuation("315A", profile(pe=16.0), None)
+        self.assertIsNone(out["assumption"])
+
+
 class Verdicts(unittest.TestCase):
 
     def test_sound_and_cheap_buys(self):
