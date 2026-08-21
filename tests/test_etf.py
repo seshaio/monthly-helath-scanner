@@ -143,5 +143,33 @@ class Verdicts(unittest.TestCase):
             self.assertTrue(verdict.explain(word))
 
 
+class NearBuy(unittest.TestCase):
+    """The near-BUY line states distances, never predictions."""
+
+    def _row(self, score=7, health=4, trend=1, vs_ma=-1.2, r12=10.0,
+             vscore=2, mean=55.0):
+        return {"code": "6383", "asset_type": "Equity", "_score": score,
+                "health": {"health_score": health}, "trend_score": trend,
+                "vs_ma_200_pct": vs_ma, "return_12m_pct": r12,
+                "valuation": {"valuation_score": vscore, "mean_percentile": mean}}
+
+    def test_seven_with_full_health_qualifies(self):
+        from monitor import report
+        out = report.near_buy([self._row()])
+        self.assertEqual(out[0][0], "6383")
+        self.assertIn("200d", out[0][1])
+
+    def test_seven_with_slipped_health_is_not_nearly_a_buy(self):
+        # 2+3+2 is also 7, but the missing point is the business itself.
+        from monitor import report
+        out = report.near_buy([self._row(health=2, vscore=3, trend=2)])
+        self.assertEqual(out, [])
+
+    def test_eight_and_six_are_ignored(self):
+        from monitor import report
+        self.assertEqual(report.near_buy([self._row(score=8)]), [])
+        self.assertEqual(report.near_buy([self._row(score=6)]), [])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

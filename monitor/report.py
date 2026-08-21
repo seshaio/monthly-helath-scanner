@@ -94,6 +94,62 @@ def _ordinal(value):
     return f"{n}{suffix}"
 
 
+def _buy_floor():
+    """The lowest score that reads BUY, derived from the bands."""
+    keep_ceiling = [c for c, v in config.VERDICT_BANDS if v == "KEEP"][0]
+    return keep_ceiling + 1
+
+
+def near_buy(rows):
+    """
+    Names one point below BUY, with the missing trigger stated as a distance.
+
+    Mechanical distances, not predictions: "cross the 200d, 1% below" says
+    what would flip the score, and nothing about whether it will happen.
+    Only names whose soundness is already full qualify — a name that is one
+    point short because its health slipped is not "nearly a BUY".
+    """
+    target = _buy_floor() - 1
+    out = []
+    for r in rows:
+        etf = r["asset_type"] == "ETF"
+        score = r.get("_etf_score") if etf else r.get("_score")
+        soundness = ((r.get("etf") or {}).get("structural_score") if etf
+                     else (r.get("health") or {}).get("health_score"))
+        if score != target or soundness is None or soundness < 4:
+            continue
+
+        hints = []
+        if (r.get("trend_score") or 0) < 2:
+            vs = r.get("vs_ma_200_pct")
+            if vs is not None and vs < 0:
+                hints.append(f"cross the 200d ({abs(vs):.0f}% below)")
+            r12 = r.get("return_12m_pct")
+            if r12 is not None and r12 < 0:
+                hints.append("12m return turning positive as old declines "
+                             "age out of the window")
+        if not etf:
+            val = r.get("valuation") or {}
+            vscore = val.get("valuation_score")
+            mean = val.get("mean_percentile")
+            if vscore is not None and vscore < 4 and mean is not None and not hints:
+                edge = [c for c, sc in config.VALUATION_BANDS if sc == vscore + 1][0]
+                hints.append(f"valuation easing below the {edge}th pct "
+                             f"(now {mean:.0f}th)")
+        else:
+            under = (r.get("etf") or {}).get("underlying") or {}
+            ratio = under.get("ratio")
+            if ratio is not None and not hints:
+                edges = [c for c, sc in config.ETF_VALUATION_BANDS
+                         if sc == (under.get("score") or 0) + 1]
+                if edges:
+                    hints.append(f"underlying at {ratio:.2f}× reference; "
+                                 f"≤{edges[0]:.2f}× gains the point")
+        if hints:
+            out.append((r["code"], " or ".join(hints)))
+    return out
+
+
 def _delta_cell(row, delta_map):
     """The month-over-month movement for one name."""
     if not delta_map:
@@ -336,6 +392,11 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
     if trims:
         add(f"- **TRIM:** {', '.join(r['code'] for r in trims)} — sound, but "
             f"priced at an extreme. Reduce, not exit.")
+    nearly = near_buy(rows)
+    if nearly:
+        add(f"- **One point from BUY:** " + "; ".join(
+            f"{code} — {hint}" for code, hint in nearly)
+            + ". Distances, not predictions.")
     add("")
     add("---")
     add("")
