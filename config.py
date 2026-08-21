@@ -305,17 +305,48 @@ CLUSTER_MIN_MEMBERS = 3
 
 MACRO_LENSES = ("ai_bubble", "usdjpy", "us_recession", "japan_domestic", "geopolitics")
 
+# ^TPX returns nothing from this feed, so TOPIX is proxied by 1306.T, the
+# largest TOPIX ETF. The tracking error is irrelevant at 3-month horizon.
 MACRO_TICKERS = {
     "usdjpy": "JPY=X",
-    "topix": "^TPX",
+    "topix": "1306.T",
     "nikkei": "^N225",
     "sox": "^SOX",
     "sp500": "^GSPC",
     "vix": "^VIX",
     "gold": "GC=F",
     "us10y": "^TNX",
+    "us13w": "^IRX",
     "wti": "CL=F",
 }
+
+MACRO_LOOKBACK_SESSIONS = 63       # ~3 months
+
+# Lens thresholds. JUDGMENTS, not facts — edit freely, and expect the Market
+# Score to move when you do. Each lens reads -2 (headwind) to +2 (tailwind)
+# for a Japan-equity portfolio with unhedged USD assets, and the rules are
+# fixed here so the same month always scores the same way.
+MACRO_THRESHOLDS = {
+    "sox_rollover_pct": -10.0,     # semis falling this much = complex rolling over
+    "sox_froth_pct": 25.0,         # semis up this much in 3m = froth risk
+    "yen_calm_band_pct": 3.0,      # |3m move| inside this = stable
+    "yen_sharp_pct": 8.0,          # beyond this = disorderly either way
+    "vix_calm": 20.0,
+    "vix_stress": 30.0,
+    "curve_deep_inversion": -0.50, # 10y minus 13w, percentage points
+    "equity_trend_pct": 5.0,       # TOPIX 3m move that counts as a trend
+    "oil_spike_pct": 15.0,         # supply-shock signature
+    "gold_spike_pct": 10.0,        # only with oil confirms geopolitics
+}
+
+# 0-10 from the five lenses: 5 + (sum of lenses) / 2, clamped and rounded.
+MARKET_SCORE_LABELS = [
+    (2, "DEFENSIVE"),
+    (4, "CAUTIOUS"),
+    (6, "NEUTRAL"),
+    (8, "CONSTRUCTIVE"),
+    (10, "RISK-ON"),
+]
 
 # --------------------------------------------------------------------------
 # Scorecard

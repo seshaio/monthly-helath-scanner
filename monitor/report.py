@@ -23,6 +23,11 @@ from monitor import universe as universe_mod
 from monitor import valuation as valuation_mod
 from monitor import etf as etf_mod
 from monitor import health as health_mod
+from monitor import macro as macro_mod
+from monitor import portfolio as portfolio_mod
+from monitor import earnings as earnings_mod
+from monitor import deltas as deltas_mod
+from monitor import score as score_mod
 from monitor import verdict as verdict_mod
 
 
@@ -89,6 +94,21 @@ def _ordinal(value):
     return f"{n}{suffix}"
 
 
+def _delta_cell(row, delta_map):
+    """The month-over-month movement for one name."""
+    if not delta_map:
+        return "*first run*"
+    delta = delta_map.get(row["code"])
+    if delta is None or delta.get("new"):
+        return "new"
+    if delta.get("verdict_changed"):
+        return f"**was {delta['previous_verdict']}**"
+    change = delta.get("score_change")
+    if change:
+        return f"{change:+d}"
+    return "—"
+
+
 def _target_cell(row):
     """Consensus mean with implied move. Demoted: shown, never scored."""
     tgt = row.get("targets") or {}
@@ -140,7 +160,7 @@ def _etf_reason(row):
     return ", ".join(bits) if bits else "nothing notable"
 
 
-def _equity_table(rows, add):
+def _equity_table(rows, add, delta_map):
     add("## Equities")
     add("")
     add("**Health** is the ladder: INTACT, WATCH, IMPAIRED, BROKEN. Its "
@@ -152,8 +172,8 @@ def _equity_table(rows, add):
         "sell-side consensus mean — third-party opinion, shown with its "
         "high/low range in the run file, and it does not score.")
     add("")
-    add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | 12M Tgt | Health | Valuation | Trend | Score | Verdict | Why |")
-    add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
+    add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | 12M Tgt | Health | Valuation | Trend | Score | Verdict | Δ | Why |")
+    add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | :-: | --- |")
 
     for r in sorted(rows, key=lambda r: (-(r.get("_score") or -1),
                                          -(r.get("return_12m_pct") or -999))):
@@ -173,11 +193,12 @@ def _equity_table(rows, add):
             f"{'—' if vscore is None else f'{vscore}/4'} | "
             f"{'—' if trend is None else f'{trend}/2'} | "
             f"{'—' if score is None else f'**{score}**/10'} | "
-            f"**{r.get('_verdict', '—')}** | {_equity_reason(r)} |")
+            f"**{r.get('_verdict', '—')}** | {_delta_cell(r, delta_map)} | "
+            f"{_equity_reason(r)} |")
     add("")
 
 
-def _etf_table(rows, add):
+def _etf_table(rows, add, delta_map):
     add("## ETFs")
     add("")
     add("A fund has no earnings, no book value and no business to be healthy, "
@@ -186,8 +207,8 @@ def _etf_table(rows, add):
         "it tracks. **Underlying** is the index multiple against a long-run "
         "reference declared in `config.py` — a judgement, not a fact.")
     add("")
-    add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | AUM ¥bn | Structure | Underlying | Trend | Score | Verdict | Why |")
-    add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
+    add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | AUM ¥bn | Structure | Underlying | Trend | Score | Verdict | Δ | Why |")
+    add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | :-: | --- |")
 
     for r in sorted(rows, key=lambda r: -(r.get("_etf_score") or -1)):
         etf = r.get("etf") or {}
@@ -206,7 +227,8 @@ def _etf_table(rows, add):
             f"{'—' if vscore is None else f'{vscore}/4'} | "
             f"{'—' if trend is None else f'{trend}/2'} | "
             f"{'—' if score is None else f'**{score}**/10'} | "
-            f"**{r.get('_etf_verdict', '—')}** | {_etf_reason(r)} |")
+            f"**{r.get('_etf_verdict', '—')}** | {_delta_cell(r, delta_map)} | "
+            f"{_etf_reason(r)} |")
     add("")
     add("*NAV premium and discount is reported in the run file but not scored "
         "— the feed does not timestamp NAV, so most apparent dislocation is a "
@@ -214,7 +236,8 @@ def _etf_table(rows, add):
     add("")
 
 
-def render(rows, as_of, prior=None):
+def render(rows, as_of, macro=None, folio=None, delta_map=None,
+           scorecard=None, previous_run_name=None):
     equities = [r for r in rows if r["asset_type"] == "Equity"]
     etfs = [r for r in rows if r["asset_type"] == "ETF"]
     suspect = [r for r in rows if r.get("data_suspect")]
@@ -224,17 +247,40 @@ def render(rows, as_of, prior=None):
 
     add(f"# Monthly Status Check — {as_of}")
     add("")
-    add("> **⚠ PARTIAL RUN.** Every name now carries a score and a verdict. "
-        "Still missing: the macro lenses, portfolio correlation, the earnings "
-        "calendar, month-over-month deltas, and the scorecard. Verdicts here "
-        "are the mechanical output of thresholds fixed before the data was "
-        "fetched — they are a starting point for reading, not a conclusion.")
+    add("> Verdicts are the mechanical output of thresholds fixed before the "
+        "data was fetched — a starting point for reading, not a conclusion.")
     add("")
-    add("# Market Score: not yet computed")
-    add("")
-    add("The five macro lenses are not built. When they are, this line carries "
-        "one 0–10 number, its month-over-month arrow, and two sentences.")
-    add("")
+
+    if macro and macro.get("market_score") is not None:
+        add(f"# Market Score: {macro['market_score']}/10 — {macro['market_label']}")
+        add("")
+        lenses = {k: l for k, l in macro["lenses"].items()
+                  if l["score"] is not None}
+        if lenses:
+            worst = min(lenses.values(), key=lambda l: l["score"])
+            best = max(lenses.values(), key=lambda l: l["score"])
+            add(f"{worst['basis'].rstrip('.')}. {best['basis'].rstrip('.')}.")
+        add("")
+        add("| Lens | Score | Basis |")
+        add("| --- | :-: | --- |")
+        for lens in macro["lenses"].values():
+            score_cell = "—" if lens["score"] is None else f"{lens['score']:+d}"
+            add(f"| {lens['name']} | {score_cell} | {lens['basis']} |")
+        add("")
+        add("<details><summary>Dashboard</summary>")
+        add("")
+        add("| Indicator | Level | 3m Δ |")
+        add("| --- | ---: | ---: |")
+        for name, row in macro["dashboard"].items():
+            lvl = "—" if row["level"] is None else f"{row['level']:,.2f}"
+            chg = "—" if row["chg_3m_pct"] is None else f"{row['chg_3m_pct']:+.1f}%"
+            add(f"| {name} | {lvl} | {chg} |")
+        add("")
+        add("</details>")
+        add("")
+    else:
+        add("# Market Score: not computed — a macro feed failed")
+        add("")
     add("---")
     add("")
     add("## Summary")
@@ -269,8 +315,12 @@ def render(rows, as_of, prior=None):
     sells = [r for r in rows if r.get("_verdict") == verdict_mod.SELL
              or r.get("_etf_verdict") == verdict_mod.SELL]
 
+    waits = [r for r in rows if r.get("_verdict") == verdict_mod.WAIT]
     if sells:
         add(f"- **SELL:** {', '.join(r['code'] for r in sells)}")
+    if waits:
+        add(f"- **WAIT:** " + ", ".join(
+            f"{r['code']} (reports in {r['days_to_earnings']}d)" for r in waits))
     knife_edge = [r for r in equities if (r.get("health") or {}).get("marginal_trigger")]
     if knife_edge:
         add(f"- **Balanced on a threshold:** "
@@ -290,10 +340,74 @@ def render(rows, as_of, prior=None):
     add("---")
     add("")
 
-    _equity_table(equities, add)
+    _equity_table(equities, add, delta_map)
     add("---")
     add("")
-    _etf_table(etfs, add)
+    _etf_table(etfs, add, delta_map)
+    add("---")
+    add("")
+
+    if folio:
+        add("## Portfolio")
+        add("")
+        add("Correlation over the trailing year, from price history — no "
+            "position sizes involved. Names that move together are one bet "
+            "however many lines they occupy.")
+        add("")
+        for cluster in folio.get("clusters", []):
+            add(f"- **Cluster:** {', '.join(cluster['members'])} — mean "
+                f"pairwise ρ {cluster['mean_pairwise_rho']:.2f}. Effectively "
+                f"one position held {len(cluster['members'])} ways.")
+        pairs = folio.get("top_pairs", [])
+        if pairs:
+            add(f"- **Tightest pairs:** " + "; ".join(
+                f"{a}/{b} ρ {rho:.2f}" for a, b, rho in pairs[:3]))
+        fx = folio.get("fx", {})
+        if fx:
+            parts = [f"{len(codes)} {tag.replace('_', ' ')} ({', '.join(codes)})"
+                     for tag, codes in fx.items()]
+            add(f"- **Non-yen exposure by tag:** {'; '.join(parts)}. Counts, "
+                f"not weights — the tags say how many names carry it, not how "
+                f"much.")
+        add("")
+        add("---")
+        add("")
+
+    changed = [code for code, d in (delta_map or {}).items()
+               if not d.get("new") and d.get("verdict_changed")]
+    if delta_map and previous_run_name:
+        add(f"## Changes since {previous_run_name}")
+        add("")
+        if not changed:
+            add("No verdict changed.")
+        for code in changed:
+            delta = delta_map[code]
+            row = next((r for r in rows if r["code"] == code), {})
+            now = row.get("_verdict") or row.get("_etf_verdict")
+            causes = "; ".join(
+                f"{c['component']}: {c['from']} → {c['to']}"
+                for c in delta.get("causes", [])) or "no component moved — check thresholds"
+            add(f"- **{code}: {delta['previous_verdict']} → {now}.** Cause: {causes}.")
+        add("")
+        add("---")
+        add("")
+
+    add("## Scorecard")
+    add("")
+    if scorecard:
+        insufficient = [f"{h}m" for h, v in sorted(scorecard.items())
+                        if not v["sufficient"]]
+        for horizon, summary in sorted(scorecard.items()):
+            if summary["sufficient"]:
+                add(f"- **{horizon}-month:** {summary['graded']} graded, "
+                    f"hit rate {summary['hit_rate']:.0%}, median excess "
+                    f"{summary['median_excess_pct']:+.1f}pp vs TOPIX")
+        if insufficient:
+            add(f"- Insufficient history at {', '.join(insufficient)} — a hit "
+                f"rate needs {config.SCORECARD_MIN_VERDICTS}+ graded calls "
+                f"before it stops being a coin-flip. Logging started with "
+                f"this run's verdicts.")
+    add("")
     add("---")
     add("")
 
@@ -318,13 +432,6 @@ def render(rows, as_of, prior=None):
                     f"before acting.")
             add("")
 
-    add("### Still to build")
-    add("")
-    add("| Component | Score points |")
-    add("| --- | :-: |")
-    for _key, (label, points) in PENDING.items():
-        add(f"| {label} | {points if points else '—'} |")
-    add("")
     add(f"**The scale.** Soundness 0–4 + valuation 0–4 + trend 0–2. "
         f"**8–10 BUY · 4–7 KEEP · 0–3 SELL.** Soundness is health for an "
         f"equity and structure for a fund. TRIM overrides KEEP when the thing "
@@ -370,6 +477,7 @@ def _score_equities(rows):
             soundness=health.get("health_score"),
             expensive_anchors=val.get("anchors_expensive", 0),
             broken=health.get("status") == config.HEALTH_BROKEN,
+            days_to_earnings=row.get("days_to_earnings"),
         )
     return rows
 
@@ -406,24 +514,55 @@ def main(argv=None):
     rows = valuation_mod.build(rows)
     rows = etf_mod.build(rows)
     rows = health_mod.build(rows)
+    rows = earnings_mod.build(rows)
     _score_etfs(rows)
     _score_equities(rows)
+    macro = macro_mod.build()
+    folio = portfolio_mod.build(rows)
     dates = sorted({r["as_of"] for r in rows if r.get("as_of")})
     as_of = dates[-1] if dates else datetime.now().strftime("%Y-%m-%d")
 
     path = common.run_dir()
+    previous_verdicts, previous_run_name = deltas_mod.load_previous(path)
+
+    verdicts = {"_benchmark_level": (macro["dashboard"].get("topix") or {}).get("level")}
+    for r in rows:
+        etf = r["asset_type"] == "ETF"
+        verdicts[r["code"]] = {
+            "verdict": r.get("_etf_verdict") if etf else r.get("_verdict"),
+            "score": r.get("_etf_score") if etf else r.get("_score"),
+            "price": r.get("last_price"),
+            "health_status": (r.get("health") or {}).get("status"),
+            "valuation_score": ((r.get("etf") or {}).get("valuation_score") if etf
+                                else (r.get("valuation") or {}).get("valuation_score")),
+            "structural_score": (r.get("etf") or {}).get("structural_score"),
+            "trend_score": r.get("trend_score"),
+        }
+    common.save_json(os.path.join(path, "verdicts.json"), verdicts)
+
+    delta_map = (deltas_mod.compare(
+        {k: v for k, v in verdicts.items() if not k.startswith("_")},
+        previous_verdicts and {k: v for k, v in previous_verdicts.items()
+                               if not k.startswith("_")})
+        if previous_verdicts else None)
+
+    prices_now = {r["code"]: r.get("last_price") for r in rows}
+    scorecard = score_mod.summarise(score_mod.grade(
+        prices_now, verdicts["_benchmark_level"]))
+
+    common.save_json(os.path.join(path, "macro.json"), macro)
+    common.save_json(os.path.join(path, "portfolio.json"), folio)
     common.save_json(os.path.join(path, "indicators.json"), rows)
     common.save_json(os.path.join(path, "run_meta.json"), {
         "as_of": as_of,
         "generated_at": common.utc_now(),
         "instruments": len(rows),
         "suspect": [r["code"] for r in rows if r.get("data_suspect")],
-        "pending_components": sorted(PENDING),
-        "score_points_implemented": IMPLEMENTED_POINTS,
-        "score_points_total": TOTAL_POINTS,
+        "market_score": macro.get("market_score"),
     })
 
-    md = render(rows, as_of)
+    md = render(rows, as_of, macro=macro, folio=folio, delta_map=delta_map,
+                scorecard=scorecard, previous_run_name=previous_run_name)
     report_path = os.path.join(path, f"{as_of}-report.md")
     with open(report_path, "w") as fh:
         fh.write(md)
