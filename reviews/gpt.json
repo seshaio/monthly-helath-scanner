@@ -1,0 +1,98 @@
+[
+{
+"code": "7532",
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Price is 22.8% below 12m ago and 11.2% below its 200d average, with RSI 34.8. Valuation is broadly low versus its 5y history, health is intact, and consensus is materially above price."
+},
+{
+"code": "6383",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Health is intact and price is only 1.2% below the 200d average, but valuation is mixed: FCF yield is relatively cheap while P/B and P/E are expensive. After a 50.5% 12m rise, the setup is not compelling enough for BUY."
+},
+{
+"code": "8001",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The business trend is strong, with 34.5% 12m growth and price 5.8% above its 200d average, but valuation is extreme across every listed measure, with percentiles 84–95. RSI 60.8 adds to the case for reducing exposure."
+},
+{
+"code": "8002",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "Price gained 58.5% over 12m, while valuation is very rich across all five measures, with percentiles 81–89. RSI 45.2 and price 2.5% below the 200d do not offset the stretched valuation."
+},
+{
+"code": "8053",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The company delivered a 78.2% 12m gain and remains well above its 200d average, but valuation is extreme: dividend yield, EV/EBIT, P/B and P/E are all above the 95th percentile. This is an expensive winner, not a fresh BUY."
+},
+{
+"code": "8031",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "After a 58.5% 12m gain, valuation is elevated across all measures, especially FCF yield at the 95th percentile and EV/EBIT and P/E near the 90th. Price is also 3.3% below the 200d, reducing the reward for holding full size."
+},
+{
+"code": "1944",
+"verdict": "BUY",
+"confidence": "medium",
+"rationale": "RSI 39.5 and price 7.0% below the 200d indicate weakness after a 30.8% 12m gain. Valuation is reasonable on most measures, while consensus is far above price and health is intact. FCF yield is the main valuation concern."
+},
+{
+"code": "2502",
+"verdict": "SELL",
+"confidence": "high",
+"rationale": "Health is impaired: operating margin fell 273bp to 6.4%, and net debt/EBITDA is 4.01x, just above the 4.00x trigger. The deterioration is material enough that cheap-looking valuation percentiles do not justify holding."
+},
+{
+"code": "7974",
+"verdict": "WAIT",
+"confidence": "medium",
+"rationale": "The stock is down 36.1% over 12m and 5.8% below its 200d, but RSI is already 61.9. Valuation is mixed rather than clearly cheap, while operating margin fell sharply from 24.3% to 15.6%. Better evidence of stabilization is needed."
+},
+{
+"code": "8766",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Price is 11.1% above its 200d with a 22.1% 12m gain, while RSI 40.7 suggests momentum is not stretched. Valuation is elevated on P/E and moderately high on P/B and dividend yield, arguing for holding rather than adding."
+},
+{
+"code": "1540",
+"verdict": "TRIM",
+"confidence": "medium",
+"rationale": "Gold has gained 44.3% over 12m and RSI is 67.4, close to an overbought zone. With no earnings-based deterioration to assess, the main evidence is stretched momentum after a large run, supporting reduction rather than exit."
+},
+{
+"code": "315A",
+"verdict": "WAIT",
+"confidence": "high",
+"rationale": "The underlying index trades at 16.0x versus a 13x reference, a 23% premium, after an 81.6% 12m rise. The ETF also has modest AUM and trades 3.7% below NAV, making the pricing/structure situation unattractive."
+},
+{
+"code": "1478",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "The ETF gained 36.7% over 12m with RSI 58.5, but the underlying valuation is only 11% above the 13x reference. AUM is healthy and the 0.04% spread is tight, so the data supports holding rather than trimming."
+},
+{
+"code": "2559",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "The ETF gained 34.1% over 12m with RSI 51.8, neither stretched nor weak. AUM is ¥128bn and the spread is effectively zero. The supplied underlying P/E is explicitly implausible, so valuation should not drive a negative verdict here."
+},
+{
+"code": "1655",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The S&P 500 ETF is up 31.8% over 12m, while the underlying index trades at 25.6x versus an 18x reference, a 42% premium. RSI 48.8 is neutral, so the main concern is clearly valuation rather than momentum."
+},
+{
+"code": "1658",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "Emerging markets gained 47.4% over 12m and the underlying index trades at 17.1x versus 13x, a 32% premium. The ETF also has modest ¥29bn AUM and a wide 0.32% spread, making current pricing and implementation less attractive."
+}
+]

@@ -76,6 +76,26 @@ class Underlying(unittest.TestCase):
             self.assertNotIn(code, config.ETF_NO_EARNINGS)
 
 
+class NavVerification(unittest.TestCase):
+    """A human-verified stale NAV silences the flag without faking a fix."""
+
+    def test_verified_stale_nav_is_not_flagged(self):
+        _, notes = etf.structural_score(profile(nav=1951.87), 1872.5,
+                                        nav_verified=True)
+        self.assertFalse(any("vs NAV" in n and "verified" not in n for n in notes))
+        self.assertTrue(any("verified unreliable" in n for n in notes))
+
+    def test_unverified_gap_still_flags(self):
+        _, notes = etf.structural_score(profile(nav=1951.87), 1872.5,
+                                        nav_verified=False)
+        self.assertTrue(any("worth a look" in n for n in notes))
+
+    def test_verification_does_not_change_the_score(self):
+        flagged = etf.structural_score(profile(nav=1951.87), 1872.5, False)[0]
+        verified = etf.structural_score(profile(nav=1951.87), 1872.5, True)[0]
+        self.assertEqual(flagged, verified)
+
+
 class Assumptions(unittest.TestCase):
     """A declared thesis moves the score mechanically and is always labelled."""
 

@@ -64,7 +64,7 @@ def premium_pct(profile, price):
     return (price / nav - 1) * 100
 
 
-def structural_score(profile, price):
+def structural_score(profile, price, nav_verified=False):
     """
     0-4, and deliberately parallel to the equity health ladder: 4 is sound,
     2 is worth noting, 0 is at risk of failing its holder.
@@ -104,7 +104,12 @@ def structural_score(profile, price):
         notes.append(f"spread {spread:.2f}% — wide")
 
     premium = premium_pct(profile, price)
-    if premium is not None and abs(premium) >= config.ETF_NOTABLE_PREMIUM_PCT:
+    if nav_verified:
+        # A human already checked this feed's navPrice against the issuer and
+        # found it stale — the flag would just repeat a known-bad number.
+        notes.append("NAV premium not flagged — feed's navPrice verified "
+                     "unreliable for this fund, see universe.toml")
+    elif premium is not None and abs(premium) >= config.ETF_NOTABLE_PREMIUM_PCT:
         notes.append(f"{premium:+.1f}% vs NAV — larger than a stale NAV "
                      f"explains, worth a look")
 
@@ -160,12 +165,12 @@ def underlying_valuation(code, profile, assumption=None):
     return out
 
 
-def assess(row, assumption=None):
+def assess(row, assumption=None, nav_verified=False):
     """Full ETF assessment for one row."""
     profile = fetch_profile(row["code"])
     price = row.get("last_price")
 
-    structural, notes = structural_score(profile, price)
+    structural, notes = structural_score(profile, price, nav_verified)
     valuation = underlying_valuation(row["code"], profile, assumption)
 
     return {
@@ -183,6 +188,7 @@ def assess(row, assumption=None):
 def build(rows):
     """Attach an ETF assessment to every ETF row."""
     declared = universe_mod.assumptions()
+    verified_navs = universe_mod.nav_verifications()
     throttle = common.Throttle(config.REQUEST_DELAY_SECONDS)
     for row in rows:
         if row["asset_type"] != "ETF":
@@ -192,7 +198,8 @@ def build(rows):
                           "structural_notes": ["price series unusable"]}
             continue
         throttle.wait()
-        row["etf"] = assess(row, declared.get(row["code"]))
+        row["etf"] = assess(row, declared.get(row["code"]),
+                            row["code"] in verified_navs)
     return rows
 
 

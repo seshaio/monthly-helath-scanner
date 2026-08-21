@@ -141,6 +141,30 @@ def assumptions(path=None):
     return out
 
 
+def nav_verifications(path=None):
+    """
+    Feed fields verified wrong by hand. {code: {...}}.
+
+    NAV moves daily, so this is not an ongoing correction — it is proof, as
+    of one moment, that the feed's navPrice cannot be trusted for this name.
+    It silences the premium/discount flag rather than computing a "corrected"
+    figure that would itself be stale within days.
+    """
+    path = path or config.UNIVERSE_FILE
+    with open(path, "rb") as fh:
+        raw = tomllib.load(fh)
+
+    out = {}
+    for entry in raw.get("nav_verification", []):
+        out[str(entry["code"])] = {
+            "verified_nav": float(entry["verified_nav"]),
+            "verified_at": str(entry["verified_at"]),
+            "source": entry.get("source", ""),
+            "note": entry.get("note", ""),
+        }
+    return out
+
+
 def _jpx_table():
     """Fetch and cache JPX's listed-issues workbook as {code: (name, segment)}."""
     cached = common.cache_get("jpx_listed", ttl_hours=24 * 7)
