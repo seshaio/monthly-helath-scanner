@@ -1,0 +1,263 @@
+{
+  "1478": {
+    "dissents": [],
+    "spread": [
+      "KEEP"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "KEEP",
+      "gemni": "KEEP",
+      "gpt": "KEEP",
+      "mechanical": "KEEP"
+    }
+  },
+  "1540": {
+    "dissents": [
+      {
+        "model": "gpt",
+        "rationale": "Gold has gained 44.3% over 12m and RSI is 67.4, close to an overbought zone. With no earnings-based deterioration to assess, the main evidence is stretched momentum after a large run, supporting reduction rather than exit.",
+        "verdict": "TRIM"
+      }
+    ],
+    "spread": [
+      "KEEP",
+      "TRIM"
+    ],
+    "unanimous": false,
+    "votes": {
+      "claude": "KEEP",
+      "gemni": "KEEP",
+      "gpt": "TRIM"
+    }
+  },
+  "1655": {
+    "dissents": [],
+    "spread": [
+      "TRIM"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "TRIM",
+      "gemni": "TRIM",
+      "gpt": "TRIM",
+      "mechanical": "TRIM"
+    }
+  },
+  "1658": {
+    "dissents": [
+      {
+        "model": "mechanical",
+        "rationale": "threshold output",
+        "verdict": "KEEP"
+      }
+    ],
+    "spread": [
+      "KEEP",
+      "TRIM"
+    ],
+    "unanimous": false,
+    "votes": {
+      "claude": "TRIM",
+      "gemni": "TRIM",
+      "gpt": "TRIM",
+      "mechanical": "KEEP"
+    }
+  },
+  "1944": {
+    "dissents": [
+      {
+        "model": "gpt",
+        "rationale": "RSI 39.5 and price 7.0% below the 200d indicate weakness after a 30.8% 12m gain. Valuation is reasonable on most measures, while consensus is far above price and health is intact. FCF yield is the main valuation concern.",
+        "verdict": "BUY"
+      }
+    ],
+    "spread": [
+      "BUY",
+      "KEEP"
+    ],
+    "unanimous": false,
+    "votes": {
+      "claude": "KEEP",
+      "gemni": "KEEP",
+      "gpt": "BUY",
+      "mechanical": "KEEP"
+    }
+  },
+  "2502": {
+    "dissents": [],
+    "spread": [
+      "SELL"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "SELL",
+      "gemni": "SELL",
+      "gpt": "SELL",
+      "mechanical": "SELL"
+    }
+  },
+  "2559": {
+    "dissents": [],
+    "spread": [
+      "KEEP"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "KEEP",
+      "gemni": "KEEP",
+      "gpt": "KEEP"
+    }
+  },
+  "315A": {
+    "dissents": [
+      {
+        "model": "claude",
+        "rationale": "Scenario intact — BOJ at 0.75% and rising supports the bank thesis — but +81.6% over 12m has pushed the index to 16x vs 13x reference (+23%). A -3.7% NAV gap the pipeline cannot explain, on ¥24bn AUM, is reason to reduce while exiting is still easy.",
+        "verdict": "TRIM"
+      },
+      {
+        "model": "gpt",
+        "rationale": "The underlying index trades at 16.0x versus a 13x reference, a 23% premium, after an 81.6% 12m rise. The ETF also has modest AUM and trades 3.7% below NAV, making the pricing/structure situation unattractive.",
+        "verdict": "WAIT"
+      }
+    ],
+    "spread": [
+      "KEEP",
+      "TRIM",
+      "WAIT"
+    ],
+    "unanimous": false,
+    "votes": {
+      "claude": "TRIM",
+      "gemni": "KEEP",
+      "gpt": "WAIT",
+      "mechanical": "KEEP"
+    }
+  },
+  "6383": {
+    "dissents": [],
+    "spread": [
+      "KEEP"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "KEEP",
+      "gemni": "KEEP",
+      "gpt": "KEEP",
+      "mechanical": "KEEP"
+    }
+  },
+  "7532": {
+    "dissents": [
+      {
+        "model": "mechanical",
+        "rationale": "threshold output",
+        "verdict": "KEEP"
+      }
+    ],
+    "spread": [
+      "BUY",
+      "KEEP"
+    ],
+    "unanimous": false,
+    "votes": {
+      "claude": "BUY",
+      "gemni": "BUY",
+      "gpt": "BUY",
+      "mechanical": "KEEP"
+    }
+  },
+  "7974": {
+    "dissents": [
+      {
+        "model": "mechanical",
+        "rationale": "threshold output",
+        "verdict": "KEEP"
+      }
+    ],
+    "spread": [
+      "KEEP",
+      "WAIT"
+    ],
+    "unanimous": false,
+    "votes": {
+      "claude": "WAIT",
+      "gemni": "WAIT",
+      "gpt": "WAIT",
+      "mechanical": "KEEP"
+    }
+  },
+  "8001": {
+    "dissents": [],
+    "spread": [
+      "TRIM"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "TRIM",
+      "gemni": "TRIM",
+      "gpt": "TRIM",
+      "mechanical": "TRIM"
+    }
+  },
+  "8002": {
+    "dissents": [
+      {
+        "model": "mechanical",
+        "rationale": "threshold output",
+        "verdict": "KEEP"
+      }
+    ],
+    "spread": [
+      "KEEP",
+      "TRIM"
+    ],
+    "unanimous": false,
+    "votes": {
+      "claude": "TRIM",
+      "gemni": "TRIM",
+      "gpt": "TRIM",
+      "mechanical": "KEEP"
+    }
+  },
+  "8031": {
+    "dissents": [],
+    "spread": [
+      "TRIM"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "TRIM",
+      "gemni": "TRIM",
+      "gpt": "TRIM",
+      "mechanical": "TRIM"
+    }
+  },
+  "8053": {
+    "dissents": [],
+    "spread": [
+      "TRIM"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "TRIM",
+      "gemni": "TRIM",
+      "gpt": "TRIM",
+      "mechanical": "TRIM"
+    }
+  },
+  "8766": {
+    "dissents": [],
+    "spread": [
+      "KEEP"
+    ],
+    "unanimous": true,
+    "votes": {
+      "claude": "KEEP",
+      "gemni": "KEEP",
+      "gpt": "KEEP",
+      "mechanical": "KEEP"
+    }
+  }
+}

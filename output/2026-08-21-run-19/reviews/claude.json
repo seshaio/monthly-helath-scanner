@@ -1,0 +1,133 @@
+{
+  "ingested_at": "2026-08-21T06:45:49.909190+00:00",
+  "model": "claude",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "high",
+      "rationale": "Cleanest sheet in the pack: 14.4x is only +11% over reference — the mildest premium among scored ETFs — RSI 58.5 in an orderly uptrend, ¥148bn AUM at a 0.04% spread, no structural notes. Nothing to do but hold.",
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "rationale": "No valuation anchor exists — commodity. +44.3% over 12m with RSI 67.4 is stretched, but war lens at 0 and stable USD/JPY mean the ballast is quiet, not broken. Best wrapper in the pack: ¥1,476bn AUM, 0.05% spread. It stacks USD exposure with 1655 and 2559.",
+      "red_flags": [
+        "RSI 67.4 after +44% — extended entry for adds"
+      ],
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "rationale": "Widest premium in the pack: 25.6x vs 18x reference (+42%). Recession lens +1 and VIX 16 say no distress — so reduce, don't exit. Within the ρ 0.77 cluster this is where valuation risk concentrates, and the 0.01% spread on ¥182bn AUM makes trimming nearly free.",
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "low",
+      "rationale": "17.1x vs 13x reference (+32%) after +47.4% over 12m, inside the same ρ 0.77 cluster. Weakest wrapper here: ¥29bn AUM and a 0.32% spread make later exits costly in stress. Low confidence: the premium is real but smaller than 1655's, and round-trips are not free.",
+      "red_flags": [
+        "spread 0.32% on ¥29bn AUM — exit liquidity in stress"
+      ],
+      "verdict": "TRIM"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "rationale": "Flagged anchor split — fcf_yield 20th vs pb 76th — plus RSI 39.5 and -7% vs 200d: a pullback inside a mixed valuation picture, health INTACT. Consensus +38% rests on only n=6, too thin to act on. Nothing in the pack forces a move before the report in 69 days.",
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "medium",
+      "rationale": "Deterioration, not value: pe and ev_ebit at 99th while pb sits at 13th is the collapsed-earnings signature, confirmed by IMPAIRED health — margin -273bp and 4.01x net debt/EBITDA. Medium confidence because the leverage trigger is marginal and price still holds +4.3% above the 200d.",
+      "red_flags": [
+        "pe 99th vs pb 13th — denominator collapse, not cheapness",
+        "net debt/EBITDA 4.01x a hair over threshold — verify at the report in 76 days"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "low",
+      "rationale": "Unscoreable — the P/E 3.0 feed is implausible, so no valuation verdict is possible. Broadest member of the ρ 0.77 cluster, zero spread, ¥128bn AUM: keep it as the cluster core and take valuation risk out via 1655 instead. Low confidence reflects the blind spot, not the fund.",
+      "red_flags": [
+        "underlying valuation feed broken — flying blind",
+        "ρ 0.77 overlap with 1655 and 1658"
+      ],
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "rationale": "Scenario intact — BOJ at 0.75% and rising supports the bank thesis — but +81.6% over 12m has pushed the index to 16x vs 13x reference (+23%). A -3.7% NAV gap the pipeline cannot explain, on ¥24bn AUM, is reason to reduce while exiting is still easy.",
+      "red_flags": [
+        "-3.7% vs NAV — unexplained by stale NAV",
+        "AUM ¥24bn — thin wrapper"
+      ],
+      "verdict": "TRIM"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "rationale": "Anchors split as flagged — fcf_yield 26th vs pb 82nd — so neither cheap nor extreme; the mean misleads. Health INTACT, price digesting a +50.5% year right at the 200d with RSI 39.4. These numbers justify neither adding nor trimming.",
+      "verdict": "KEEP"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "rationale": "Cheapest name in the pack: all five anchors at or below the 39th percentile (dividend_yield 0) with health INTACT — a derating, not deterioration. No momentum support yet (RSI 34.8, -11.2% vs 200d), hence medium confidence. The 31% consensus gap is from a structurally bullish source.",
+      "red_flags": [
+        "-11.2% below 200d — no trend confirmation yet"
+      ],
+      "verdict": "BUY"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "rationale": "-36.1% over 12m yet anchors only mid-range (pe 62nd, ev_ebit 45th) because earnings fell with the price: -869bp margin, WATCH health. RSI 61.9 below the 200d reads as a bounce, not a base. Consensus spanning 5,000–21,260 says nobody can underwrite this before the report in 74 days.",
+      "red_flags": [
+        "consensus range 5,000–21,260 (4x) — extreme dispersion",
+        "operating margin -869bp yoy"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "rationale": "Textbook TRIM: every anchor 84th–95th percentile of own 5y history, dividend_yield at 95, yet health INTACT. RSI 60.8 and +5.8% vs 200d let you reduce into strength. Consensus +16% is the thinnest shosha gap in the pack — even a bullish source sees less.",
+      "red_flags": [
+        "all five anchors ≥84th percentile simultaneously"
+      ],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "rationale": "Sound (INTACT) but 81st–89th percentile on all five anchors after +58.5% over 12m. Price already -2.5% under the 200d with RSI 45.2 — the re-rating is stalling, which argues for reducing before trend rolls further. Extreme price, intact business: reduce, not exit.",
+      "verdict": "TRIM"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "rationale": "Same shosha pattern: anchors 79th–95th with fcf_yield worst at 95, health INTACT. Price -3.3% vs 200d shows momentum already rolling while valuation sits near 5y extremes. Reduce; the 26% gap to consensus comes from a structurally bullish source and a wide 4,500–7,600 range.",
+      "verdict": "TRIM"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "high",
+      "rationale": "Most extreme in the pack: dy 96, ev_ebit 97, pb 97, pe 95 after +78.2% over 12m and +14.1% vs 200d. Only fcf_yield (54th) is moderate. INTACT health makes this pure price risk — trim into the strongest momentum on the list.",
+      "red_flags": [
+        "four of five anchors at or above the 95th percentile"
+      ],
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "medium",
+      "rationale": "Elevated, not extreme: dy 70th, pb 72nd, pe 85th — below the shosha 90s. Health INTACT, +11.1% above the 200d with RSI cooled to 40.7 — an orderly consolidation within an uptrend. The pack gives no trigger to reduce; pe at 85th argues against adding.",
+      "verdict": "KEEP"
+    }
+  }
+}

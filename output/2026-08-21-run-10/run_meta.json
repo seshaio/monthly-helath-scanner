@@ -1,0 +1,13 @@
+{
+  "as_of": "2026-08-21",
+  "generated_at": "2026-08-21T05:06:24.658707+00:00",
+  "instruments": 16,
+  "pending_components": [
+    "earnings",
+    "macro",
+    "portfolio"
+  ],
+  "score_points_implemented": 6,
+  "score_points_total": 10,
+  "suspect": []
+}

@@ -1,0 +1,936 @@
+[
+  {
+    "above_ma_200": false,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "7532",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 808.9000244140625,
+    "ma_200": 915.0509545898437,
+    "max_drawdown_2y_pct": -27.33956587957551,
+    "name": "パン・パシフィック・インターナショナルホールディングス",
+    "name_en": "Pan Pacific International Holdings Corporation",
+    "name_source": "jpx",
+    "note": "Pan Pacific / Don Quijote — domestic retail",
+    "price_breaks": [],
+    "return_12m_pct": -23.198798998439063,
+    "return_1m_pct": -6.625876046142098,
+    "return_3m_pct": -5.947691573568992,
+    "rsi_14": 33.86841283684137,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 0,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 0.24529844644317222,
+          "raw_percentile": 99.75470155355683,
+          "value": 1.174434381663105
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 16.76829268292683,
+          "raw_percentile": 16.76829268292683,
+          "value": 18.81040828129956
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 26.422764227642276,
+          "raw_percentile": 73.57723577235772,
+          "value": 3.291966694656126
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 29.369918699186993,
+          "raw_percentile": 29.369918699186993,
+          "value": 3.9898098036767937
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 37.90650406504065,
+          "raw_percentile": 37.90650406504065,
+          "value": 26.793641086918267
+        }
+      },
+      "anchors_disagree": false,
+      "anchors_expensive": 0,
+      "is_financial": false,
+      "mean_percentile": 22.142555624247983,
+      "percentile_spread": 37.66120561859748,
+      "skipped_anchors": {},
+      "trim_candidate": false,
+      "valuation_label": "BELOW its own average",
+      "valuation_score": 3
+    },
+    "volatility_1y_pct": 31.22490722999796,
+    "vs_ma_200_pct": -11.600548542497469
+  },
+  {
+    "above_ma_200": false,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "6383",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 5925.0,
+    "ma_200": 5968.496052246093,
+    "max_drawdown_2y_pct": -27.83655647576062,
+    "name": "ダイフク",
+    "name_en": "Daifuku Co., Ltd.",
+    "name_source": "jpx",
+    "note": "Daifuku — logistics automation, sells into semi capex",
+    "price_breaks": [],
+    "return_12m_pct": 51.20682658747449,
+    "return_1m_pct": -7.11710299419972,
+    "return_3m_pct": -16.70247115864938,
+    "rsi_14": 40.40813985341917,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 1,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 42.354865085854456,
+          "raw_percentile": 57.645134914145544,
+          "value": 1.4177215189873418
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 61.98662846227316,
+          "raw_percentile": 61.98662846227316,
+          "value": 18.98033074995676
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 26.361031518624642,
+          "raw_percentile": 73.63896848137536,
+          "value": 5.08241372690571
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 82.61700095510984,
+          "raw_percentile": 82.61700095510984,
+          "value": 5.060200319955619
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 65.32951289398281,
+          "raw_percentile": 65.32951289398281,
+          "value": 29.25781442891709
+        }
+      },
+      "anchors_disagree": true,
+      "anchors_expensive": 0,
+      "disagreement": {
+        "cheapest_anchor": "fcf_yield",
+        "cheapest_percentile": 26.361031518624642,
+        "dearest_anchor": "pb",
+        "dearest_percentile": 82.61700095510984
+      },
+      "is_financial": false,
+      "mean_percentile": 55.72980778316897,
+      "percentile_spread": 56.2559694364852,
+      "skipped_anchors": {},
+      "trim_candidate": false,
+      "valuation_label": "MID-RANGE — anchors disagree",
+      "valuation_score": 2
+    },
+    "volatility_1y_pct": 40.30203742178027,
+    "vs_ma_200_pct": -0.72876067715123
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "8001",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 2068.5,
+    "ma_200": 1959.08671875,
+    "max_drawdown_2y_pct": -24.399330543960616,
+    "name": "伊藤忠商事",
+    "name_en": "ITOCHU Corporation",
+    "name_source": "jpx",
+    "note": "Itochu — trading house",
+    "price_breaks": [],
+    "return_12m_pct": 34.257192004919254,
+    "return_1m_pct": 5.320773930753564,
+    "return_3m_pct": 6.104129263913816,
+    "rsi_14": 60.38133964255305,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 2,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 95.33932951757973,
+          "raw_percentile": 4.6606704824202785,
+          "value": 2.030456852791878
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 89.77556109725685,
+          "raw_percentile": 89.77556109725685,
+          "value": 14.338656986809198
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 85.785536159601,
+          "raw_percentile": 14.214463840399002,
+          "value": 5.820753845980507
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 83.91521197007481,
+          "raw_percentile": 83.91521197007481,
+          "value": 2.2077100406461887
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 91.52119700748129,
+          "raw_percentile": 91.52119700748129,
+          "value": 16.16015625
+        }
+      },
+      "anchors_disagree": false,
+      "anchors_expensive": 4,
+      "is_financial": false,
+      "mean_percentile": 89.26736715039874,
+      "percentile_spread": 11.42411754750492,
+      "skipped_anchors": {},
+      "trim_candidate": true,
+      "valuation_label": "DEAR vs own history",
+      "valuation_score": 0
+    },
+    "volatility_1y_pct": 26.110810106164976,
+    "vs_ma_200_pct": 5.584912612740878
+  },
+  {
+    "above_ma_200": false,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "8002",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 4893.0,
+    "ma_200": 5030.193439941406,
+    "max_drawdown_2y_pct": -31.25327808712266,
+    "name": "丸紅",
+    "name_en": "Marubeni Corporation",
+    "name_source": "jpx",
+    "note": "Marubeni — trading house",
+    "price_breaks": [],
+    "return_12m_pct": 58.084434261515526,
+    "return_1m_pct": -6.977186311787076,
+    "return_3m_pct": -7.171314741035861,
+    "rsi_14": 44.48042592498233,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 1,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 88.96156991005724,
+          "raw_percentile": 11.038430089942764,
+          "value": 2.1970161455139996
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 83.0423940149626,
+          "raw_percentile": 83.0423940149626,
+          "value": 13.433380682133865
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 86.53366583541147,
+          "raw_percentile": 13.466334164588527,
+          "value": 4.694458572370611
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 80.0498753117207,
+          "raw_percentile": 80.0498753117207,
+          "value": 1.86430287102263
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 87.29703915950334,
+          "raw_percentile": 87.29703915950334,
+          "value": 17.522561237645036
+        }
+      },
+      "anchors_disagree": false,
+      "anchors_expensive": 3,
+      "is_financial": false,
+      "mean_percentile": 85.17690884633106,
+      "percentile_spread": 8.911694598336538,
+      "skipped_anchors": {},
+      "trim_candidate": false,
+      "valuation_label": "DEAR vs own history",
+      "valuation_score": 0
+    },
+    "volatility_1y_pct": 35.18161243556424,
+    "vs_ma_200_pct": -2.7273988879243594
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "8053",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 1714.5,
+    "ma_200": 1506.0002313232421,
+    "max_drawdown_2y_pct": -28.389941824813512,
+    "name": "住友商事",
+    "name_en": "Sumitomo Corporation",
+    "name_source": "jpx",
+    "note": "Sumitomo — trading house",
+    "price_breaks": [],
+    "return_12m_pct": 77.78881585655459,
+    "return_1m_pct": 6.889027431421457,
+    "return_3m_pct": -3.8283550694152346,
+    "rsi_14": 54.09434876871925,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 2,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 95.99345870809485,
+          "raw_percentile": 4.006541291905151,
+          "value": 2.1872265966754156
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 96.50872817955111,
+          "raw_percentile": 96.50872817955111,
+          "value": 14.939061977471798
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 53.74064837905237,
+          "raw_percentile": 46.25935162094763,
+          "value": 8.56976260824383
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 96.38403990024938,
+          "raw_percentile": 96.38403990024938,
+          "value": 1.783776588794127
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 95.26184538653366,
+          "raw_percentile": 95.26184538653366,
+          "value": 13.752857658524846
+        }
+      },
+      "anchors_disagree": false,
+      "anchors_expensive": 4,
+      "is_financial": false,
+      "mean_percentile": 87.57774411069627,
+      "percentile_spread": 42.76807980049875,
+      "skipped_anchors": {},
+      "trim_candidate": true,
+      "valuation_label": "DEAR vs own history",
+      "valuation_score": 0
+    },
+    "volatility_1y_pct": 36.700542687268815,
+    "vs_ma_200_pct": 13.84460402728891
+  },
+  {
+    "above_ma_200": false,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "8031",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 4880.0,
+    "ma_200": 5059.344143066406,
+    "max_drawdown_2y_pct": -32.70594462200822,
+    "name": "三井物産",
+    "name_en": "Mitsui & Co., Ltd.",
+    "name_source": "jpx",
+    "note": "Mitsui — trading house",
+    "price_breaks": [],
+    "return_12m_pct": 58.03953455201438,
+    "return_1m_pct": -0.6312360008144946,
+    "return_3m_pct": -12.54480286738351,
+    "rsi_14": 52.872668918282855,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 1,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 87.16271463614063,
+          "raw_percentile": 12.837285363859364,
+          "value": 2.3565573770491803
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 88.40399002493766,
+          "raw_percentile": 88.40399002493766,
+          "value": 14.652652274827423
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 95.38653366583542,
+          "raw_percentile": 4.613466334164588,
+          "value": -1.1112385858315525
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 78.30423940149626,
+          "raw_percentile": 78.30423940149626,
+          "value": 1.5958751430881195
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 88.15461346633417,
+          "raw_percentile": 88.15461346633417,
+          "value": 16.77783125902496
+        }
+      },
+      "anchors_disagree": false,
+      "anchors_expensive": 4,
+      "is_financial": false,
+      "mean_percentile": 87.48241823894882,
+      "percentile_spread": 17.082294264339154,
+      "skipped_anchors": {},
+      "trim_candidate": true,
+      "valuation_label": "DEAR vs own history",
+      "valuation_score": 0
+    },
+    "volatility_1y_pct": 32.940414142163476,
+    "vs_ma_200_pct": -3.5448101175759916
+  },
+  {
+    "above_ma_200": false,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "1944",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 6659.0,
+    "ma_200": 7175.459213867188,
+    "max_drawdown_2y_pct": -23.36656891495601,
+    "name": "きんでん",
+    "name_en": "Kinden Corporation",
+    "name_source": "jpx",
+    "note": "Kinden — electrical contracting",
+    "price_breaks": [],
+    "return_12m_pct": 30.59592245890086,
+    "return_1m_pct": -9.277929155313346,
+    "return_3m_pct": -2.0447190350103006,
+    "rsi_14": 39.29653923456752,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 1,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 73.42600163532298,
+          "raw_percentile": 26.573998364677028,
+          "value": 1.9522450818441208
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 63.965087281795505,
+          "raw_percentile": 63.965087281795505,
+          "value": 12.964251917265194
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 19.700748129675816,
+          "raw_percentile": 80.29925187032418,
+          "value": 6.646347450522278
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 75.81047381546135,
+          "raw_percentile": 75.81047381546135,
+          "value": 1.994785048210897
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 62.368672397325696,
+          "raw_percentile": 62.368672397325696,
+          "value": 18.996947479531
+        }
+      },
+      "anchors_disagree": true,
+      "anchors_expensive": 0,
+      "disagreement": {
+        "cheapest_anchor": "fcf_yield",
+        "cheapest_percentile": 19.700748129675816,
+        "dearest_anchor": "pb",
+        "dearest_percentile": 75.81047381546135
+      },
+      "is_financial": false,
+      "mean_percentile": 59.054196651916264,
+      "percentile_spread": 56.109725685785534,
+      "skipped_anchors": {},
+      "trim_candidate": false,
+      "valuation_label": "MID-RANGE — anchors disagree",
+      "valuation_score": 2
+    },
+    "volatility_1y_pct": 45.135614201952166,
+    "vs_ma_200_pct": -7.197577165083546
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "2502",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 1676.0,
+    "ma_200": 1608.1365155029298,
+    "max_drawdown_2y_pct": -25.254269957654785,
+    "name": "アサヒグループホールディングス",
+    "name_en": "Asahi Group Holdings, Ltd.",
+    "name_source": "jpx",
+    "note": "Asahi Group — beverages",
+    "price_breaks": [],
+    "return_12m_pct": -9.80219314724099,
+    "return_1m_pct": 2.85363608468856,
+    "return_3m_pct": 9.00871860652195,
+    "rsi_14": 53.436151721659435,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 1,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 17.497955846279638,
+          "raw_percentile": 82.50204415372036,
+          "value": 3.1026252983293556
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 98.49012775842044,
+          "raw_percentile": 98.49012775842044,
+          "value": 19.22701598282989
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 86.75958188153311,
+          "raw_percentile": 13.240418118466899,
+          "value": -1.9895641874872014
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 13.240418118466899,
+          "raw_percentile": 13.240418118466899,
+          "value": 0.8350286982309997
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 98.49012775842044,
+          "raw_percentile": 98.49012775842044,
+          "value": 20.6175421331037
+        }
+      },
+      "anchors_disagree": true,
+      "anchors_expensive": 3,
+      "disagreement": {
+        "cheapest_anchor": "pb",
+        "cheapest_percentile": 13.240418118466899,
+        "dearest_anchor": "pe",
+        "dearest_percentile": 98.49012775842044
+      },
+      "is_financial": false,
+      "mean_percentile": 62.8956422726241,
+      "percentile_spread": 85.24970963995355,
+      "skipped_anchors": {},
+      "trim_candidate": false,
+      "valuation_label": "ABOVE its own average — anchors disagree",
+      "valuation_score": 1
+    },
+    "volatility_1y_pct": 22.555329290600692,
+    "vs_ma_200_pct": 4.220007682360638
+  },
+  {
+    "above_ma_200": false,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "7974",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 8591.0,
+    "ma_200": 9126.412551269532,
+    "max_drawdown_2y_pct": -54.01014332977845,
+    "name": "任天堂",
+    "name_en": "Nintendo Co., Ltd.",
+    "name_source": "jpx",
+    "note": "Nintendo",
+    "price_breaks": [],
+    "return_12m_pct": -36.113141499569025,
+    "return_1m_pct": 22.67599600171355,
+    "return_3m_pct": 18.66022099447513,
+    "rsi_14": 61.85926567576897,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 0,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 65.49468520032707,
+          "raw_percentile": 34.50531479967294,
+          "value": 2.5491793737632404
+        },
+        "ev_ebit": {
+          "inverted": false,
+          "percentile": 45.261845386533665,
+          "raw_percentile": 45.261845386533665,
+          "value": 14.430778243995467
+        },
+        "fcf_yield": {
+          "inverted": true,
+          "percentile": 69.20199501246883,
+          "raw_percentile": 30.798004987531176,
+          "value": 2.6276940866244103
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 30.049875311720697,
+          "raw_percentile": 30.049875311720697,
+          "value": 3.3832891879988747
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 62.094763092269325,
+          "raw_percentile": 62.094763092269325,
+          "value": 23.568626375133743
+        }
+      },
+      "anchors_disagree": false,
+      "anchors_expensive": 0,
+      "is_financial": false,
+      "mean_percentile": 54.42063280066392,
+      "percentile_spread": 39.15211970074813,
+      "skipped_anchors": {},
+      "trim_candidate": false,
+      "valuation_label": "MID-RANGE",
+      "valuation_score": 2
+    },
+    "volatility_1y_pct": 39.136047291170776,
+    "vs_ma_200_pct": -5.8666266538110134
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "Equity",
+    "code": "8766",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": null,
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 7327.0,
+    "ma_200": 6638.1086328125,
+    "max_drawdown_2y_pct": -32.813016655149966,
+    "name": "東京海上ホールディングス",
+    "name_en": "Tokio Marine Holdings, Inc.",
+    "name_source": "jpx",
+    "note": "Tokio Marine — non-life insurance",
+    "price_breaks": [],
+    "return_12m_pct": 21.34067095650667,
+    "return_1m_pct": -8.079287416886217,
+    "return_3m_pct": -0.7316081831730159,
+    "rsi_14": 38.91279661699902,
+    "segment": "プライム（内国株式）",
+    "trading_days": 1223,
+    "trend_score": 2,
+    "valuation": {
+      "anchors": {
+        "dividend_yield": {
+          "inverted": true,
+          "percentile": 68.76533115290269,
+          "raw_percentile": 31.234668847097304,
+          "value": 2.975296847277194
+        },
+        "pb": {
+          "inverted": false,
+          "percentile": 71.07231920199501,
+          "raw_percentile": 71.07231920199501,
+          "value": 1.752730285031061
+        },
+        "pe": {
+          "inverted": false,
+          "percentile": 83.16708229426433,
+          "raw_percentile": 83.16708229426433,
+          "value": 26.247537166397997
+        }
+      },
+      "anchors_disagree": false,
+      "anchors_expensive": 0,
+      "is_financial": true,
+      "mean_percentile": 74.33491088305401,
+      "percentile_spread": 14.401751141361643,
+      "skipped_anchors": {
+        "ev_ebit": "not meaningful for a financial",
+        "fcf_yield": "not meaningful for a financial"
+      },
+      "trim_candidate": false,
+      "valuation_label": "ABOVE its own average",
+      "valuation_score": 1
+    },
+    "volatility_1y_pct": 36.27571631803019,
+    "vs_ma_200_pct": 10.377826053979833
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "ETF",
+    "code": "1540",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": "usd_unhedged",
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 21740.0,
+    "ma_200": 21475.3,
+    "max_drawdown_2y_pct": -27.584905660377355,
+    "name": "純金上場信託（現物国内保管型）",
+    "name_en": "Japan Physical Gold ETF",
+    "name_source": "jpx",
+    "note": "Physical gold, JPY-listed but USD-priced underlying",
+    "price_breaks": [],
+    "return_12m_pct": 44.355909694555116,
+    "return_1m_pct": 7.570509648688772,
+    "return_3m_pct": 1.2339930151338718,
+    "rsi_14": 67.53372632852918,
+    "segment": "ETF・ETN",
+    "trading_days": 1222,
+    "trend_score": 2,
+    "valuation": {
+      "valuation_label": "ETF — separate rubric",
+      "valuation_score": null
+    },
+    "volatility_1y_pct": 36.84777374204281,
+    "vs_ma_200_pct": 1.232578823113073
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "ETF",
+    "code": "315A",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": "jpy",
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 1871.0,
+    "ma_200": 1563.3439544677735,
+    "max_drawdown_2y_pct": -30.170090773975044,
+    "name": "グローバルＸ　銀行　高配当－日本株式　ＥＴＦ",
+    "name_en": "Global X Japan Bank High Dividend ETF",
+    "name_source": "jpx",
+    "note": "Global X Japan Banks High Dividend — rate-sensitive financials",
+    "price_breaks": [],
+    "return_12m_pct": 80.8233632471312,
+    "return_1m_pct": -5.025380710659899,
+    "return_3m_pct": 7.28211009174311,
+    "rsi_14": 45.706120253402965,
+    "segment": "ETF・ETN",
+    "trading_days": 396,
+    "trend_score": 2,
+    "valuation": {
+      "valuation_label": "ETF — separate rubric",
+      "valuation_score": null
+    },
+    "volatility_1y_pct": 33.582832630512065,
+    "vs_ma_200_pct": 19.679357485791748
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "ETF",
+    "code": "1478",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": "jpy",
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 5306.0,
+    "ma_200": 4810.163049316407,
+    "max_drawdown_2y_pct": -14.98708300838687,
+    "name": "ｉシェアーズ　ＭＳＣＩ　ジャパン高配当利回り　ＥＴＦ",
+    "name_en": "iShares MSCI Japan High Dividend ETF",
+    "name_source": "jpx",
+    "note": "Japan high dividend",
+    "price_breaks": [],
+    "return_12m_pct": 36.53635260686754,
+    "return_1m_pct": 2.8371061543723153,
+    "return_3m_pct": 7.960451581124062,
+    "rsi_14": 58.08436846554565,
+    "segment": "ETF・ETN",
+    "trading_days": 1222,
+    "trend_score": 2,
+    "valuation": {
+      "valuation_label": "ETF — separate rubric",
+      "valuation_score": null
+    },
+    "volatility_1y_pct": 18.777839466380414,
+    "vs_ma_200_pct": 10.308111088959016
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "ETF",
+    "code": "2559",
+    "corrections_applied": [
+      {
+        "date": "2026-06-08",
+        "sessions_dropped": 1,
+        "type": "bad_print"
+      },
+      {
+        "date": "2026-06-05",
+        "ratio": 10.0,
+        "sessions_rescaled": 1168,
+        "type": "split"
+      }
+    ],
+    "data_suspect": false,
+    "fx": "usd_unhedged",
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 2996.0,
+    "ma_200": 2742.8272011718745,
+    "max_drawdown_2y_pct": -21.226411382257172,
+    "name": "ＭＡＸＩＳ全世界株式（オール・カントリー）上場投信",
+    "name_en": "MAXIS World Equity (MSCI ACWI) ETF",
+    "name_source": "jpx",
+    "note": "All-country world — overlaps 1655",
+    "price_breaks": [],
+    "return_12m_pct": 33.92710121521259,
+    "return_1m_pct": 0.16716817118020977,
+    "return_3m_pct": 4.234570184745579,
+    "rsi_14": 51.13710670764981,
+    "segment": "ETF・ETN",
+    "trading_days": 1221,
+    "trend_score": 2,
+    "valuation": {
+      "valuation_label": "ETF — separate rubric",
+      "valuation_score": null
+    },
+    "volatility_1y_pct": 15.356061851322531,
+    "vs_ma_200_pct": 9.230359051418091
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "ETF",
+    "code": "1655",
+    "corrections_applied": [
+      {
+        "date": "2022-02-08",
+        "sessions_dropped": 1,
+        "type": "bad_print"
+      },
+      {
+        "date": "2022-02-09",
+        "sessions_dropped": 1,
+        "type": "bad_print"
+      }
+    ],
+    "data_suspect": false,
+    "fx": "usd_unhedged",
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 875.5999755859375,
+    "ma_200": 804.0938821411132,
+    "max_drawdown_2y_pct": -25.283252271380274,
+    "name": "ｉシェアーズ　Ｓ＆Ｐ　５００　米国株　ＥＴＦ",
+    "name_en": "iShares S&P 500 ETF",
+    "name_source": "jpx",
+    "note": "S&P 500",
+    "price_breaks": [],
+    "return_12m_pct": 31.76502378797428,
+    "return_1m_pct": -0.33987381792005555,
+    "return_3m_pct": 2.4956039110259676,
+    "rsi_14": 48.43286212028978,
+    "segment": "ETF・ETN",
+    "trading_days": 1220,
+    "trend_score": 2,
+    "valuation": {
+      "valuation_label": "ETF — separate rubric",
+      "valuation_score": null
+    },
+    "volatility_1y_pct": 14.935104447009696,
+    "vs_ma_200_pct": 8.892754320480623
+  },
+  {
+    "above_ma_200": true,
+    "as_of": "2026-08-21",
+    "asset_type": "ETF",
+    "code": "1658",
+    "corrections_applied": [],
+    "data_suspect": false,
+    "fx": "foreign_unhedged",
+    "held": true,
+    "insufficient_history": false,
+    "last_price": 4369.0,
+    "ma_200": 3953.8654772949217,
+    "max_drawdown_2y_pct": -18.43381099835566,
+    "name": "ｉシェアーズ・コア　ＭＳＣＩ　新興国株　ＥＴＦ",
+    "name_en": "iShares Core MSCI Emerging Markets IMI ETF",
+    "name_source": "jpx",
+    "note": "iShares Core MSCI Emerging Markets — EM basket, not USD-pure",
+    "price_breaks": [],
+    "return_12m_pct": 47.2082386620466,
+    "return_1m_pct": 1.452214786285877,
+    "return_3m_pct": 1.475628790927952,
+    "rsi_14": 53.93655307374642,
+    "segment": "ETF・ETN",
+    "trading_days": 1222,
+    "trend_score": 2,
+    "valuation": {
+      "valuation_label": "ETF — separate rubric",
+      "valuation_score": null
+    },
+    "volatility_1y_pct": 25.736810627645777,
+    "vs_ma_200_pct": 10.499459961118784
+  }
+]
