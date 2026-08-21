@@ -21,6 +21,8 @@ import config
 from monitor import indicators
 from monitor import universe as universe_mod
 from monitor import valuation as valuation_mod
+from monitor import etf as etf_mod
+from monitor import verdict as verdict_mod
 
 
 # Components not yet built. Each one contributes to the score, so while any
@@ -32,9 +34,10 @@ PENDING = {
     "earnings": ("earnings calendar and the defer gate", None),
 }
 
-IMPLEMENTED_POINTS = (config.TREND_ABOVE_MA_POINTS
+EQUITY_IMPLEMENTED = (config.TREND_ABOVE_MA_POINTS
                       + config.TREND_POSITIVE_12M_POINTS
                       + max(score for _ceiling, score in config.VALUATION_BANDS))
+IMPLEMENTED_POINTS = EQUITY_IMPLEMENTED
 TOTAL_POINTS = 10
 
 
@@ -92,10 +95,105 @@ def _fmt(v, nd=1, suffix=""):
     return f"{v:,.{nd}f}{suffix}"
 
 
+def _equity_reason(row):
+    if row.get("data_suspect"):
+        return f"**data suspect** — {row['price_breaks'][0]['looks_like']}"
+    if row.get("insufficient_history"):
+        return "insufficient price history"
+
+    bits = []
+    val = row.get("valuation") or {}
+    if val.get("anchors_disagree"):
+        d = val["disagreement"]
+        bits.append(f"**anchors disagree** — {d['cheapest_anchor']} "
+                    f"{d['cheapest_percentile']:.0f} vs {d['dearest_anchor']} "
+                    f"{d['dearest_percentile']:.0f}")
+    elif val.get("mean_percentile") is not None:
+        bits.append(f"{val['valuation_label'].lower()} "
+                    f"({_ordinal(val['mean_percentile'])} pct)")
+
+    vs_ma = row.get("vs_ma_200_pct")
+    if vs_ma is not None and not pd.isna(vs_ma):
+        bits.append(f"{'above' if vs_ma > 0 else 'below'} 200d by {abs(vs_ma):.0f}%")
+    return ", ".join(bits) if bits else "nothing notable"
+
+
+def _etf_reason(row):
+    etf = row.get("etf") or {}
+    bits = []
+    underlying = etf.get("underlying") or {}
+    if underlying.get("label"):
+        bits.append(underlying["label"])
+    bits.extend(etf.get("structural_notes", []))
+    if row.get("fx") and row["fx"] != "jpy":
+        bits.append(row["fx"].replace("_", " "))
+    return ", ".join(bits) if bits else "nothing notable"
+
+
+def _equity_table(rows, add):
+    add("## Equities")
+    add("")
+    add(f"Health is not built, so these carry {EQUITY_IMPLEMENTED}"
+        f" of 10 points and no verdict.")
+    add("")
+    add("| Ticker | Name | Price | 12M | Valuation | Trend | Score | Verdict | Why |")
+    add("| --- | --- | ---: | ---: | :-: | :-: | :-: | :-: | --- |")
+
+    def partial(r):
+        v = (r.get("valuation") or {}).get("valuation_score")
+        t = r.get("trend_score")
+        return None if (v is None and t is None) else (v or 0) + (t or 0)
+
+    for r in sorted(rows, key=lambda r: (-(partial(r) or -1),
+                                         -(r.get("return_12m_pct") or -999))):
+        val = r.get("valuation") or {}
+        vscore, trend, p = val.get("valuation_score"), r.get("trend_score"), partial(r)
+        add(f"| {r['code']} | {universe_mod.display_name(r)} | "
+            f"{_fmt(r.get('last_price'))} | {_fmt(r.get('return_12m_pct'), 0, '%')} | "
+            f"{'—' if vscore is None else f'{vscore}/4'} | "
+            f"{'—' if trend is None else f'{trend}/2'} | "
+            f"{'—' if p is None else f'**{p}**/{EQUITY_IMPLEMENTED}'} | — | "
+            f"{_equity_reason(r)} |")
+    add("")
+
+
+def _etf_table(rows, add):
+    add("## ETFs")
+    add("")
+    add("A fund has no earnings, no book value and no business to be healthy, "
+        "so none of the equity rubric applies. **Structure** replaces health: "
+        "size and spread, the ways a fund fails its holder regardless of what "
+        "it tracks. **Underlying** is the index multiple against a long-run "
+        "reference declared in `config.py` — a judgement, not a fact.")
+    add("")
+    add("| Ticker | Name | Price | 12M | AUM ¥bn | Structure | Underlying | Trend | Score | Verdict | Why |")
+    add("| --- | --- | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | --- |")
+
+    for r in sorted(rows, key=lambda r: -(r.get("_etf_score") or -1)):
+        etf = r.get("etf") or {}
+        aum = (etf.get("profile") or {}).get("aum_jpy")
+        structural = etf.get("structural_score")
+        vscore = etf.get("valuation_score")
+        trend = r.get("trend_score")
+        score = r.get("_etf_score")
+        add(f"| {r['code']} | {universe_mod.display_name(r)} | "
+            f"{_fmt(r.get('last_price'))} | {_fmt(r.get('return_12m_pct'), 0, '%')} | "
+            f"{_fmt(aum / 1e9, 0) if aum else '—'} | "
+            f"{'—' if structural is None else f'{structural}/4'} | "
+            f"{'—' if vscore is None else f'{vscore}/4'} | "
+            f"{'—' if trend is None else f'{trend}/2'} | "
+            f"{'—' if score is None else f'**{score}**/10'} | "
+            f"**{r.get('_etf_verdict', '—')}** | {_etf_reason(r)} |")
+    add("")
+    add("*NAV premium and discount is reported in the run file but not scored "
+        "— the feed does not timestamp NAV, so most apparent dislocation is a "
+        "stale figure meeting a live price.*")
+    add("")
+
+
 def render(rows, as_of, prior=None):
-    """Render the page as markdown."""
-    scored = [r for r in rows if not r.get("data_suspect")
-              and not r.get("insufficient_history")]
+    equities = [r for r in rows if r["asset_type"] == "Equity"]
+    etfs = [r for r in rows if r["asset_type"] == "ETF"]
     suspect = [r for r in rows if r.get("data_suspect")]
 
     out = []
@@ -103,50 +201,33 @@ def render(rows, as_of, prior=None):
 
     add(f"# Monthly Status Check — {as_of}")
     add("")
-    add("> **⚠ PARTIAL RUN — no verdicts.** "
-        f"{IMPLEMENTED_POINTS} of {TOTAL_POINTS} score points are implemented "
-        "(trend and valuation). The business health ladder is the other 4 and "
-        "is not built yet — and health is the half that can reach SELL — so "
-        "no verdict is issued. Everything shown below is computed and real.")
+    add("> **⚠ PARTIAL RUN.** ETFs are fully scored and carry verdicts. "
+        "Equities do not: the business health ladder is 4 of their 10 points "
+        "and is the half that can reach SELL, so issuing equity calls now "
+        "would mean issuing them from the half of the model that cannot say "
+        "no. Everything shown is computed and real.")
     add("")
-
-    # --- Market score -----------------------------------------------------
     add("# Market Score: not yet computed")
     add("")
     add("The five macro lenses are not built. When they are, this line carries "
-        "a single 0–10 number, its month-over-month arrow, and two sentences.")
+        "one 0–10 number, its month-over-month arrow, and two sentences.")
     add("")
     add("---")
     add("")
-
-    # --- Summary ----------------------------------------------------------
-    add("## What the price data says")
+    add("## Summary")
     add("")
-    if suspect:
-        add(f"- **{len(suspect)} series unusable** — "
-            f"{', '.join(r['code'] for r in suspect)}. Not scored, deliberately.")
-
-    overbought = [r for r in scored if (r.get("rsi_14") or 0) >= 70]
-    oversold = [r for r in scored if 0 < (r.get("rsi_14") or 100) <= 30]
-    if overbought:
-        add("- **Overbought on RSI:** "
-            + ", ".join(f"{r['code']} ({r['rsi_14']:.0f})" for r in overbought))
-    if oversold:
-        add("- **Oversold on RSI:** "
-            + ", ".join(f"{r['code']} ({r['rsi_14']:.0f})" for r in oversold))
-
-    below = [r for r in scored if r.get("above_ma_200") is False]
-    if below:
-        add(f"- **Below the 200-day:** {', '.join(r['code'] for r in below)} "
-            f"({len(below)} of {len(scored)})")
 
     def vscore(r):
-        """None for anything unscored — ETFs, suspect series, thin coverage."""
         return (r.get("valuation") or {}).get("valuation_score")
 
-    dear = [r for r in scored if vscore(r) == 0]
-    cheap = [r for r in scored if vscore(r) is not None and vscore(r) >= 3]
-    disagree = [r for r in scored if (r.get("valuation") or {}).get("anchors_disagree")]
+    dear = [r for r in equities if vscore(r) == 0]
+    cheap = [r for r in equities if vscore(r) is not None and vscore(r) >= 3]
+    disagree = [r for r in equities if (r.get("valuation") or {}).get("anchors_disagree")]
+    trims = [r for r in etfs if r.get("_etf_verdict") == verdict_mod.TRIM]
+
+    if suspect:
+        add(f"- **{len(suspect)} price series unusable** — "
+            f"{', '.join(r['code'] for r in suspect)}. Not scored, deliberately.")
     if dear:
         add(f"- **Dear against their own 5-year history:** "
             f"{', '.join(r['code'] for r in dear)}")
@@ -154,62 +235,22 @@ def render(rows, as_of, prior=None):
         add(f"- **Cheap against their own history:** "
             f"{', '.join(r['code'] for r in cheap)}")
     if disagree:
-        add(f"- **Anchors disagree** on {', '.join(r['code'] for r in disagree)} — "
-            f"the mean valuation describes none of the individual anchors, so "
-            f"read the anchors, not the score.")
-
-    worst = min(scored, key=lambda r: r.get("return_12m_pct") or 0, default=None)
-    best = max(scored, key=lambda r: r.get("return_12m_pct") or 0, default=None)
-    if best and worst:
-        add(f"- **12-month spread:** {best['code']} "
-            f"{best['return_12m_pct']:+.0f}% to {worst['code']} "
-            f"{worst['return_12m_pct']:+.0f}%")
+        add(f"- **Anchors disagree** on {', '.join(r['code'] for r in disagree)} "
+            f"— the mean describes none of them, so read the anchors, not the score.")
+    if trims:
+        add(f"- **Funds flagged TRIM:** {', '.join(r['code'] for r in trims)} "
+            f"— sound vehicles, dear underlying index.")
     add("")
     add("---")
     add("")
 
-    # --- The table --------------------------------------------------------
-    add("## The table")
-    add("")
-    add("Sorted by partial score, then 12-month return. **Verdict is "
-        "withheld** — it needs the health ladder, which is the half that can "
-        "reach SELL.")
-    add("")
-    add("| Ticker | Name | Price | 12M | Valuation | Trend | Partial | Verdict | Why |")
-    add("| --- | --- | ---: | ---: | :-: | :-: | :-: | :-: | --- |")
-
-    def partial(r):
-        val = (r.get("valuation") or {}).get("valuation_score")
-        trend = r.get("trend_score")
-        if val is None and trend is None:
-            return None
-        return (val or 0) + (trend or 0)
-
-    def sort_key(r):
-        p = partial(r)
-        return (-(p if p is not None else -1), -(r.get("return_12m_pct") or -999))
-
-    for r in sorted(rows, key=sort_key):
-        trend = r.get("trend_score")
-        val = r.get("valuation") or {}
-        vscore = val.get("valuation_score")
-        p = partial(r)
-        add("| {code} | {name} | {price} | {r12} | {val} | {trend} | {partial} | {verdict} | {why} |".format(
-            code=r["code"],
-            name=universe_mod.display_name(r),
-            price=_fmt(r.get("last_price")),
-            r12=_fmt(r.get("return_12m_pct"), 0, "%"),
-            val="—" if vscore is None else f"{vscore}/4",
-            trend="—" if trend is None else f"{trend}/2",
-            partial="—" if p is None else f"**{p}**/{IMPLEMENTED_POINTS}",
-            verdict="—",
-            why=_reason(r),
-        ))
-    add("")
-
-    # --- Footer -----------------------------------------------------------
+    _equity_table(equities, add)
     add("---")
     add("")
+    _etf_table(etfs, add)
+    add("---")
+    add("")
+
     add("### Still to build")
     add("")
     add("| Component | Score points |")
@@ -217,26 +258,24 @@ def render(rows, as_of, prior=None):
     for _key, (label, points) in PENDING.items():
         add(f"| {label} | {points if points else '—'} |")
     add("")
-    add(f"**How the score will work.** Health 0–4 + valuation vs own 5-year "
-        f"history 0–4 + trend 0–2. **8–10 BUY · 4–7 KEEP · 0–3 SELL.** TRIM "
-        f"overrides KEEP when health is INTACT but "
-        f"{config.TRIM_MIN_ANCHORS_EXPENSIVE}+ anchors sit at the "
-        f"{config.TRIM_PERCENTILE}th percentile or above. A name reporting "
-        f"within {config.DEFER_DAYS_BEFORE_EARNINGS} days shows WAIT.")
+    add(f"**The scale.** Soundness 0–4 + valuation 0–4 + trend 0–2. "
+        f"**8–10 BUY · 4–7 KEEP · 0–3 SELL.** Soundness is health for an "
+        f"equity and structure for a fund. TRIM overrides KEEP when the thing "
+        f"is sound but its price is at an extreme. A name reporting within "
+        f"{config.DEFER_DAYS_BEFORE_EARNINGS} days shows WAIT.")
     add("")
 
     corrected = [r for r in rows if r.get("corrections_applied")]
     if corrected:
         add("### Corrections applied")
         add("")
-        add("Declared in `universe.toml` and applied explicitly — the feed "
-            "reported no split for either name.")
+        add("Declared in `universe.toml`. The feed reported no split for either.")
         add("")
         for r in corrected:
             for act in r["corrections_applied"]:
                 detail = (f"1:{act['ratio']:g} split, {act['sessions_rescaled']} "
                           f"sessions rescaled" if act["type"] == "split"
-                          else f"bad print dropped")
+                          else "bad print dropped")
                 add(f"- **{r['code']}** {act['date']} — {detail}")
         add("")
 
@@ -248,9 +287,38 @@ def render(rows, as_of, prior=None):
     return "\n".join(out) + "\n"
 
 
+def _score_etfs(rows):
+    """
+    Funds have every component, so they get real verdicts now.
+
+    Structure stands in for health, the underlying index multiple for
+    valuation. A fund with no scorable index — a commodity trust, or one whose
+    reported multiple was implausible — stays incomplete rather than being
+    scored on the parts that happen to exist.
+    """
+    for row in rows:
+        if row["asset_type"] != "ETF":
+            continue
+        etf = row.get("etf") or {}
+        score = verdict_mod.total(etf.get("structural_score"),
+                                  etf.get("valuation_score"),
+                                  row.get("trend_score"))
+        row["_etf_score"] = score
+        row["_etf_verdict"] = verdict_mod.decide(
+            score,
+            soundness=etf.get("structural_score"),
+            expensive_anchors=(config.TRIM_MIN_ANCHORS_EXPENSIVE
+                               if etf.get("valuation_score") == config.TRIM_ETF_VALUATION_SCORE
+                               else 0),
+        )
+    return rows
+
+
 def main(argv=None):
     rows = indicators.build(keep_series=True)
     rows = valuation_mod.build(rows)
+    rows = etf_mod.build(rows)
+    _score_etfs(rows)
     dates = sorted({r["as_of"] for r in rows if r.get("as_of")})
     as_of = dates[-1] if dates else datetime.now().strftime("%Y-%m-%d")
 

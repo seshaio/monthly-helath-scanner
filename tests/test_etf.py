@@ -1,0 +1,124 @@
+"""
+ETF rubric and verdict tests. Offline.
+
+The ETF failure mode is subtler than the equity one: nothing throws, the
+numbers look reasonable, and a fund gets marked SELL because its wrapper is
+unremarkable rather than because anything is wrong with it.
+"""
+
+import unittest
+
+import config
+from monitor import etf
+from monitor import verdict
+
+
+def profile(aum=200e9, bid=1000.0, ask=1000.5, nav=1000.0, pe=18.0):
+    return {"aum_jpy": aum, "bid": bid, "ask": ask, "nav": nav, "index_pe": pe}
+
+
+class Structure(unittest.TestCase):
+    """Starts sound and deducts, so 'adequate' does not read as 'failing'."""
+
+    def test_large_and_tight_is_sound(self):
+        score, notes = etf.structural_score(profile(), 1000.0)
+        self.assertEqual(score, 4)
+        self.assertEqual(notes, [])
+
+    def test_adequate_fund_is_not_dragged_to_failure(self):
+        # 1658 on the first live run: usable, unremarkable, and scored 1/4 by
+        # the first cut of this — which dragged the whole name to SELL.
+        score, _ = etf.structural_score(
+            profile(aum=29e9, bid=1000.0, ask=1003.2), 1000.0)
+        self.assertGreaterEqual(score, 2)
+
+    def test_closure_risk_scores_near_zero(self):
+        score, notes = etf.structural_score(profile(aum=2e9), 1000.0)
+        self.assertLessEqual(score, 1)
+        self.assertTrue(any("closure risk" in n for n in notes))
+
+    def test_premium_is_noted_but_never_scored(self):
+        tight = etf.structural_score(profile(nav=1000.0), 1000.0)[0]
+        dislocated = etf.structural_score(profile(nav=1000.0), 1080.0)[0]
+        self.assertEqual(tight, dislocated, "premium must not move the score")
+        _, notes = etf.structural_score(profile(nav=1000.0), 1080.0)
+        self.assertTrue(any("NAV" in n for n in notes))
+
+    def test_score_never_goes_negative(self):
+        score, _ = etf.structural_score(
+            {"aum_jpy": 1e8, "bid": None, "ask": None, "nav": None}, 1000.0)
+        self.assertGreaterEqual(score, 0)
+
+
+class Underlying(unittest.TestCase):
+
+    def test_cheap_index_scores_high(self):
+        out = etf.underlying_valuation("1655", profile(pe=12.0))
+        self.assertEqual(out["score"], 4)
+
+    def test_dear_index_scores_zero(self):
+        out = etf.underlying_valuation("1655", profile(pe=30.0))
+        self.assertEqual(out["score"], 0)
+
+    def test_implausible_multiple_is_refused(self):
+        # 2559 reported a trailing P/E of 3.02 for a world equity index.
+        out = etf.underlying_valuation("2559", profile(pe=3.02))
+        self.assertTrue(out["suspect"])
+        self.assertIsNone(out["score"])
+
+    def test_commodity_has_no_multiple_by_nature(self):
+        out = etf.underlying_valuation("1540", profile(pe=None))
+        self.assertIsNone(out["score"])
+        self.assertIn("commodity", out["label"])
+
+    def test_reference_is_declared_for_every_scorable_fund(self):
+        for code in config.ETF_REFERENCE_PE:
+            self.assertNotIn(code, config.ETF_NO_EARNINGS)
+
+
+class Verdicts(unittest.TestCase):
+
+    def test_sound_and_cheap_buys(self):
+        self.assertEqual(verdict.decide(9, soundness=4), verdict.BUY)
+
+    def test_sound_but_dear_trims_rather_than_sells(self):
+        self.assertEqual(
+            verdict.decide(6, soundness=4,
+                           expensive_anchors=config.TRIM_MIN_ANCHORS_EXPENSIVE),
+            verdict.TRIM)
+
+    def test_price_alone_never_reaches_sell(self):
+        # Soundness scores 4 on its own, which is the KEEP floor, so the
+        # dearest possible thing with the worst trend still cannot be sold on
+        # valuation. Only deterioration reaches SELL.
+        worst = verdict.decide(4 + 0 + 0, soundness=4, expensive_anchors=5)
+        self.assertIn(worst, (verdict.KEEP, verdict.TRIM))
+        self.assertNotEqual(worst, verdict.SELL)
+
+    def test_broken_sells_however_cheap(self):
+        self.assertEqual(verdict.decide(10, soundness=0, broken=True), verdict.SELL)
+
+    def test_imminent_earnings_defers(self):
+        self.assertEqual(
+            verdict.decide(9, soundness=4,
+                           days_to_earnings=config.DEFER_DAYS_BEFORE_EARNINGS - 1),
+            verdict.WAIT)
+
+    def test_earnings_well_ahead_does_not_defer(self):
+        self.assertEqual(
+            verdict.decide(9, soundness=4,
+                           days_to_earnings=config.DEFER_DAYS_BEFORE_EARNINGS + 10),
+            verdict.BUY)
+
+    def test_missing_component_yields_no_verdict(self):
+        self.assertIsNone(verdict.total(4, None, 2))
+        self.assertEqual(verdict.decide(None, soundness=4), verdict.INCOMPLETE)
+
+    def test_every_verdict_word_has_an_explanation(self):
+        for word in (verdict.BUY, verdict.KEEP, verdict.TRIM, verdict.SELL,
+                     verdict.WAIT, verdict.INCOMPLETE):
+            self.assertTrue(verdict.explain(word))
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

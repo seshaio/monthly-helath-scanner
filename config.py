@@ -208,10 +208,17 @@ VERDICT_BANDS = [
     (10, "BUY"),      # 8-10
 ]
 
-# TRIM overrides KEEP: the business is sound but the price is extreme.
-# Health must be INTACT and this many anchors at or above the percentile.
+# TRIM overrides KEEP: the thing is sound but the price is extreme.
+# For an equity, soundness is the health score; for a fund, the structural
+# score. Either way it must be at or above this floor before a price-only
+# signal is allowed to suggest reducing.
+TRIM_SOUNDNESS_FLOOR = 3
 TRIM_MIN_ANCHORS_EXPENSIVE = 4
 TRIM_PERCENTILE = 85
+
+# For a fund there are no five anchors to count, so a single underlying
+# valuation score of 0 — the dearest band — is what stands in for them.
+TRIM_ETF_VALUATION_SCORE = 0
 
 # A name reporting within this many days is not scored. Reviewing it on
 # figures about to be superseded produces noise dressed as a verdict.
@@ -257,3 +264,57 @@ SCORECARD_BENCHMARK = "^TPX"
 # instead of a hit rate. A rate over one quarter is indistinguishable from
 # chance, and printing it invites believing it.
 SCORECARD_MIN_VERDICTS = 24
+
+
+# --------------------------------------------------------------------------
+# ETFs — a separate rubric
+# --------------------------------------------------------------------------
+# An ETF has no earnings, no book value and no business to be healthy, so the
+# equity ladder does not apply to it at all. What can go wrong with a fund is
+# structural: it gets too small to stay open, too thinly traded to exit
+# cheaply, or it drifts from the thing it claims to track. That replaces
+# "health" and carries the same 0-4 weight, so both tables end on one 0-10
+# score and one verdict.
+
+# Structural scoring, 0-4.
+ETF_MIN_AUM_JPY = 10_000_000_000          # below this, size is a real risk
+ETF_GOOD_AUM_JPY = 100_000_000_000        # comfortably liquid
+ETF_TIGHT_SPREAD_PCT = 0.10               # tight enough to ignore
+ETF_MAX_SPREAD_PCT = 0.20                 # beyond this, exit costs bite
+
+# Premium and discount to NAV is REPORTED BUT NOT SCORED. The feed does not
+# timestamp navPrice, so most of what looks like a dislocation is a stale NAV
+# compared against a live price. Scoring it docked every fund in the universe
+# a point for a measurement artefact on the first live run. Only a gap too
+# large to be staleness is worth surfacing at all.
+ETF_NOTABLE_PREMIUM_PCT = 3.0
+
+# Underlying index valuation. There is no history for an index P/E in the
+# feed, so unlike an equity this cannot be a percentile against its own past.
+# Instead each fund carries a declared long-run reference multiple, and the
+# current figure is scored against that. These are JUDGEMENTS, not facts —
+# edit them freely, and expect the score to move when you do.
+ETF_REFERENCE_PE = {
+    "1655": 18.0,   # S&P 500, long-run forward multiple
+    "2559": 17.0,   # MSCI ACWI
+    "1658": 13.0,   # MSCI Emerging Markets, structurally cheaper
+    "1478": 13.0,   # MSCI Japan High Dividend
+    "315A": 11.0,   # Japan banks, structurally low multiple
+}
+
+# Scoring bands: current P/E as a ratio of its reference.
+ETF_VALUATION_BANDS = [
+    (0.80, 4),      # 20%+ below its long-run multiple
+    (0.95, 3),
+    (1.10, 2),
+    (1.30, 1),
+    (99.0, 0),      # 30%+ above
+]
+
+# A world or country index outside this range is a data error, not a finding.
+# 2559 reported a trailing P/E of 3.02 on the first live run.
+ETF_PLAUSIBLE_PE_RANGE = (5.0, 60.0)
+
+# Funds with no equity multiple at all — a commodity trust has no P/E, and
+# that is a property of the asset, not missing data.
+ETF_NO_EARNINGS = {"1540"}   # physical gold
