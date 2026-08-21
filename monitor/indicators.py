@@ -248,8 +248,14 @@ def fetch_history(items):
     return close
 
 
-def build(items=None):
-    """Resolve the universe, fetch history, compute indicators for each."""
+def build(items=None, keep_series=False):
+    """
+    Resolve the universe, fetch history, compute indicators for each.
+
+    `keep_series` attaches the corrected close series as `_close` for callers
+    that need it (valuation builds daily ratio series on top). It is dropped
+    before serialisation — the underscore marks it as not for the run file.
+    """
     items = items if items is not None else universe_mod.resolve()
     close = fetch_history(items)
     fixes = universe_mod.corrections()
@@ -264,6 +270,8 @@ def build(items=None):
         row.update(compute(series))
         row["trend_score"] = trend_score(row)
         row["as_of"] = series.index[-1].strftime("%Y-%m-%d") if len(series) else None
+        if keep_series:
+            row["_close"] = series
         rows.append(row)
 
     missing = [r["code"] for r in rows if r.get("trading_days", 0) == 0]

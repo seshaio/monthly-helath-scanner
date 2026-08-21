@@ -154,6 +154,40 @@ VALUATION_BANDS = [
 # the name is reported as partial rather than scored on one number.
 VALUATION_MIN_ANCHORS = 3
 
+# An anchor needs this much daily history before its percentile means
+# anything. A rank computed from a handful of observations is noise wearing a
+# decimal point.
+VALUATION_MIN_OBSERVATIONS = 250
+
+# Results are published weeks after the fiscal period closes. Applying a
+# figure from the period-end date would let a historical run "know" earnings
+# before the market did, which flatters every percentile it computes.
+# Japanese issuers file full-year results within 45 days of year end.
+FUNDAMENTALS_PUBLICATION_LAG_DAYS = 45
+
+VALUATION_LABELS = {
+    4: "CHEAP vs own history",
+    3: "BELOW its own average",
+    2: "MID-RANGE",
+    1: "ABOVE its own average",
+    0: "DEAR vs own history",
+}
+
+# Banks and insurers. Enterprise value and free cash flow are not meaningful
+# when deposits and reserves are raw material rather than leverage, so those
+# anchors are skipped rather than computed on a broken definition. The sibling
+# screener drops financials outright for the same reason; this project holds
+# them, so it scores them on the anchors that do apply.
+FINANCIAL_CODES = {"8766", "315A"}
+FINANCIAL_EXCLUDED_ANCHORS = ("ev_ebit", "fcf_yield")
+
+# When anchors disagree by more than this many percentile points, the mean is
+# not a summary of them — it is a number that describes none of them. Asahi on
+# the first live run: P/E at the 99th percentile because earnings fell 36%,
+# P/B at the 13th because equity kept growing. The average of those, 63, is
+# the one reading that is certainly wrong. Flag it instead of hiding it.
+VALUATION_DISPERSION_THRESHOLD = 50
+
 # --------------------------------------------------------------------------
 # Trend
 # --------------------------------------------------------------------------

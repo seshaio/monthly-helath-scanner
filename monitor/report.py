@@ -20,30 +20,44 @@ import common
 import config
 from monitor import indicators
 from monitor import universe as universe_mod
+from monitor import valuation as valuation_mod
 
 
 # Components not yet built. Each one contributes to the score, so while any
 # is outstanding the score is partial and the verdict is withheld.
 PENDING = {
-    "valuation": ("valuation anchors vs own 5y history", 4),
     "health": ("business health ladder and triggers", 4),
     "macro": ("macro dashboard and the five lenses", None),
     "portfolio": ("correlation clusters and FX exposure", None),
     "earnings": ("earnings calendar and the defer gate", None),
 }
 
-IMPLEMENTED_POINTS = config.TREND_ABOVE_MA_POINTS + config.TREND_POSITIVE_12M_POINTS
+IMPLEMENTED_POINTS = (config.TREND_ABOVE_MA_POINTS
+                      + config.TREND_POSITIVE_12M_POINTS
+                      + max(score for _ceiling, score in config.VALUATION_BANDS))
 TOTAL_POINTS = 10
 
 
 def _reason(row):
-    """A short, honest reason from price data alone."""
+    """A short, honest reason from what has actually been computed."""
     if row.get("data_suspect"):
         return f"**data suspect** — {row['price_breaks'][0]['looks_like']}"
     if row.get("insufficient_history"):
         return "insufficient price history"
 
     bits = []
+    val = row.get("valuation") or {}
+    if val.get("anchors_disagree"):
+        d = val["disagreement"]
+        bits.append(f"**anchors disagree** — {d['cheapest_anchor']} "
+                    f"{d['cheapest_percentile']:.0f} vs {d['dearest_anchor']} "
+                    f"{d['dearest_percentile']:.0f}")
+    elif val.get("mean_percentile") is not None:
+        bits.append(f"{val['valuation_label'].lower()} "
+                    f"({_ordinal(val['mean_percentile'])} pct)")
+    elif val.get("valuation_label"):
+        bits.append(val["valuation_label"])
+
     rsi = row.get("rsi_14")
     if rsi is not None and not pd.isna(rsi):
         if rsi >= 70:
@@ -60,6 +74,16 @@ def _reason(row):
         bits.append(f"{'+' if r12 > 0 else ''}{r12:.0f}% over 12m")
 
     return ", ".join(bits) if bits else "nothing notable in price"
+
+
+def _ordinal(value):
+    """23rd, not 23th."""
+    n = int(round(value))
+    if 10 <= n % 100 <= 20:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
 
 
 def _fmt(v, nd=1, suffix=""):
@@ -81,9 +105,9 @@ def render(rows, as_of, prior=None):
     add("")
     add("> **⚠ PARTIAL RUN — no verdicts.** "
         f"{IMPLEMENTED_POINTS} of {TOTAL_POINTS} score points are implemented "
-        "(trend only). Health and valuation are the other 8 and are not built "
-        "yet, so nothing here is a buy, keep or sell call. The table below is "
-        "price behaviour, which is real, and nothing more.")
+        "(trend and valuation). The business health ladder is the other 4 and "
+        "is not built yet — and health is the half that can reach SELL — so "
+        "no verdict is issued. Everything shown below is computed and real.")
     add("")
 
     # --- Market score -----------------------------------------------------
@@ -116,6 +140,24 @@ def render(rows, as_of, prior=None):
         add(f"- **Below the 200-day:** {', '.join(r['code'] for r in below)} "
             f"({len(below)} of {len(scored)})")
 
+    def vscore(r):
+        """None for anything unscored — ETFs, suspect series, thin coverage."""
+        return (r.get("valuation") or {}).get("valuation_score")
+
+    dear = [r for r in scored if vscore(r) == 0]
+    cheap = [r for r in scored if vscore(r) is not None and vscore(r) >= 3]
+    disagree = [r for r in scored if (r.get("valuation") or {}).get("anchors_disagree")]
+    if dear:
+        add(f"- **Dear against their own 5-year history:** "
+            f"{', '.join(r['code'] for r in dear)}")
+    if cheap:
+        add(f"- **Cheap against their own history:** "
+            f"{', '.join(r['code'] for r in cheap)}")
+    if disagree:
+        add(f"- **Anchors disagree** on {', '.join(r['code'] for r in disagree)} — "
+            f"the mean valuation describes none of the individual anchors, so "
+            f"read the anchors, not the score.")
+
     worst = min(scored, key=lambda r: r.get("return_12m_pct") or 0, default=None)
     best = max(scored, key=lambda r: r.get("return_12m_pct") or 0, default=None)
     if best and worst:
@@ -129,26 +171,37 @@ def render(rows, as_of, prior=None):
     # --- The table --------------------------------------------------------
     add("## The table")
     add("")
-    add("Sorted by trend, then 12-month return. **Verdict is withheld** — it "
-        "needs health and valuation.")
+    add("Sorted by partial score, then 12-month return. **Verdict is "
+        "withheld** — it needs the health ladder, which is the half that can "
+        "reach SELL.")
     add("")
-    add("| Ticker | Name | Price | RSI | 12M | vs 200d | Trend | Verdict | Why |")
-    add("| --- | --- | ---: | ---: | ---: | ---: | :-: | :-: | --- |")
+    add("| Ticker | Name | Price | 12M | Valuation | Trend | Partial | Verdict | Why |")
+    add("| --- | --- | ---: | ---: | :-: | :-: | :-: | :-: | --- |")
+
+    def partial(r):
+        val = (r.get("valuation") or {}).get("valuation_score")
+        trend = r.get("trend_score")
+        if val is None and trend is None:
+            return None
+        return (val or 0) + (trend or 0)
 
     def sort_key(r):
-        return (-(r.get("trend_score") if r.get("trend_score") is not None else -1),
-                -(r.get("return_12m_pct") or -999))
+        p = partial(r)
+        return (-(p if p is not None else -1), -(r.get("return_12m_pct") or -999))
 
     for r in sorted(rows, key=sort_key):
         trend = r.get("trend_score")
-        add("| {code} | {name} | {price} | {rsi} | {r12} | {ma} | {trend} | {verdict} | {why} |".format(
+        val = r.get("valuation") or {}
+        vscore = val.get("valuation_score")
+        p = partial(r)
+        add("| {code} | {name} | {price} | {r12} | {val} | {trend} | {partial} | {verdict} | {why} |".format(
             code=r["code"],
             name=universe_mod.display_name(r),
             price=_fmt(r.get("last_price")),
-            rsi=_fmt(r.get("rsi_14"), 0),
             r12=_fmt(r.get("return_12m_pct"), 0, "%"),
-            ma=_fmt(r.get("vs_ma_200_pct"), 0, "%"),
+            val="—" if vscore is None else f"{vscore}/4",
             trend="—" if trend is None else f"{trend}/2",
+            partial="—" if p is None else f"**{p}**/{IMPLEMENTED_POINTS}",
             verdict="—",
             why=_reason(r),
         ))
@@ -196,7 +249,8 @@ def render(rows, as_of, prior=None):
 
 
 def main(argv=None):
-    rows = indicators.build()
+    rows = indicators.build(keep_series=True)
+    rows = valuation_mod.build(rows)
     dates = sorted({r["as_of"] for r in rows if r.get("as_of")})
     as_of = dates[-1] if dates else datetime.now().strftime("%Y-%m-%d")
 

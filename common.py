@@ -154,7 +154,10 @@ def _plain(obj):
     if hasattr(obj, "isoformat"):           # datetime / Timestamp
         return obj.isoformat()
     if isinstance(obj, dict):
-        return {str(k): _plain(v) for k, v in obj.items()}
+        # Keys beginning with _ carry working state (raw pandas series) that
+        # must never reach a run file.
+        return {str(k): _plain(v) for k, v in obj.items()
+                if not str(k).startswith("_")}
     if isinstance(obj, (list, tuple, set)):
         return [_plain(v) for v in obj]
     return obj
