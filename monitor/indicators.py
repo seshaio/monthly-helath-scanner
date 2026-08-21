@@ -82,8 +82,12 @@ def wilder_rsi(close, period=None):
         avg_loss = (avg_loss * (period - 1) + losses[i]) / period
 
     if avg_loss == 0:
-        # No down-days in the window. Undefined rather than infinite; 100 is
-        # the conventional reading and is what every charting package shows.
+        if avg_gain == 0:
+            # A flat series has no down-days AND no up-days. Reading that as
+            # RSI 100 marked a dormant name "extreme overbought" and fired
+            # the tripwire on nothing. Flat is no information, not a signal.
+            return np.nan
+        # No down-days but real gains: 100 is the conventional reading.
         return 100.0
     rs = avg_gain / avg_loss
     return float(100 - 100 / (1 + rs))
