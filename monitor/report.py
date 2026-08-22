@@ -216,18 +216,19 @@ def _etf_reason(row):
     return ", ".join(bits) if bits else "nothing notable"
 
 
-def _equity_table(rows, add, delta_map):
-    add("## Equities")
+def _equity_table(rows, add, delta_map, title="## Equities", preamble=True):
+    add(title)
     add("")
-    add("**Health** is the ladder: INTACT, WATCH, IMPAIRED, BROKEN. Its "
-        "triggers are fixed in `config.py` before any data is fetched, and a "
-        "trigger can be argued with but not un-fired. **Buy ≤ / Sell ≥** is a "
-        "one-sigma monthly band from the name's own realised volatility, "
-        "rounded to valid TSE ticks — a statistical band for limit orders, "
-        "not a forecast; it says nothing about direction. **12M Tgt** is the "
-        "sell-side consensus mean — third-party opinion, shown with its "
-        "high/low range in the run file, and it does not score.")
-    add("")
+    if preamble:
+        add("**Health** is the ladder: INTACT, WATCH, IMPAIRED, BROKEN. Its "
+            "triggers are fixed in `config.py` before any data is fetched, and a "
+            "trigger can be argued with but not un-fired. **Buy ≤ / Sell ≥** is a "
+            "one-sigma monthly band from the name's own realised volatility, "
+            "rounded to valid TSE ticks — a statistical band for limit orders, "
+            "not a forecast; it says nothing about direction. **12M Tgt** is the "
+            "sell-side consensus mean — third-party opinion, shown with its "
+            "high/low range in the run file, and it does not score.")
+        add("")
     add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | 12M Tgt | Health | Valuation | Trend | Score | Verdict | Δ | Why |")
     add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | :-: | --- |")
 
@@ -401,7 +402,18 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
     add("---")
     add("")
 
-    _equity_table(equities, add, delta_map)
+    held_eq = [r for r in equities if r.get("held")]
+    watch_eq = [r for r in equities if not r.get("held")]
+    _equity_table(held_eq, add, delta_map, title="## Equities — held")
+    if watch_eq:
+        add("")
+        _equity_table(watch_eq, add, delta_map,
+                      title="## Equities — watchlist (not held)", preamble=False)
+        add("Watchlist names are candidates under the same rules, not "
+            "positions. A BUY here means the mechanics qualify it — the "
+            "panel, the deltas history, and your own reading still stand "
+            "between a row in this table and an order.")
+        add("")
     add("---")
     add("")
     _etf_table(etfs, add, delta_map)
