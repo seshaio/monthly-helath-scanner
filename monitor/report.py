@@ -255,15 +255,16 @@ def _equity_table(rows, add, delta_map, title="## Equities", preamble=True):
     add("")
 
 
-def _etf_table(rows, add, delta_map):
-    add("## ETFs")
+def _etf_table(rows, add, delta_map, title="## ETFs", preamble=True):
+    add(title)
     add("")
-    add("A fund has no earnings, no book value and no business to be healthy, "
-        "so none of the equity rubric applies. **Structure** replaces health: "
-        "size and spread, the ways a fund fails its holder regardless of what "
-        "it tracks. **Underlying** is the index multiple against a long-run "
-        "reference declared in `config.py` — a judgement, not a fact.")
-    add("")
+    if preamble:
+        add("A fund has no earnings, no book value and no business to be healthy, "
+            "so none of the equity rubric applies. **Structure** replaces health: "
+            "size and spread, the ways a fund fails its holder regardless of what "
+            "it tracks. **Underlying** is the index multiple against a long-run "
+            "reference declared in `config.py` — a judgement, not a fact.")
+        add("")
     add("| Ticker | Name | Price | Buy ≤ | Sell ≥ | 12M | AUM ¥bn | Structure | Underlying | Trend | Score | Verdict | Δ | Why |")
     add("| --- | --- | ---: | ---: | ---: | ---: | ---: | :-: | :-: | :-: | :-: | :-: | :-: | --- |")
 
@@ -373,11 +374,16 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
              or r.get("_etf_verdict") == verdict_mod.SELL]
 
     waits = [r for r in rows if r.get("_verdict") == verdict_mod.WAIT]
+
+    def tag(r):
+        """A SELL you do not hold is an avoid, not an action."""
+        return r["code"] + ("" if r.get("held") else " (watch)")
+
     if sells:
-        add(f"- **SELL:** {', '.join(r['code'] for r in sells)}")
+        add(f"- **SELL:** {', '.join(tag(r) for r in sells)}")
     if waits:
         add(f"- **WAIT:** " + ", ".join(
-            f"{r['code']} (reports in {r['days_to_earnings']}d)" for r in waits))
+            f"{tag(r)} (reports in {r['days_to_earnings']}d)" for r in waits))
     knife_edge = [r for r in equities if (r.get("health") or {}).get("marginal_trigger")]
     if knife_edge:
         add(f"- **Balanced on a threshold:** "
@@ -391,7 +397,7 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
         add(f"- **Health on watch:** " + ", ".join(
             f"{r['code']} ({r['health']['fired'][0]['trigger']})" for r in watch))
     if trims:
-        add(f"- **TRIM:** {', '.join(r['code'] for r in trims)} — sound, but "
+        add(f"- **TRIM:** {', '.join(tag(r) for r in trims)} — sound, but "
             f"priced at an extreme. Reduce, not exit.")
     nearly = near_buy(rows)
     if nearly:
@@ -416,7 +422,15 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
         add("")
     add("---")
     add("")
-    _etf_table(etfs, add, delta_map)
+    held_etf = [r for r in etfs if r.get("held")]
+    watch_etf = [r for r in etfs if not r.get("held")]
+    if held_etf:
+        _etf_table(held_etf, add, delta_map, title="## ETFs — held")
+    if watch_etf:
+        add("")
+        _etf_table(watch_etf, add, delta_map,
+                   title="## ETFs — watchlist (not held)",
+                   preamble=not held_etf)
     add("---")
     add("")
 

@@ -18,9 +18,14 @@ import config
 
 
 def correlation_matrix(rows):
-    """Pairwise correlation of daily returns over the trailing year."""
+    """Pairwise correlation of daily returns over the trailing year.
+
+    Held names only: concentration is a property of what you own, and a
+    watchlist entry cannot concentrate anything. Rows without a held flag
+    (tests, ad-hoc scans) default to included."""
     series = {r["code"]: r["_close"] for r in rows
-              if r.get("_close") is not None and len(r.get("_close", [])) > 0
+              if r.get("held", True)
+              and r.get("_close") is not None and len(r.get("_close", [])) > 0
               and not r.get("data_suspect")}
     if len(series) < 2:
         return pd.DataFrame()
@@ -81,9 +86,11 @@ def top_pairs(corr, n=5):
 
 
 def fx_exposure(rows):
-    """Names carrying non-yen exposure, by declared tag. Counts, not weights."""
+    """Held names carrying non-yen exposure, by tag. Counts, not weights."""
     tagged = {}
     for r in rows:
+        if not r.get("held", True):
+            continue
         fx = r.get("fx")
         if fx and fx != "jpy":
             tagged.setdefault(fx, []).append(r["code"])

@@ -22,7 +22,7 @@ note = "Pan Pacific / Don Quijote — domestic retail"
 
 [[equity]]
 code = "6383"
-held = true
+held = false
 note = "Daifuku — logistics automation, sells into semi capex"
 
 [[equity]]
@@ -32,12 +32,12 @@ note = "Itochu — trading house"
 
 [[equity]]
 code = "8002"
-held = true
+held = false
 note = "Marubeni — trading house"
 
 [[equity]]
 code = "8053"
-held = true
+held = false
 note = "Sumitomo — trading house"
 
 [[equity]]
@@ -47,22 +47,22 @@ note = "Mitsui — trading house"
 
 [[equity]]
 code = "1944"
-held = true
+held = false
 note = "Kinden — electrical contracting"
 
 [[equity]]
 code = "2502"
-held = true
+held = false
 note = "Asahi Group — beverages"
 
 [[equity]]
 code = "7974"
-held = true
+held = false
 note = "Nintendo"
 
 [[equity]]
 code = "8766"
-held = true
+held = false
 note = "Tokio Marine — non-life insurance"
 
 # Watchlist — not held. Found by the 2026-08-21 broad scan of the sibling
@@ -86,37 +86,37 @@ note = "Suzuki Motor — small cars, India via Maruti. Scanned 9/10: cheap on ea
 
 [[etf]]
 code = "1540"
-held = true
+held = false
 fx = "usd_unhedged"
 note = "Physical gold, JPY-listed but USD-priced underlying"
 
 [[etf]]
 code = "315A"
-held = true
+held = false
 fx = "jpy"
 note = "Global X Japan Banks High Dividend — rate-sensitive financials"
 
 [[etf]]
 code = "1478"
-held = true
+held = false
 fx = "jpy"
 note = "Japan high dividend"
 
 [[etf]]
 code = "2559"
-held = true
+held = false
 fx = "usd_unhedged"
 note = "All-country world — overlaps 1655"
 
 [[etf]]
 code = "1655"
-held = true
+held = false
 fx = "usd_unhedged"
 note = "S&P 500"
 
 [[etf]]
 code = "1658"
-held = true
+held = false
 fx = "foreign_unhedged"
 note = "iShares Core MSCI Emerging Markets — EM basket, not USD-pure"
 
