@@ -1,7 +1,13 @@
 """
-Take one reviewer's JSON verdicts back into the run folder.
+Take reviewers' JSON verdicts back into the run folder.
 
     python -m monitor.ingest <model-name> <reply.json>
+    python -m monitor.ingest --all <folder>
+
+--all sweeps every *.json in the folder, using each filename (minus .json)
+as the model label. Files are validated independently: one malformed reply
+is reported and skipped, the rest still land — the whole point of per-file
+validation is that one broken reviewer cannot block the panel.
 
 Validation is strict and unforgiving on purpose: a reply that skips a name,
 invents a ticker, or free-forms a verdict word is rejected whole. A panel is
@@ -71,8 +77,30 @@ def ingest(model_name, reply_path, run_dir=None):
     return path
 
 
+def ingest_all(folder):
+    """Sweep a folder; each reply stands or falls on its own."""
+    files = sorted(f for f in os.listdir(folder) if f.endswith(".json"))
+    if not files:
+        print(f"no .json files in {folder}")
+        return 1
+    failures = 0
+    for name in files:
+        model = name[:-len(".json")]
+        try:
+            path = ingest(model, os.path.join(folder, name))
+            print(f"✓ {model:<12} → {path}")
+        except (ValueError, json.JSONDecodeError) as exc:
+            failures += 1
+            print(f"✗ {model:<12} REJECTED:\n    "
+                  + str(exc).replace("\n", "\n    "))
+    print(f"\n{len(files) - failures} of {len(files)} ingested")
+    return 1 if failures else 0
+
+
 def main(argv=None):
     argv = argv if argv is not None else sys.argv[1:]
+    if len(argv) == 2 and argv[0] == "--all":
+        return ingest_all(argv[1])
     if len(argv) != 2:
         print(__doc__)
         return 2

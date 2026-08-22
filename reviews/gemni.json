@@ -3,114 +3,132 @@
 "code": "7532",
 "verdict": "BUY",
 "confidence": "high",
-"rationale": "Deeply undervalued across all metrics (div 0, ev_ebit 19, fcf 27) despite fundamentally intact health. Trading 11.2% below its 200d average with strong upside to the sell-side consensus of 1,067."
+"rationale": "Health is intact while valuation percentiles are very cheap across the board following a 22.3% 12m price drop. Current price is well below the sell-side mean of 1,067, offering attractive risk-reward."
 },
 {
 "code": "6383",
 "verdict": "KEEP",
 "confidence": "medium",
-"rationale": "Health remains intact with a strong 12m return of 50.5%. Valuation signals are mixed (FCF yield cheap at 26, PB expensive at 82), making a hold prudent until clarity emerges."
+"rationale": "Shares are up 50.6% over 12m with intact health, but valuation signals are mixed with FCF yield looking cheap while P/B is expensive. Trading near the 200d MA with a bullish consensus target justifies holding."
 },
 {
 "code": "8001",
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "While health is intact, the stock is heavily overvalued against its 5y history across all metrics (PE 92, EV/EBIT 90). The 34.5% 12m run warrants reducing exposure at these extremes."
+"rationale": "Health remains intact, but the stock is priced at extreme historical premiums across all multiples (all percentiles >84, including P/E at 92) following a 35% 12m rally. It is time to reduce exposure."
 },
 {
 "code": "8002",
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "Flashing extreme valuation percentiles across the board (div 89, ev_ebit 84, PE 88) after a 58.5% 12m rally. Time to take some profits on sound but fully priced fundamentals."
+"rationale": "Similar to peers, health is intact but the 58.1% 12m rally has pushed valuations to extreme historical extremes (all percentiles >80). Sound fundamentals but priced for perfection warrant trimming."
 },
 {
 "code": "8053",
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "A massive 78.2% 12m run has pushed valuations to extreme historical percentiles (PB 97, PE 95, EV/EBIT 97). The business is intact, but the pricing implies perfection."
+"rationale": "A massive 77.2% 12m price surge has stretched valuation percentiles to the mid-90s for dividend, EV/EBIT, P/B, and P/E. Underlying health is sound, but extreme pricing warrants reducing position size."
 },
 {
 "code": "8031",
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "Similarly overextended after a 58.5% rally. FCF yield is at the 95th percentile and PE at 89. Sound asset, but priced at an extreme."
+"rationale": "Valuations are universally stretched (all percentiles >79) following a nearly 60% 12m gain. The business is healthy, but the extreme pricing dictates taking some profits."
 },
 {
 "code": "1944",
 "verdict": "KEEP",
 "confidence": "medium",
-"rationale": "Solid 30.8% 12m gain with intact health. Valuations are slightly stretched on PB (76) and PE (63) but supported by a highly attractive FCF yield at the 20th percentile."
+"rationale": "Intact health and significant upside to consensus, but mixed valuation percentiles (cheap FCF yield vs elevated P/B) and mild recent underperformance vs the 200d MA suggest holding steady."
 },
 {
 "code": "2502",
 "verdict": "SELL",
 "confidence": "high",
-"rationale": "Fundamentals are deteriorating. Operating margin collapsed by 273bps to 6.4%, and net debt to EBITDA breached the 4.0x threshold. Earnings multiples are highly stretched (PE 99, EV/EBIT 99).",
+"rationale": "The business itself has deteriorated, triggering 'IMPAIRED' health due to a sharp 273bp operating margin contraction and net debt to EBITDA breaching 4.01x. Extreme multiples (99th percentile P/E) further warrant an exit.",
 "red_flags": [
-"Operating margin fell 273bp",
-"Net debt / EBITDA at 4.01x"
+"273bp margin contraction",
+"net debt / EBITDA above threshold"
 ]
 },
 {
 "code": "7974",
 "verdict": "WAIT",
 "confidence": "medium",
-"rationale": "A severe 869bp drop in operating margin to 15.6% triggered a watch warning. Down 36.1% over 12 months with mixed valuation signals. Better to wait for margin stabilization before entry.",
+"rationale": "A massive 869bp drop in operating margin has flagged health to WATCH amid a 36.1% price slide. Valuations are not clearly cheap enough to buy yet. Waiting for health stabilization or a clearer valuation signal.",
 "red_flags": [
-"Operating margin fell 869bp to 15.6%"
+"869bp margin contraction"
 ]
 },
 {
 "code": "8766",
 "verdict": "KEEP",
 "confidence": "medium",
-"rationale": "Trending well (+22.1% 12m) and structurally intact. Valuations are elevated (PE 85, PB 72) but not yet at the extreme 90+ percentiles seen in the trading houses."
+"rationale": "Trending well above the 200d MA with intact health and room to consensus target. Valuations are slightly elevated but not at the extreme levels requiring a trim."
+},
+{
+"code": "7701",
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Highly attractive profile: 12m positive momentum alongside uniformly cheap valuation percentiles across the board (all ≤21). Health is strictly intact, and the current price implies decent upside to the sell-side mean."
+},
+{
+"code": "4543",
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Health is intact while trading strongly above its 200-day moving average. Valuation multiples are very attractive historically (all percentiles ≤30). Solid buy signal with room to run to consensus target."
+},
+{
+"code": "7269",
+"verdict": "BUY",
+"confidence": "medium",
+"rationale": "Solid 21.8% 12m return with sound health and attractive valuation percentiles, particularly FCF yield (21) and P/E (23). Meaningful upside remains to the consensus mean of 2,568."
 },
 {
 "code": "1540",
 "verdict": "KEEP",
-"confidence": "high",
-"rationale": "Supported by a stable USD/JPY (159) and calm geopolitics (WTI -10.5%). Gold's physical momentum holds, and the unhedged USD profile fits the portfolio's stable currency outlook."
+"confidence": "medium",
+"rationale": "Strong 12m momentum but 3m gold price is only mildly up. Geopolitical macro remains calm, so there is no urgent driver to add, but stable USD/JPY supports holding the unhedged position."
 },
 {
 "code": "315A",
-"verdict": "KEEP",
-"confidence": "medium",
-"rationale": "Massive 81.6% 12m run and trading at a 23% premium to its reference index. However, the -3.7% discount to NAV provides a buffer. The BOJ normalization scenario supports holding.",
+"verdict": "WAIT",
+"confidence": "low",
+"rationale": "The underlying index is 23% above reference, and structural issues like modest AUM and unreliable NAV pricing create execution risks. Wait for better valuation or structural clarity despite macro tailwinds.",
 "red_flags": [
-"Modest AUM of ¥24bn",
-"-3.7% vs NAV discount"
+"unreliable NAV",
+"modest AUM"
 ]
 },
 {
 "code": "1478",
 "verdict": "KEEP",
 "confidence": "high",
-"rationale": "Up 36.7% over 12m. Index P/E of 14.4x represents a reasonable 11% premium over the reference. Solid domestic exposure amidst an intact TOPIX uptrend."
+"rationale": "Solidly structured ETF with strong AUM and a tight spread. The 11% premium to reference P/E is reasonable given the strong 12m momentum and stable domestic macro environment."
 },
 {
 "code": "2559",
-"verdict": "KEEP",
+"verdict": "WAIT",
 "confidence": "medium",
-"rationale": "Up 34.1% over 12m. Benefiting from stable USD/JPY (159) as an unhedged instrument. Macro stability and broad global diversification justify holding, despite missing P/E data.",
+"rationale": "The underlying index P/E of 3.0 is flagged as implausible, depriving us of reliable valuation metrics. Wait until the data anomaly is resolved before committing capital.",
 "red_flags": [
-"Index P/E 3.0 implausible"
+"implausible index valuation data"
 ]
 },
 {
 "code": "1655",
 "verdict": "TRIM",
-"confidence": "high",
-"rationale": "The S&P 500 index is pricing at 25.6x, a massive 42% premium to its 18x reference. Despite calm US recession indicators, this extreme valuation warrants reducing the unhedged position."
+"confidence": "medium",
+"rationale": "The US macro environment remains calm, but the underlying index is trading at a steep 42% premium to its historical reference (25.6x vs 18x). It is prudent to reduce exposure at these elevated valuations."
 },
 {
 "code": "1658",
-"verdict": "TRIM",
+"verdict": "SELL",
 "confidence": "medium",
-"rationale": "Up 47.4% over 12m with the index trading at a 32% premium (17.1x vs 13x reference). Combined with a wide 0.32% spread and modest AUM, reducing exposure is logical.",
+"rationale": "The ETF is trading at a significant 32% premium to reference P/E, combined with structural flaws like modest AUM and a wide 0.32% spread that create execution drag.",
 "red_flags": [
-"Modest AUM of ¥29bn",
-"Wide spread of 0.32%"
+"wide spread",
+"modest AUM"
 ]
 }
 ]

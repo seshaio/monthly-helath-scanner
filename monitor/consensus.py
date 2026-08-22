@@ -63,10 +63,26 @@ def matrix(panel):
 def render(agreement, panel_names):
     out = [f"# Panel consensus — {len(panel_names)} reviewers "
            f"({', '.join(panel_names)})", ""]
+    unanimous = {c: a for c, a in agreement.items() if a["unanimous"]}
     split = {c: a for c, a in agreement.items() if not a["unanimous"]}
-    out.append(f"Unanimous on {len(agreement) - len(split)} of "
-               f"{len(agreement)} names.")
+    out.append(f"Unanimous on {len(unanimous)} of {len(agreement)} names.")
     out.append("")
+
+    # Agreements first: the settled ground, one line each — read it, accept
+    # it, move on. The reading list comes after.
+    if unanimous:
+        out.append("## Agreements — accept and move on")
+        out.append("")
+        by_verdict = {}
+        for code, entry in unanimous.items():
+            verdict = next(iter(entry["votes"].values()))
+            by_verdict.setdefault(verdict, []).append(code)
+        for verdict in ("BUY", "KEEP", "TRIM", "SELL", "WAIT"):
+            if verdict in by_verdict:
+                out.append(f"- **{verdict}:** "
+                           + ", ".join(sorted(by_verdict[verdict])))
+        out.append("")
+
     if split:
         out.append("## Disagreements — this month's reading list")
         out.append("")

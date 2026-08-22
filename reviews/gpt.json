@@ -1,0 +1,177 @@
+[
+{
+"code": "7532",
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Price is down 22.3%, RSI is 36.2, and it trades 10.6% below the 200-day average. Valuation is favorable across most measures, health is intact, and consensus implies substantial upside to 1,067.",
+"red_flags": [
+"12m return -22.3%"
+]
+},
+{
+"code": "6383",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Despite a 50.6% 12m gain, RSI is only 39.5 and price is near the 200-day average. Valuation is mixed, with FCF yield relatively cheap but PB and PE elevated, so the pack does not support adding aggressively.",
+"red_flags": [
+"PB at 82nd percentile",
+"PE at 65th percentile"
+]
+},
+{
+"code": "8001",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "Health is intact and consensus remains positive, but every valuation measure is expensive versus its 5-year history: dividend yield 96, EV/EBIT 91, FCF yield 87, PB 84, PE 92. With a 35% 12m gain, valuation is the key issue.",
+"red_flags": [
+"All five valuation measures are above the 80th percentile"
+]
+},
+{
+"code": "8002",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The business remains intact and consensus is bullish, but valuation is extreme across all measures, mostly 80th-89th percentiles. After a 58.1% 12m rise, the attractive fundamentals are already heavily reflected in price.",
+"red_flags": [
+"PE at 87th percentile",
+"FCF yield at 87th percentile"
+]
+},
+{
+"code": "8053",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "Health is intact and momentum remains strong, but valuation is extreme: dividend yield 96, EV/EBIT 96, PB 96 and PE 95. With a 77.2% 12m gain and price 13.5% above the 200-day average, the pack supports reducing exposure.",
+"red_flags": [
+"Four valuation measures above the 95th percentile"
+]
+},
+{
+"code": "8031",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "Health is intact and consensus is favorable, but valuation is stretched across the board, especially FCF yield at the 95th percentile and PE at 89th. After a 58.7% 12m gain, upside appears less attractive relative to valuation risk.",
+"red_flags": [
+"FCF yield at 95th percentile",
+"PE at 89th percentile"
+]
+},
+{
+"code": "1944",
+"verdict": "BUY",
+"confidence": "medium",
+"rationale": "RSI is 39.8 and price is 6.8% below the 200-day average, while several valuation measures are reasonable. Consensus is 9,200 versus 6,686. The main limitation is disagreement between FCF yield at 20 and PB at 76.",
+"red_flags": [
+"Valuation anchors disagree materially"
+]
+},
+{
+"code": "2502",
+"verdict": "SELL",
+"confidence": "high",
+"rationale": "Health has deteriorated: operating margin fell 273bp to 6.4% and net debt/EBITDA reached 4.01x, crossing the stated 4.00x threshold. The valuation profile is also contradictory, so the deterioration outweighs the positive consensus.",
+"red_flags": [
+"Operating margin down 273bp",
+"Net debt/EBITDA 4.01x above 4.00x threshold"
+]
+},
+{
+"code": "7974",
+"verdict": "SELL",
+"confidence": "high",
+"rationale": "The company shows a material deterioration in operating margin, falling from 24.3% to 15.6%, while the stock is down 36.1% over 12 months. The health trigger confirms weakening fundamentals, despite moderate valuation and bullish consensus.",
+"red_flags": [
+"Operating margin down 869bp",
+"12m return -36.1%"
+]
+},
+{
+"code": "8766",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Health is intact, price is 10.7% above the 200-day average, and RSI has cooled to 39.7 after a 21.7% 12m gain. However, valuation is relatively rich, with PB at 72 and PE at 84, limiting the case for adding.",
+"red_flags": [
+"PE at 84th percentile"
+]
+},
+{
+"code": "7701",
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Valuation is consistently attractive, with all five measures between the 16th and 21st percentiles. Health is intact, RSI is neutral at 50.1, and consensus is 5,077 versus 4,109. The pack shows a strong value setup without an obvious red flag.",
+"red_flags": []
+},
+{
+"code": "4543",
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Valuation is consistently cheap, with all five measures between the 15th and 30th percentiles. Health is intact and price is 15.4% above the 200-day average. Consensus of 3,133 also provides meaningful upside from 2,569.",
+"red_flags": []
+},
+{
+"code": "7269",
+"verdict": "BUY",
+"confidence": "medium",
+"rationale": "Valuation is favorable, particularly FCF yield at 21 and PE at 23, while health is intact. RSI is 57 and price is 1.5% above the 200-day average. Consensus implies roughly 22% upside, supporting a positive but not extreme call.",
+"red_flags": []
+},
+{
+"code": "1540",
+"verdict": "WAIT",
+"confidence": "medium",
+"rationale": "The ETF has gained 44.9% over 12 months and RSI is 68.2, close to the conventional overbought zone, suggesting limited short-term entry comfort. There is no earnings or company-health signal in the pack to justify a stronger directional call.",
+"red_flags": [
+"RSI 68.2",
+"12m gain 44.9%"
+]
+},
+{
+"code": "315A",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The ETF gained 81.0% over 12 months while its underlying index trades at 16.0x versus a 13x reference, a 23% premium. RSI is only 46, but the valuation and exceptional run justify reducing exposure despite favorable bank-cycle assumptions.",
+"red_flags": [
+"81.0% 12m gain",
+"23% valuation premium to reference",
+"AUM only ¥24bn"
+]
+},
+{
+"code": "1478",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "The ETF has risen 36.7% over 12 months with RSI 58.4. Its underlying index is only 11% above the 13x reference, while liquidity is strong at ¥148bn and spread is just 0.04%, making this a reasonable hold rather than a clear trim.",
+"red_flags": [
+"Underlying valuation 11% above reference"
+]
+},
+{
+"code": "2559",
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "The ETF has gained 34.0% over 12 months with RSI 51.4, indicating neither clear overheating nor weakness. Its spread is effectively zero and AUM is ¥128bn. The underlying P/E is explicitly marked implausible, so no valuation-based buy or trim signal is justified.",
+"red_flags": [
+"Underlying P/E marked implausible and not scored"
+]
+},
+{
+"code": "1655",
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The ETF gained 31.8% over 12 months, while the underlying index trades at 25.6x versus an 18x reference, a 42% premium. RSI is moderate, but the extreme valuation premium makes the risk/reward less attractive and supports reducing exposure.",
+"red_flags": [
+"42% valuation premium to reference"
+]
+},
+{
+"code": "1658",
+"verdict": "WAIT",
+"confidence": "medium",
+"rationale": "The ETF has risen 48.3% over 12 months and its index trades 32% above the 13x reference at 17.1x. RSI is 55.6. Valuation is stretched and liquidity costs are relatively high, so the pack supports waiting rather than adding.",
+"red_flags": [
+"32% valuation premium to reference",
+"0.32% spread",
+"AUM only ¥29bn"
+]
+}
+]

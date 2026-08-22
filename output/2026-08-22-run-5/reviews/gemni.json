@@ -1,0 +1,138 @@
+{
+  "ingested_at": "2026-08-22T00:27:25.136177+00:00",
+  "model": "gemni",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "high",
+      "rationale": "Solidly structured ETF with strong AUM and a tight spread. The 11% premium to reference P/E is reasonable given the strong 12m momentum and stable domestic macro environment.",
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "rationale": "Strong 12m momentum but 3m gold price is only mildly up. Geopolitical macro remains calm, so there is no urgent driver to add, but stable USD/JPY supports holding the unhedged position.",
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "rationale": "The US macro environment remains calm, but the underlying index is trading at a steep 42% premium to its historical reference (25.6x vs 18x). It is prudent to reduce exposure at these elevated valuations.",
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "rationale": "The ETF is trading at a significant 32% premium to reference P/E, combined with structural flaws like modest AUM and a wide 0.32% spread that create execution drag.",
+      "red_flags": [
+        "wide spread",
+        "modest AUM"
+      ],
+      "verdict": "SELL"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "rationale": "Intact health and significant upside to consensus, but mixed valuation percentiles (cheap FCF yield vs elevated P/B) and mild recent underperformance vs the 200d MA suggest holding steady.",
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "high",
+      "rationale": "The business itself has deteriorated, triggering 'IMPAIRED' health due to a sharp 273bp operating margin contraction and net debt to EBITDA breaching 4.01x. Extreme multiples (99th percentile P/E) further warrant an exit.",
+      "red_flags": [
+        "273bp margin contraction",
+        "net debt / EBITDA above threshold"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "medium",
+      "rationale": "The underlying index P/E of 3.0 is flagged as implausible, depriving us of reliable valuation metrics. Wait until the data anomaly is resolved before committing capital.",
+      "red_flags": [
+        "implausible index valuation data"
+      ],
+      "verdict": "WAIT"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "low",
+      "rationale": "The underlying index is 23% above reference, and structural issues like modest AUM and unreliable NAV pricing create execution risks. Wait for better valuation or structural clarity despite macro tailwinds.",
+      "red_flags": [
+        "unreliable NAV",
+        "modest AUM"
+      ],
+      "verdict": "WAIT"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "high",
+      "rationale": "Health is intact while trading strongly above its 200-day moving average. Valuation multiples are very attractive historically (all percentiles ≤30). Solid buy signal with room to run to consensus target.",
+      "verdict": "BUY"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "rationale": "Shares are up 50.6% over 12m with intact health, but valuation signals are mixed with FCF yield looking cheap while P/B is expensive. Trading near the 200d MA with a bullish consensus target justifies holding.",
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "rationale": "Solid 21.8% 12m return with sound health and attractive valuation percentiles, particularly FCF yield (21) and P/E (23). Meaningful upside remains to the consensus mean of 2,568.",
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "high",
+      "rationale": "Health is intact while valuation percentiles are very cheap across the board following a 22.3% 12m price drop. Current price is well below the sell-side mean of 1,067, offering attractive risk-reward.",
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "high",
+      "rationale": "Highly attractive profile: 12m positive momentum alongside uniformly cheap valuation percentiles across the board (all ≤21). Health is strictly intact, and the current price implies decent upside to the sell-side mean.",
+      "verdict": "BUY"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "rationale": "A massive 869bp drop in operating margin has flagged health to WATCH amid a 36.1% price slide. Valuations are not clearly cheap enough to buy yet. Waiting for health stabilization or a clearer valuation signal.",
+      "red_flags": [
+        "869bp margin contraction"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "rationale": "Health remains intact, but the stock is priced at extreme historical premiums across all multiples (all percentiles >84, including P/E at 92) following a 35% 12m rally. It is time to reduce exposure.",
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "high",
+      "rationale": "Similar to peers, health is intact but the 58.1% 12m rally has pushed valuations to extreme historical extremes (all percentiles >80). Sound fundamentals but priced for perfection warrant trimming.",
+      "verdict": "TRIM"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "high",
+      "rationale": "Valuations are universally stretched (all percentiles >79) following a nearly 60% 12m gain. The business is healthy, but the extreme pricing dictates taking some profits.",
+      "verdict": "TRIM"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "high",
+      "rationale": "A massive 77.2% 12m price surge has stretched valuation percentiles to the mid-90s for dividend, EV/EBIT, P/B, and P/E. Underlying health is sound, but extreme pricing warrants reducing position size.",
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "medium",
+      "rationale": "Trending well above the 200d MA with intact health and room to consensus target. Valuations are slightly elevated but not at the extreme levels requiring a trim.",
+      "verdict": "KEEP"
+    }
+  }
+}
