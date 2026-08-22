@@ -65,6 +65,25 @@ code = "8766"
 held = true
 note = "Tokio Marine — non-life insurance"
 
+# Watchlist — not held. Found by the 2026-08-21 broad scan of the sibling
+# screener's 49 quality survivors; added to get the full monthly treatment
+# (panel review, deltas, earnings gate, tripwire) before any decision.
+
+[[equity]]
+code = "7701"
+held = false
+note = "Shimadzu — analytical/measuring instruments. Scanned 10/10: all five anchors in cheapest fifth of own 5y range, INTACT, full trend"
+
+[[equity]]
+code = "4543"
+held = false
+note = "Terumo — medical devices. Scanned 9/10: 20th pct, tight anchor agreement, INTACT. Nearest screener miss: -39% drawdown vs -45% cut"
+
+[[equity]]
+code = "7269"
+held = false
+note = "Suzuki Motor — small cars, India via Maruti. Scanned 9/10: cheap on earnings/cash, zero net debt. India story is what the numbers cannot see"
+
 [[etf]]
 code = "1540"
 held = true
