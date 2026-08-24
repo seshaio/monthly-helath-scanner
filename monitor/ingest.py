@@ -17,6 +17,7 @@ only comparable if every member answered the same questionnaire.
 import json
 import os
 import sys
+from datetime import datetime
 
 import common
 from monitor import universe as universe_mod
@@ -76,11 +77,55 @@ def validate(reviews, expected_codes):
     return seen
 
 
+def pack_written_at(run_dir):
+    """When the pack these replies are supposed to be answering was written."""
+    pack = os.path.join(run_dir, "data_pack.md")
+    if os.path.exists(pack):
+        return os.path.getmtime(pack)
+    meta = os.path.join(run_dir, "run_meta.json")
+    if os.path.exists(meta):
+        stamp = common.load_json(meta).get("generated_at")
+        if stamp:
+            return datetime.fromisoformat(stamp).timestamp()
+    return None
+
+
+def check_answers_this_pack(reply_path, run_dir):
+    """
+    A reply cannot answer a pack that did not exist when it was written.
+
+    The drop folder is reused every month and nothing inside a reply ties it
+    to a run: same tickers, same shape, same allowed words. A file left over
+    from last month passes every other check in this module and lands in the
+    new run looking exactly like a fresh opinion. That is the stale-price
+    failure again — an old artifact presented as current — so it is caught
+    here rather than trusted to memory.
+
+    Timestamps are the only handle available, which makes this a floor and
+    not a proof: it cannot tell a genuinely fresh reply from an old one that
+    was re-saved. It does reliably catch the case that actually happens,
+    which is forgetting to replace one model's file.
+    """
+    pack_at = pack_written_at(run_dir)
+    if pack_at is None:
+        return
+    reply_at = os.path.getmtime(reply_path)
+    if reply_at < pack_at:
+        when = datetime.fromtimestamp(reply_at).strftime("%Y-%m-%d %H:%M")
+        pack_when = datetime.fromtimestamp(pack_at).strftime("%Y-%m-%d %H:%M")
+        raise ValueError(
+            f"reply predates the pack it would answer: written {when}, pack "
+            f"written {pack_when}. It is answering an older run. Re-paste "
+            f"{os.path.basename(run_dir)}/data_pack.md and save the new reply."
+        )
+
+
 def ingest(model_name, reply_path, run_dir=None):
     run_dir = run_dir or common.latest_run()
     if not run_dir:
         raise SystemExit("no run to ingest into")
     expected = {item["code"] for item in universe_mod.load_config()}
+    check_answers_this_pack(reply_path, run_dir)
 
     with open(reply_path) as fh:
         reviews = validate(json.load(fh), expected)

@@ -12,6 +12,7 @@ import os
 import sys
 
 import common
+import config
 from monitor import universe as universe_mod
 
 
@@ -157,6 +158,22 @@ def render(agreement, panel_names, disputes=None, unchecked=None):
     return "\n".join(out) + "\n"
 
 
+def write_up_path(run_dir):
+    """
+    Where a run's panel write-up is filed: output/consensus/<run>.md.
+
+    The write-up is the one artifact here meant to be read months later and
+    against its neighbours — which run said what about 8001 — so it lives in
+    one folder rather than buried one per run directory. The name carries the
+    run, so nothing is ever overwritten. consensus.json stays with the run:
+    it is state for this run, not a document.
+    """
+    folder = os.path.join(os.path.abspath(config.OUTPUT_DIR), "consensus")
+    os.makedirs(folder, exist_ok=True)
+    run_name = os.path.basename(os.path.realpath(run_dir))
+    return os.path.join(folder, f"{run_name}.md")
+
+
 def main(argv=None):
     run_dir = common.latest_run()
     if not run_dir:
@@ -172,7 +189,7 @@ def main(argv=None):
     unchecked = unchecked_prices(panel)
     text = render(agreement, sorted(panel), disputes=disputes,
                   unchecked=unchecked)
-    path = os.path.join(run_dir, "consensus.md")
+    path = write_up_path(run_dir)
     with open(path, "w") as fh:
         fh.write(text)
     common.save_json(os.path.join(run_dir, "consensus.json"), {
