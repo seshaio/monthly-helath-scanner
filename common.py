@@ -86,8 +86,14 @@ def run_dir(date=None, create=True):
     """
     Allocate output/YYYY-MM-DD-run-N/ and point output/latest at it.
 
-    The counter increments within a day so nothing is ever overwritten.
-    Comparing two runs is the only way to see what a threshold change did.
+    The counter is a high-water mark, not a count of what is present, so
+    nothing is ever overwritten. Comparing two runs is the only way to see
+    what a threshold change did.
+
+    Counting was the original implementation and it broke the moment a run
+    was deleted: with run-2 and run-3 on disk, a count returns 3, and the
+    next run is allocated run-3 again — which makedirs(exist_ok=True) then
+    wrote straight over. The promise in the line above was doing no work.
     """
     date = date or datetime.now().strftime("%Y-%m-%d")
     base = os.path.abspath(config.OUTPUT_DIR)
@@ -96,9 +102,11 @@ def run_dir(date=None, create=True):
         return existing[-1] if existing else None
 
     os.makedirs(base, exist_ok=True)
-    n = len(_runs_for(base, date)) + 1
-    path = os.path.join(base, f"{date}-run-{n}")
-    os.makedirs(path, exist_ok=True)
+    path = os.path.join(base, f"{date}-run-{next_run_index(base, date)}")
+    # Deliberately not exist_ok: an allocated run folder that already exists
+    # means the numbering is wrong, and the one thing that must never happen
+    # quietly is a second run writing into the first one's folder.
+    os.makedirs(path)
 
     link = os.path.join(base, "latest")
     tmp = link + ".tmp"
@@ -114,6 +122,20 @@ def _runs_for(base, date):
         return []
     pat = re.compile(rf"^{re.escape(date)}-run-(\d+)$")
     return [os.path.join(base, d) for d in os.listdir(base) if pat.match(d)]
+
+
+def next_run_index(base, date):
+    """
+    One past the highest run number used for the date, deleted runs included.
+
+    Numbers are never reissued. A gap left by a deleted run stays a gap: the
+    alternative is a second run-3 that is not the run-3 an earlier report,
+    fingerprint or consensus file refers to.
+    """
+    pat = re.compile(rf"^{re.escape(date)}-run-(\d+)$")
+    used = [int(m.group(1)) for m in
+            (pat.match(d) for d in os.listdir(base)) if m]
+    return max(used, default=0) + 1
 
 
 def latest_run():
