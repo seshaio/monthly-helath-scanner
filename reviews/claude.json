@@ -1,152 +1,161 @@
 [
   {
     "code": "7532",
-    "verdict": "BUY",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "Health intact yet price -22% over 12m, -10.6% under the 200d, RSI 36. Every anchor below median (ev_ebit 21, fcf 28, pb 33, pe 41) and the consensus low, 900, sits 10% above price. Cheap and unbroken; stage the entry since nothing reports for 82 days.",
-    "red_flags": [
-      "Decline is unexplained by any health trigger; the market may be pricing something the pack's triggers don't capture",
-      "dividend_yield percentile is exactly 0 while every other anchor sits 21-41 — confirm it isn't a data artifact"
-    ]
+    "rationale": "Cheapest third of own history (dy 0th, ev/ebit 21st) with health intact, but 12m -22.3%, RSI 36, price 10.6% under 200d - downtrend unbroken. Hold without adding until it bases. 8/21 price stale; treated as provisional."
   },
   {
     "code": "6383",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "Up 50.6% over 12m but now resting on the 200d (-1.1%) with RSI 39.5: momentum cooled, not broken. Valuation is split — fcf_yield 26 cheap, pb 82 rich, pe 65 — and health is intact. Neither extreme enough to trim nor cheap enough to add.",
-    "red_flags": [
-      "Anchors disagree (fcf_yield 26 vs pb 82) — check whether FCF is flattered by a working-capital swing before leaning on the cheap read"
-    ]
+    "rationale": "Anchors split - fcf 26th cheap vs pb 82nd rich - so no extreme to act on. Consolidating at the 200d (-1.1%, RSI 39.5) after +50.6% 12m; health intact. 8/21 price stale, provisional."
   },
   {
     "code": "8001",
+    "price_check": "differs",
+    "price_observed": 1970,
     "verdict": "TRIM",
-    "confidence": "high",
-    "rationale": "Every anchor at the 84th-96th percentile (div 96, pe 92, ev_ebit 91, fcf 87, pb 84) after +35% over 12m, still +6.2% over the 200d. Health intact: sound but extreme, the pack's definition of TRIM. Beyond pack: the 5y window includes pre-rerating years, so percentiles may overstate the stretch."
+    "confidence": "medium",
+    "rationale": "All five anchors 84th-96th of own 5y - uniform extreme - with +35% 12m, RSI 61.6. Business intact: reduce, don't exit. The 8/21 print looks plausible (inside 52w range), but later sessions have closed: live 8/25 web quotes ~1,900-1,970, roughly 5% below the pack."
   },
   {
     "code": "8002",
-    "verdict": "TRIM",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "All anchors at the 80th-89th percentile after +58% over 12m, but momentum has already rolled over: -2.7% under the 200d, RSI 44.5. Health intact. Still rich on every measure, so reduce; the least stretched of the four shosha in this pack, hence medium."
+    "rationale": "Anchors elevated (80th-89th) but short of uniform extreme, and price already cooling 2.7% under the 200d with RSI 44.5. Health intact. Hold without adding. 8/21 price stale, provisional."
   },
   {
     "code": "8053",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "TRIM",
-    "confidence": "high",
-    "rationale": "Most extended name in the pack: +77% over 12m, +13.5% above the 200d, four anchors at the 95th-96th percentile (only fcf_yield 53 dissents). Consensus mean offers just +15% and its low, 1,660, is already below price. Health intact — sound but extreme.",
-    "red_flags": [
-      "Thinnest consensus upside of the four shosha (+15%) with the low target (1,660) below price"
-    ]
+    "confidence": "medium",
+    "rationale": "Most extreme in the cluster: four anchors at 95th-96th, +77.2% 12m, +13.5% over the 200d. Health intact - textbook sound-but-extreme. Reduce. 8/21 price stale, provisional."
   },
   {
     "code": "8031",
-    "verdict": "TRIM",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "Rich on every anchor (fcf 95, ev_ebit 89, pe 89, div 88, pb 79) after +58.7% over 12m, and momentum has faded: -3.2% under the 200d, RSI 54. Health intact. Consensus low 4,500 sits 8% below price. Sound but extreme — reduce, not exit."
+    "rationale": "Pack's own note applies: negative fcf yield (-1.11%) contaminates the 95th percentile, so the extreme reading is suspect. Price 3.2% under the 200d, health intact - no clean case to trim or add. 8/21 price stale, provisional.",
+    "red_flags": ["fcf_yield negative - watch cash conversion into the report in 72 days"]
   },
   {
     "code": "1944",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "Pulled back 6.8% under the 200d with RSI 39.8 after +31% over 12m; health intact. Valuation mid-to-rich (pb 76, div 74, ev_ebit 64, pe 63) except fcf_yield 20. Consensus low 8,450 is 26% above price, but n=6 is thin. Not cheap enough to add, nothing to sell.",
-    "red_flags": [
-      "Anchors disagree (fcf_yield 20 vs pb 76) — verify the FCF figure isn't a working-capital swing before trusting the cheap read"
-    ]
+    "rationale": "Anchors disagree (fcf 20th vs pb 76th) - no extreme. 6.8% under the 200d with RSI 39.8 reads as pullback after +31.1% 12m; health intact. Small-sample (n=6) bullish consensus discounted. 8/21 price stale, provisional."
   },
   {
     "code": "2502",
-    "verdict": "SELL",
-    "confidence": "medium",
-    "rationale": "Impaired: operating margin -273bp to 6.4%, net debt/EBITDA 4.01x. pb 14 against pe and ev_ebit at 99 — earnings collapsed, book didn't; that is deterioration, not cheapness. Leverage trigger is marginal (4.01 vs 4.00). Beyond pack: if the 2025 cyberattack explains the margin hit, this softens to WAIT.",
-    "red_flags": [
-      "pe and ev_ebit at the 99th percentile while pb sits at 14 — expensive on what it currently earns, cheap only on a recovery it hasn't yet shown"
-    ]
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
+    "confidence": "low",
+    "rationale": "Pack alone grades this SELL: two triggers, negative FCF, pe 99th on collapsed earnings. Outside pack: the Sep-25 cyberattack drove it, and H1-26 results (8/13) show revenue +7.7%, margin down only 50bp, dividend raised - recovering, not degrading. Leverage trigger fired by 0.01x on depressed EBITDA. Hold, low conviction. 8/21 price stale.",
+    "red_flags": ["IMPAIRED - margin -273bp, ND/EBITDA 4.01x sitting on the threshold", "negative FCF"]
   },
   {
     "code": "7974",
-    "verdict": "WAIT",
+    "price_check": "match",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "Health on WATCH: operating margin 15.6% vs 24.3%. Price -36% over 12m, still -5.8% under the 200d; RSI 62 is a bounce, not a trend. Valuation only mid (pb 30, ev_ebit 46, pe 62). Beyond pack: console-launch years compress margins; the report in 73 days should separate cyclical from structural.",
-    "red_flags": [
-      "Consensus range 5,000-21,260 (n=25) is a 4x spread — the mean of 10,335 describes nobody",
-      "869bp margin fall is the largest deterioration in the pack"
-    ]
+    "rationale": "WATCH trigger (-869bp margin) fits early hardware-cycle mix and the memory-cost squeeze (outside pack, May-26 reports). Valuation mid-range, RSI 62 basing 5.8% under the 200d after -36.1% 12m; consensus 5,000-21,260 shows no edge. Hold. 8/21 close 8,599 corroborated on the web.",
+    "red_flags": ["869bp operating-margin fall", "widest consensus dispersion in the pack"]
   },
   {
     "code": "8766",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "RSI 39.7 while still +10.7% over the 200d — a sharp pullback inside an intact uptrend (+21.7% over 12m). Valuation moderately rich (pe 84, pb 72, div 69) but short of the shosha-style extreme. Health intact. Not cheap enough to add, not stretched enough to trim."
+    "rationale": "Elevated, not extreme - dy 69th, pb 72nd, pe 84th on only three anchors. RSI 39.7 pullback inside a +10.7%-over-200d uptrend; health intact. 8/21 price stale, provisional."
   },
   {
     "code": "7701",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "BUY",
-    "confidence": "high",
-    "rationale": "Clean value read: all five anchors in the bottom quartile and agreeing (pb 16, div 19, fcf 20, ev_ebit 21, pe 21). Health intact. Price +27% over 12m yet still cheap — earnings outran the share price. Trend holding (+1.8% over the 200d, RSI 50). Consensus +24%."
+    "confidence": "medium",
+    "rationale": "Cleanest alignment in the pack: all five anchors 16th-21st percentile of own history, health intact, price above the 200d, RSI 50 neutral after +27% 12m. Cheap without being broken. Confidence capped by the stale 8/21 price."
   },
   {
     "code": "4543",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "BUY",
-    "confidence": "high",
-    "rationale": "All anchors in the bottom third (div 15, pb 17, pe 17, ev_ebit 21, fcf 30), health intact, and the trend has turned: +15.4% over the 200d with 12m only +2.9% — a V-shaped recovery. RSI 60.5 not yet overbought. Cheap, sound, rising. Stage the entry given the extension.",
-    "red_flags": [
-      "+15.4% above the 200d is short-term extended — a pullback toward the average wouldn't change the thesis"
-    ]
+    "confidence": "medium",
+    "rationale": "All anchors 15th-30th percentile with intact health and a live uptrend (+15.4% over 200d, RSI 60.5); flat 12m (+2.9%) says the rerating hasn't happened yet. Confidence capped by the stale 8/21 price."
   },
   {
     "code": "7269",
-    "verdict": "BUY",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "Below median on every anchor, cheapest on earnings and cash (pe 23, fcf 21, ev_ebit 37); pb 49 at median is the one anchor that tempers this. Health intact, trend positive (+1.5% over the 200d, RSI 57). Consensus +22%. Add, with less conviction than Shimadzu or Terumo."
+    "rationale": "Cheap-leaning (fcf 21st, pe 23rd, ev/ebit 37th) but pb and dy mid-range - anchors don't agree on an extreme. Mild uptrend, RSI 57, health intact. 8/21 price stale, provisional."
   },
   {
     "code": "1540",
-    "verdict": "KEEP",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "TRIM",
     "confidence": "medium",
-    "rationale": "No valuation anchor (commodity), so 'extreme' can't be scored. +44.9% over 12m, but the macro lens has gold +1.2% over 3m with USD/JPY flat, while RSI 68.2 sits at the overbought edge — a recent push, not a breakout. Structure excellent (AUM ¥1,476bn, spread 0.05%). Hold; don't add here.",
-    "red_flags": [
-      "RSI 68.2 — at the overbought threshold"
-    ]
+    "rationale": "RSI 71.8 after +48.1% 12m with no valuation anchor; the pack's geopolitics lens at 0 gives the rally no macro cover. Sound diversifier at a tactical extreme - reduce, don't exit. Outside pack: metal up ~14% this month into Fed event risk, which cuts both ways."
   },
   {
     "code": "315A",
-    "verdict": "TRIM",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "+81% over 12m — the biggest run in the pack — and the index sits at 16.0x, 23% above a 13x reference set under the BOJ-normalization scenario. RSI 46 says momentum has cooled. Sound thesis, extreme price: reduce. Small AUM (¥24bn) and 0.16% spread argue for trimming in one go.",
-    "red_flags": [
-      "NAV feed is unreliable for this fund — premium/discount to NAV can't be verified",
-      "AUM ¥24bn is modest"
-    ]
+    "rationale": "+77.1% 12m, but RSI 44.8 says froth already cooled; 15.9x is +22% over the 13x reference inside a declared BOJ-normalization scenario (0.75% and rising). Structural caveats, not price, are the binding constraint.",
+    "red_flags": ["AUM 24bn yen - capacity/liquidity", "NAV premium unverifiable - feed navPrice unreliable per pack"]
   },
   {
     "code": "1478",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "KEEP",
     "confidence": "high",
-    "rationale": "Index at 14.4x, only 11% over reference — the mildest premium among the equity ETFs here despite +36.7% over 12m. RSI 58.4 healthy, AUM ¥148bn, spread 0.04%, JPY exposure. Nothing argues for adding or reducing; this is the cleanest ETF in the pack."
+    "rationale": "Mildest stretch in the ETF sleeve (+11% vs reference) with a solid trend (12m +38.8%, RSI 59.3). Nothing extreme either way; fresh 8/24 price.",
+    "red_flags": ["spread 0.28% - wide; size entries and exits"]
   },
   {
     "code": "2559",
-    "verdict": "TRIM",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "low",
-    "rationale": "Pack can't score it — index P/E feed reads 3.0, implausible. Beyond pack: ACWI is roughly two-thirds US, so 1655's read (25.6x, +42% over reference) largely transfers — sound-but-extreme by proxy. Low confidence because the verdict rests on that proxy, not the pack. RSI 51, structure excellent.",
-    "red_flags": [
-      "Valuation feed broken (P/E 3.0) — fix the feed before sizing any action"
-    ]
+    "rationale": "Valuation feed is broken (index P/E 3.0, unscored), so half the case is missing; trend alone is unremarkable (RSI 51.8, +33.7% 12m). No basis to act until the feed is fixed.",
+    "red_flags": ["valuation unscored - implausible P/E in feed"]
   },
   {
     "code": "1655",
+    "price_check": "unchecked",
+    "price_observed": null,
     "verdict": "TRIM",
     "confidence": "medium",
-    "rationale": "Index at 25.6x vs 18x reference, +42% — the largest premium in the pack. Macro lenses are benign (curve +0.99pp, VIX 16, SOX flat, USD/JPY stable), so nothing to break it yet, but +31.8% over 12m with RSI 48.8 shows momentum stalling at an extreme. Sound, extreme: reduce, not exit."
+    "rationale": "Widest overshoot in the pack: 25.6x vs 18x reference (+42%). Macro lenses calm (recession +1) argue extreme pricing, not deterioration - reduce, don't exit. The 0.05% spread makes this the cheapest sleeve to de-risk in."
   },
   {
     "code": "1658",
-    "verdict": "TRIM",
+    "price_check": "unchecked",
+    "price_observed": null,
+    "verdict": "KEEP",
     "confidence": "medium",
-    "rationale": "Index at 17.1x vs 13x reference (+32%) after +48.3% over 12m; RSI 55.6 says the trend is alive, which is the argument for trimming rather than exiting. The costliest ETF to trade in the pack (spread 0.32%, AUM ¥29bn) — cut once, not in pieces.",
-    "red_flags": [
-      "Spread 0.32% is the widest in the pack and AUM ¥29bn is modest — execution cost is material"
-    ]
+    "rationale": "+30% over reference after +45.4% 12m argues for reduction, but the pack's own exit-costs-bite note (spread 0.42%, AUM 29bn yen) raises the bar. Hold; express de-risking through cheaper-to-trade sleeves like 1655.",
+    "red_flags": ["spread 0.42% plus modest AUM - reduction is costly"]
   }
 ]

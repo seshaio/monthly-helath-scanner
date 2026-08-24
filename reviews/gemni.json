@@ -1,134 +1,175 @@
 [
 {
 "code": "7532",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "BUY",
-"confidence": "high",
-"rationale": "Health is intact while valuation percentiles are very cheap across the board following a 22.3% 12m price drop. Current price is well below the sell-side mean of 1,067, offering attractive risk-reward."
+"confidence": "low",
+"rationale": "Health is INTACT and valuation is low across percentiles (PE 41, PB 33, EV/EBIT 21) following 12m -22.3% drawdown. Price from 2026-08-21 is stale, lowering confidence."
 },
 {
 "code": "6383",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "KEEP",
-"confidence": "medium",
-"rationale": "Shares are up 50.6% over 12m with intact health, but valuation signals are mixed with FCF yield looking cheap while P/B is expensive. Trading near the 200d MA with a bullish consensus target justifies holding."
+"confidence": "low",
+"rationale": "Health is INTACT. Valuations are mixed with PB at percentile 82 but FCF yield at percentile 26 (5.10%). Price is near the 200d (-1.1%). Stale 2026-08-21 price reduces confidence."
 },
 {
 "code": "8001",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "TRIM",
-"confidence": "high",
-"rationale": "Health remains intact, but the stock is priced at extreme historical premiums across all multiples (all percentiles >84, including P/E at 92) following a 35% 12m rally. It is time to reduce exposure."
+"confidence": "low",
+"rationale": "Health is INTACT, but valuation is at historical extremes (PE 92nd, PB 84th, EV/EBIT 91st percentile). Fits TRIM rule for sound asset priced at extreme. Price is stale (2026-08-21)."
 },
 {
 "code": "8002",
-"verdict": "TRIM",
-"confidence": "high",
-"rationale": "Similar to peers, health is intact but the 58.1% 12m rally has pushed valuations to extreme historical extremes (all percentiles >80). Sound fundamentals but priced for perfection warrant trimming."
+"price_check": "unchecked",
+"price_observed": null,
+"verdict": "KEEP",
+"confidence": "low",
+"rationale": "Health is INTACT. Valuations are elevated (PE 87th, PB 80th percentile) following a +58.1% 12m run, but price has pulled back below 200d (-2.7%). Price from 2026-08-21 is stale."
 },
 {
 "code": "8053",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "TRIM",
-"confidence": "high",
-"rationale": "A massive 77.2% 12m price surge has stretched valuation percentiles to the mid-90s for dividend, EV/EBIT, P/B, and P/E. Underlying health is sound, but extreme pricing warrants reducing position size."
+"confidence": "low",
+"rationale": "Health is INTACT, but valuation is at extreme 5y highs (PE 95th, PB 96th, EV/EBIT 96th percentile) after a +77.2% 12m gain. TRIM to reduce extreme extension. Price is stale (2026-08-21)."
 },
 {
 "code": "8031",
-"verdict": "TRIM",
-"confidence": "high",
-"rationale": "Valuations are universally stretched (all percentiles >79) following a nearly 60% 12m gain. The business is healthy, but the extreme pricing dictates taking some profits."
+"price_check": "unchecked",
+"price_observed": null,
+"verdict": "KEEP",
+"confidence": "low",
+"rationale": "Health is INTACT. Valuation percentiles are high (PE 89th, PB 79th), but FCF yield is negative (-1.11%) due to business change, making total extreme reading suspect. Stale price (2026-08-21) lowers confidence.",
+"red_flags": [
+"negative_fcf_yield"
+]
 },
 {
 "code": "1944",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "KEEP",
-"confidence": "medium",
-"rationale": "Intact health and significant upside to consensus, but mixed valuation percentiles (cheap FCF yield vs elevated P/B) and mild recent underperformance vs the 200d MA suggest holding steady."
+"confidence": "low",
+"rationale": "Health is INTACT. Valuation anchors disagree with low FCF yield percentile (20th) contrasting higher PB (76th). Price is 6.8% below 200d with RSI 39.8. Price is stale (2026-08-21)."
 },
 {
 "code": "2502",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "SELL",
-"confidence": "high",
-"rationale": "The business itself has deteriorated, triggering 'IMPAIRED' health due to a sharp 273bp operating margin contraction and net debt to EBITDA breaching 4.01x. Extreme multiples (99th percentile P/E) further warrant an exit.",
+"confidence": "low",
+"rationale": "Health is IMPAIRED due to margin collapse (6.4% vs 9.2%) and net debt/EBITDA reaching 4.01x. Deteriorating fundamentals warrant SELL. Price is stale (2026-08-21).",
 "red_flags": [
-"273bp margin contraction",
-"net debt / EBITDA above threshold"
+"operating_margin_drop",
+"net_debt_ebitda_above_threshold",
+"negative_fcf_yield"
 ]
 },
 {
 "code": "7974",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "WAIT",
-"confidence": "medium",
-"rationale": "A massive 869bp drop in operating margin has flagged health to WATCH amid a 36.1% price slide. Valuations are not clearly cheap enough to buy yet. Waiting for health stabilization or a clearer valuation signal.",
+"confidence": "low",
+"rationale": "Health is on WATCH due to an 869bp operating margin drop (15.6% vs 24.3%). Though 12m price is down -36.1% and PB percentile is low (30th), wait for operational stabilization. Price is stale (2026-08-21).",
 "red_flags": [
-"869bp margin contraction"
+"operating_margin_drop"
 ]
 },
 {
 "code": "8766",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "KEEP",
-"confidence": "medium",
-"rationale": "Trending well above the 200d MA with intact health and room to consensus target. Valuations are slightly elevated but not at the extreme levels requiring a trim."
+"confidence": "low",
+"rationale": "Health is INTACT. Valuations are moderately elevated (PE 84th percentile, PB 72nd percentile) with healthy 12m momentum (+21.7%). Price from 2026-08-21 is stale, lowering confidence."
 },
 {
 "code": "7701",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "BUY",
-"confidence": "high",
-"rationale": "Highly attractive profile: 12m positive momentum alongside uniformly cheap valuation percentiles across the board (all ≤21). Health is strictly intact, and the current price implies decent upside to the sell-side mean."
+"confidence": "low",
+"rationale": "Health is INTACT and valuation is very cheap across all metrics (PB 16th, PE 21st, EV/EBIT 21st percentile) despite +27.0% 12m growth. Price is stale (2026-08-21)."
 },
 {
 "code": "4543",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "BUY",
-"confidence": "high",
-"rationale": "Health is intact while trading strongly above its 200-day moving average. Valuation multiples are very attractive historically (all percentiles ≤30). Solid buy signal with room to run to consensus target."
+"confidence": "low",
+"rationale": "Health is INTACT. Valuation is near historical lows (PE 17th, PB 17th, EV/EBIT 21st percentile) offering attractive entry despite +15.4% distance to 200d. Price from 2026-08-21 is stale."
 },
 {
 "code": "7269",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "BUY",
-"confidence": "medium",
-"rationale": "Solid 21.8% 12m return with sound health and attractive valuation percentiles, particularly FCF yield (21) and P/E (23). Meaningful upside remains to the consensus mean of 2,568."
+"confidence": "low",
+"rationale": "Health is INTACT. Valuations are appealing (PE 23rd percentile, FCF yield percentile 21) with price sitting right at 200d (+1.5%). Price is stale (2026-08-21)."
 },
 {
 "code": "1540",
-"verdict": "KEEP",
-"confidence": "medium",
-"rationale": "Strong 12m momentum but 3m gold price is only mildly up. Geopolitical macro remains calm, so there is no urgent driver to add, but stable USD/JPY supports holding the unhedged position."
+"price_check": "unchecked",
+"price_observed": null,
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "Overbought momentum with RSI at 71.8 following a +48.1% 12m run. Macro gold score is calm (+0), making a trim appropriate to lock in gains. Fresh 2026-08-24 session price.",
+"red_flags": [
+"rsi_overbought"
+]
 },
 {
 "code": "315A",
-"verdict": "WAIT",
-"confidence": "low",
-"rationale": "The underlying index is 23% above reference, and structural issues like modest AUM and unreliable NAV pricing create execution risks. Wait for better valuation or structural clarity despite macro tailwinds.",
-"red_flags": [
-"unreliable NAV",
-"modest AUM"
-]
+"price_check": "unchecked",
+"price_observed": null,
+"verdict": "KEEP",
+"confidence": "high",
+"rationale": "Supported by BOJ policy rate normalization tailwinds. Index trades at +22% premium to reference (15.9x vs 13x), but RSI 44.8 is moderate after consolidation. Fresh 2026-08-24 price."
 },
 {
 "code": "1478",
+"price_check": "unchecked",
+"price_observed": null,
 "verdict": "KEEP",
-"confidence": "high",
-"rationale": "Solidly structured ETF with strong AUM and a tight spread. The 11% premium to reference P/E is reasonable given the strong 12m momentum and stable domestic macro environment."
-},
-{
-"code": "2559",
-"verdict": "WAIT",
 "confidence": "medium",
-"rationale": "The underlying index P/E of 3.0 is flagged as implausible, depriving us of reliable valuation metrics. Wait until the data anomaly is resolved before committing capital.",
+"rationale": "Sound underlying dividend strategy (+38.8% 12m, RSI 59.3). Wide spread (0.28%) adds execution friction, justifying KEEP rather than fresh adds. Fresh 2026-08-24 price.",
 "red_flags": [
-"implausible index valuation data"
+"wide_spread"
 ]
 },
 {
+"code": "2559",
+"price_check": "unchecked",
+"price_observed": null,
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Solid global equity benchmark (+33.7% 12m) with neutral RSI (51.8) and tight spread (0.03%). USD/JPY macro score (+1) supports unhedged holdings. Fresh 2026-08-24 price."
+},
+{
 "code": "1655",
-"verdict": "TRIM",
-"confidence": "medium",
-"rationale": "The US macro environment remains calm, but the underlying index is trading at a steep 42% premium to its historical reference (25.6x vs 18x). It is prudent to reduce exposure at these elevated valuations."
+"price_check": "unchecked",
+"price_observed": null,
+"verdict": "KEEP",
+"confidence": "high",
+"rationale": "Strong US core exposure (+31.4% 12m, RSI 48.8), but underlying index valuation is stretched at 25.6x (+42% vs 18x reference). US recession risk low (+1 macro score). Fresh 2026-08-24 price."
 },
 {
 "code": "1658",
-"verdict": "SELL",
+"price_check": "unchecked",
+"price_observed": null,
+"verdict": "KEEP",
 "confidence": "medium",
-"rationale": "The ETF is trading at a significant 32% premium to reference P/E, combined with structural flaws like modest AUM and a wide 0.32% spread that create execution drag.",
+"rationale": "Steady performance (+45.4% 12m, RSI 50.1) and index at 16.9x (+30% vs reference). High spread (0.42%) and modest AUM (¥29bn) limit higher confidence. Fresh 2026-08-24 price.",
 "red_flags": [
-"wide spread",
-"modest AUM"
+"wide_spread",
+"modest_aum"
 ]
 }
 ]

@@ -1,0 +1,233 @@
+{
+  "ingested_at": "2026-08-24T17:41:59.084001+00:00",
+  "model": "gpt",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "12m performance is +38.8% and RSI 59.3, so momentum is positive but not extreme. Underlying valuation is 11% above the 13x reference. The main weakness is the 0.28% spread, which raises transaction costs. Price is from 2026-08-24 and was not independently verified here.",
+      "red_flags": [
+        "wide spread",
+        "underlying valuation premium"
+      ],
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "RSI 71.8 is above the conventional overbought zone, while 12m performance is already +48.1%. This is a commodity ETF without earnings support, so the extreme momentum is the key risk. The stated 22,275 close matches the externally checked 2026-08-24 close. ([Yahoo!ファイナンス][3])",
+      "red_flags": [
+        "RSI overbought",
+        "12m gain extreme"
+      ],
+      "verdict": "TRIM"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "12m return is +31.4% and the underlying index trades at 25.6x versus an 18x reference, a 42% premium. RSI 48.8 is neutral, so the concern is valuation rather than technical overheating. Strong recent performance plus a large underlying premium supports reducing exposure. Price is from 2026-08-24.",
+      "red_flags": [
+        "underlying valuation premium"
+      ],
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The ETF has gained 45.4% over 12m while the underlying index trades at 16.9x versus 13x, a 30% premium. RSI 50.1 is neutral, but the valuation is elevated and the 0.42% spread makes exits costly. Modest ¥29bn AUM adds structural risk. Price is from 2026-08-24.",
+      "red_flags": [
+        "underlying valuation premium",
+        "wide spread",
+        "modest AUM"
+      ],
+      "verdict": "TRIM"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 39.8 and price 6.8% below the 200d create a favorable entry setup despite +31.1% 12m performance. FCF-yield percentile 20 is relatively cheap, while other valuation anchors are mixed. Health is INTACT and consensus is materially above price. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "valuation anchors disagree",
+        "price stale"
+      ],
+      "verdict": "BUY"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is IMPAIRED: operating margin fell from 9.2% to 6.4% and net debt/EBITDA is 4.01x versus a 4.00 threshold. EV/EBIT and PE percentiles are 99, while FCF yield is negative. The deterioration is fundamental, not merely price-related. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "margin deterioration",
+        "high leverage",
+        "negative FCF yield",
+        "price stale"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 51.8 is neutral and 12m performance is +33.7%, with a low 0.03% spread and ¥128bn AUM. The pack explicitly says the underlying P/E of 3.0x is implausible and should not be scored. With valuation unreliable, the appropriate stance is to keep rather than force a buy or sell decision.",
+      "red_flags": [
+        "underlying valuation data unreliable"
+      ],
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The ETF gained 77.1% over 12m, while the underlying index trades at 15.9x versus a 13x reference, a 22% premium. RSI 44.8 is not overbought, but valuation and performance are stretched. Modest AUM of ¥24bn adds structural risk. Price is stale from the supplied session.",
+      "red_flags": [
+        "12m gain extreme",
+        "underlying valuation premium",
+        "modest AUM"
+      ],
+      "verdict": "TRIM"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation remains favorable, with EV/EBIT, PB and PE percentiles all near 15–21, while health is INTACT. However, RSI 60.5 and price 15.4% above the 200d indicate strong momentum and reduce the attractiveness of chasing. 12m return is only +2.9%. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "extended above 200d",
+        "price stale"
+      ],
+      "verdict": "KEEP"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 39.5 is attractive, but 12m performance is already +50.6%. Valuation is mixed: FCF-yield percentile 26 versus PB 82 and PE 65. Price is only 1.1% below the 200d. Health is INTACT, but the entry is not clearly cheap enough.",
+      "red_flags": [
+        "valuation anchors disagree",
+        "price stale"
+      ],
+      "verdict": "WAIT"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation is attractive across major anchors: EV/EBIT 37, FCF-yield 21 and PE 23 percentiles. Health is INTACT, price is only 1.5% above the 200d, and RSI 57.0 is not overheated. Consensus 2,591 versus 2,103.5 provides meaningful upside. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "price stale"
+      ],
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 36.2 and price 10.6% below 200d support a rebound setup. Health is INTACT and 12m return is -22.3%. Valuation is mixed but FCF-yield percentile 28 is relatively favorable. Consensus 1,061 versus 818.2 implies substantial upside. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "price stale"
+      ],
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "This is one of the cleanest valuation setups: EV/EBIT, FCF-yield, PB and PE percentiles are all 16–21. Health is INTACT, RSI 50.1 is neutral, and price is only 1.8% above the 200d. Consensus 5,077 versus 4,109 also supports upside. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "price stale"
+      ],
+      "verdict": "BUY"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "12m performance is deeply negative at -36.1% and price is 5.8% below the 200d, but RSI is already 62.0, not oversold. Health is WATCH because operating margin fell from 24.3% to 15.6%. Valuation is mixed. This needs evidence of operational stabilization. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "margin deterioration",
+        "price stale"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "differs",
+      "price_observed": 2117.5,
+      "rationale": "RSI 61.6, price 6.2% above the 200d, and 12m return of 35% show strong momentum. However, every valuation anchor is expensive, with percentiles 84–96. Health is INTACT. External check: 2026-08-24 close was 2,117.5. ([Yahoo!ファイナンス][1])",
+      "red_flags": [
+        "valuation extreme",
+        "external price differs"
+      ],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "high",
+      "price_check": "differs",
+      "price_observed": 4982,
+      "rationale": "12m return is +58.1%, while valuation percentiles are uniformly high at 80–89. RSI 44.5 and price 2.7% below the 200d reduce overheating risk, but upside is increasingly valuation-dependent. External check: 2026-08-24 close was 4,982. ([Yahoo!ファイナンス][2])",
+      "red_flags": [
+        "valuation extreme",
+        "external price differs"
+      ],
+      "verdict": "TRIM"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "12m return is +58.7%, while most valuation percentiles are 79–95. Price is 3.2% below the 200d and RSI 53.9 is neutral. The negative FCF yield is explicitly flagged as a business change rather than a normal valuation signal. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "negative FCF yield",
+        "price stale"
+      ],
+      "verdict": "TRIM"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The business remains INTACT, but 12m return is +77.2% and price is 13.5% above the 200d. Valuation is extremely stretched: dividend, EV/EBIT, PB and PE percentiles are 95–96. RSI 53.3 does not indicate oversold conditions. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "valuation extreme",
+        "price stale"
+      ],
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is INTACT and RSI 39.7 is favorable, but price is already 10.7% above the 200d after a +21.7% 12m gain. Valuation is not cheap, with PE percentile 84 and PB 72. This supports holding rather than adding aggressively. Price is stale from 2026-08-21.",
+      "red_flags": [
+        "valuation elevated",
+        "price stale"
+      ],
+      "verdict": "KEEP"
+    }
+  }
+}
