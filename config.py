@@ -66,6 +66,29 @@ CORRELATION_WINDOW_DAYS = 252
 MIN_TRADING_DAYS = 200
 
 # --------------------------------------------------------------------------
+# Session settlement
+# --------------------------------------------------------------------------
+# The feed starts emitting a bar the moment the session opens and keeps
+# revising it after the bell. Measured on 2026-08-21: a run at 13:30 JST read
+# 8001 at 2068.5, a run at 15:56 (26 minutes after the close) read 2072.5,
+# and the settled close was 2080.0. Nothing in the numbers says which of the
+# three you are holding — an unsettled bar is not a close, and scoring one
+# prices the portfolio mid-session under a header claiming otherwise.
+#
+# So a bar is used only once its session has settled. Japan does not observe
+# DST, so a fixed offset is correct year-round.
+JST_UTC_OFFSET_HOURS = 9
+TSE_CLOSE_JST = (15, 30)       # regular session close
+
+# How long after the bell a daily bar is trusted as final. The true lag is
+# not known: 26 minutes was observed still moving, the next morning was
+# settled, and nothing narrows it further. This is a floor, not a guarantee —
+# the real backstop is that per-instrument as-of dates are reported rather
+# than collapsed, so a bar that is late or missing is visible in the report
+# instead of being averaged into it.
+SETTLE_MINUTES_AFTER_CLOSE = 90
+
+# --------------------------------------------------------------------------
 # Price-series integrity
 # --------------------------------------------------------------------------
 # Found on the first live run: 2559 fell 90% in a day on an unrecorded 1:10
@@ -178,6 +201,18 @@ VALUATION_ANCHORS = ("pe", "pb", "ev_ebit", "fcf_yield", "dividend_yield")
 # For yield-style anchors a HIGH value is cheap, so the percentile is inverted
 # before scoring. Getting this backwards is the easiest silent bug here.
 VALUATION_ANCHORS_INVERTED = ("fcf_yield", "dividend_yield")
+
+# An inverted anchor can go negative, and the inversion then says the exact
+# opposite of what it means: a negative free cash flow yield ranks at the
+# bottom of its own history, inverts to "dear", and reads as an expensive
+# price. Mitsui (8031) shipped that way — +671bn of free cash flow became
+# -155bn, health did not fire because its trigger needs two consecutive
+# years, and all three panel reviewers cited "fcf 95" as proof the stock was
+# richly priced. The rank was right; nothing about the price had moved.
+#
+# The fix is disclosure, not arithmetic: these are the underlying annual
+# figures to print beside the rank so the turn is visible.
+YIELD_ANCHOR_DRIVERS = {"fcf_yield": "fcf", "dividend_yield": "dividends"}
 
 # Mean percentile across available anchors -> valuation score 0-4.
 # Low percentile = cheap against its own history = high score.

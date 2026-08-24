@@ -164,3 +164,76 @@ class Dispersion(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class NegativeYield(unittest.TestCase):
+    """
+    Mitsui, 2026-08: free cash flow went +671bn to -155bn. fcf_yield came out
+    at -1.11%, ranked at the bottom of its own five years, inverted to the
+    95th percentile and read as "priced at an extreme". Health never fired —
+    its trigger needs two consecutive negative years. The report printed only
+    the rank, so all three panel reviewers cited "fcf 95" as evidence the
+    stock was expensive. The rank was arithmetically right and meant the
+    opposite of what every reader took from it.
+
+    The rank is deliberately still computed and still counted: dropping an
+    anchor changes verdicts, and that is a scoring decision, not a display
+    one. What is guaranteed here is that the sign travels with it.
+    """
+
+    # The annual periods have to sit inside the daily window, or every ratio
+    # comes back empty and the assessment says INSUFFICIENT DATA instead of
+    # exercising anything.
+    PERIODS = ("2022-03-31", "2023-03-31", "2024-03-31", "2025-03-31")
+
+    def _assess(self, fcf_latest):
+        idx = index(1500, start="2020-01-01")
+        close = pd.Series(1000.0, index=idx)
+        fcf = [8.0e8, 6.0e8, 7.0e8, fcf_latest]
+        fundamentals = {
+            "eps": annual([(p, 100.0) for p in self.PERIODS]),
+            "net_income": pd.Series(dtype=float),
+            "shares": annual([(p, 1e6) for p in self.PERIODS]),
+            "ebit": pd.Series(dtype=float),
+            "equity": annual(zip(self.PERIODS, (4.0e8, 4.2e8, 4.4e8, 4.6e8))),
+            "debt": pd.Series(dtype=float), "cash_eq": pd.Series(dtype=float),
+            "fcf": annual(zip(self.PERIODS, fcf)),
+            "dividends": pd.Series(dtype=float),
+            "sector": "Industrials",
+        }
+        return valuation.assess("8031", close, fundamentals)
+
+    def test_a_negative_yield_is_flagged(self):
+        out = self._assess(-1.5e8)
+        self.assertIn("fcf_yield", out["negative_yield_anchors"])
+        self.assertTrue(out["anchors"]["fcf_yield"]["negative_yield"])
+        self.assertLess(out["anchors"]["fcf_yield"]["value"], 0)
+
+    def test_a_positive_yield_is_not_flagged(self):
+        out = self._assess(7.0e8)
+        self.assertEqual(out["negative_yield_anchors"], [])
+        self.assertFalse(out["anchors"]["fcf_yield"]["negative_yield"])
+
+    def test_the_rank_is_still_computed_and_still_dear(self):
+        """Disclosure, not arithmetic — the score must not move silently."""
+        out = self._assess(-1.5e8)
+        self.assertGreater(out["anchors"]["fcf_yield"]["percentile"], 80)
+
+    def test_counting_toward_the_expensive_case_is_called_out(self):
+        out = self._assess(-1.5e8)
+        if out["anchors"]["fcf_yield"]["percentile"] >= config.TRIM_PERCENTILE:
+            self.assertIn("fcf_yield", out["negative_yield_counted_expensive"])
+
+    def test_the_turn_is_carried_not_just_asserted(self):
+        """A reader who sees the figures needs no warning about the rank."""
+        out = self._assess(-1.5e8)
+        history = out["negative_yield_history"]["fcf_yield"]
+        self.assertEqual(len(history), 4)
+        self.assertLess(min(history.values()), 0)
+        self.assertGreater(max(history.values()), 0)
+
+    def test_only_inverted_anchors_can_be_flagged(self):
+        """pe on negative earnings is a different failure with its own guard."""
+        out = self._assess(-1.5e8)
+        for name in out["negative_yield_anchors"]:
+            self.assertIn(name, config.VALUATION_ANCHORS_INVERTED)

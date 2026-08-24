@@ -12,9 +12,11 @@ import random
 import re
 import threading
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import config
+
+JST = timezone(timedelta(hours=config.JST_UTC_OFFSET_HOURS))
 
 
 class DataFeedError(RuntimeError):
@@ -203,3 +205,52 @@ def cache_put(name, data):
 
 def utc_now():
     return datetime.now(timezone.utc).isoformat()
+
+
+# --------------------------------------------------------------------------
+# Session settlement
+# --------------------------------------------------------------------------
+
+def price_sessions(rows):
+    """
+    Run rows grouped by the session their price came from, oldest first.
+
+    Normally one group. More than one means the feed had not filled every
+    name when the run started, and every consumer says so rather than
+    collapsing the dates to the newest one.
+    """
+    groups = {}
+    for r in rows:
+        if r.get("as_of"):
+            groups.setdefault(r["as_of"], []).append(r["code"])
+    return [(day, sorted(codes)) for day, codes in sorted(groups.items())]
+
+
+def settled_at(day):
+    """The JST instant a given session's daily bar is trusted as final."""
+    hour, minute = config.TSE_CLOSE_JST
+    close = datetime(day.year, day.month, day.day, hour, minute, tzinfo=JST)
+    return close + timedelta(minutes=config.SETTLE_MINUTES_AFTER_CLOSE)
+
+
+def is_settled(day, now=None):
+    """Has this session closed and had its settle window elapse?"""
+    return settled_at(day) <= (now or datetime.now(JST))
+
+
+def last_settled_session(now=None):
+    """
+    The most recent weekday whose session has settled, in JST.
+
+    Holidays are deliberately not modelled. Getting one wrong here costs a
+    refetch the feed would have served from its own cache anyway; the failure
+    that matters is the opposite one — serving a stored series from before a
+    close that has since settled, and calling last week's price today's.
+    """
+    now = now or datetime.now(JST)
+    day = now.date()
+    for _ in range(30):
+        if day.weekday() < 5 and is_settled(day, now):
+            return day
+        day -= timedelta(days=1)
+    raise RuntimeError("no settled session in the last 30 days")

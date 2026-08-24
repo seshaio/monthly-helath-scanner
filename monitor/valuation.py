@@ -240,11 +240,25 @@ def assess(code, close, fundamentals):
         # A high yield is cheap, so its percentile runs the other way. Getting
         # this backwards is the easiest silent error in the whole module.
         inverted = name in config.VALUATION_ANCHORS_INVERTED
+
+        # A yield can go negative, and then the inversion stops meaning what
+        # it says. Mitsui's free cash flow turned negative in FY2026-03
+        # (+671bn to -155bn); fcf_yield came out at -1.11%, which ranks at the
+        # bottom of its own five years, which inverts to the 95th percentile
+        # and reads as "dear". Nothing about the price moved. There is simply
+        # no yield left to be dear or cheap on.
+        #
+        # The rank is kept rather than dropped: removing an anchor silently
+        # changes verdicts, and that is a scoring decision, not a display one.
+        # What gets fixed here is that the sign travels with the number, so
+        # every reader downstream can see the rank is meaningless.
+        negative_yield = inverted and latest < 0
         result["anchors"][name] = {
             "value": latest,
             "percentile": 100 - pct if inverted else pct,
             "raw_percentile": pct,
             "inverted": inverted,
+            "negative_yield": negative_yield,
         }
 
     available = result["anchors"]
@@ -283,6 +297,26 @@ def assess(code, close, fundamentals):
                     if a["percentile"] >= config.TRIM_PERCENTILE)
     result["anchors_expensive"] = expensive
     result["trim_candidate"] = expensive >= config.TRIM_MIN_ANCHORS_EXPENSIVE
+
+    # Named at the top level so no consumer has to know that a yield can
+    # invert. If any of these also cleared the expensive bar, the TRIM case
+    # is resting partly on an anchor that is not measuring price at all.
+    negative = sorted(n for n, a in available.items() if a["negative_yield"])
+    result["negative_yield_anchors"] = negative
+    result["negative_yield_counted_expensive"] = sorted(
+        n for n in negative
+        if available[n]["percentile"] >= config.TRIM_PERCENTILE)
+
+    # The annual figures behind the sign change, so the report can show the
+    # turn instead of asserting it. A reader who can see +671bn become -155bn
+    # does not need to be told the percentile is misleading.
+    result["negative_yield_history"] = {
+        name: {str(k.date()): float(v)
+               for k, v in fundamentals[config.YIELD_ANCHOR_DRIVERS[name]]
+               .dropna().sort_index().items()}
+        for name in negative if config.YIELD_ANCHOR_DRIVERS.get(name)
+        in fundamentals
+    }
     return result
 
 

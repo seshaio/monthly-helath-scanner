@@ -26,6 +26,14 @@ ALLOWED_VERDICTS = {verdict_mod.BUY, verdict_mod.KEEP, verdict_mod.TRIM,
                     verdict_mod.SELL, verdict_mod.WAIT}
 ALLOWED_CONFIDENCE = {"high", "medium", "low"}
 
+# The pack asks every reviewer to check the stated price against the stated
+# session before arguing from it. "unchecked" is a legitimate answer — the
+# point is to force the distinction between a verified price and an assumed
+# one, which is exactly what was missing when a stale close went out under a
+# fresher date. An omitted field is not "unchecked"; it is an unanswered
+# question, and the reply is rejected like any other skipped one.
+ALLOWED_PRICE_CHECK = {"match", "differs", "unchecked"}
+
 
 def validate(reviews, expected_codes):
     """Raise ValueError with every problem found, not just the first."""
@@ -49,6 +57,16 @@ def validate(reviews, expected_codes):
             problems.append(f"[{i}] {code}: confidence must be high/medium/low")
         if not str(entry.get("rationale", "")).strip():
             problems.append(f"[{i}] {code}: empty rationale")
+        check = entry.get("price_check")
+        if check not in ALLOWED_PRICE_CHECK:
+            problems.append(f"[{i}] {code}: price_check {check!r} not in "
+                            f"{sorted(ALLOWED_PRICE_CHECK)}")
+        elif check == "differs":
+            observed = entry.get("price_observed")
+            if not isinstance(observed, (int, float)) or isinstance(observed, bool):
+                problems.append(f"[{i}] {code}: price_check 'differs' needs a "
+                                f"numeric price_observed, got "
+                                f"{entry.get('price_observed')!r}")
 
     missing = expected_codes - set(seen)
     if missing:
