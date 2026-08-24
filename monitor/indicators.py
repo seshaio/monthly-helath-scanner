@@ -281,12 +281,21 @@ def fetch_history(items):
     #
     # The TTL alone is not enough: a cache written at noon is still inside its
     # 24 hours that evening, but a session has settled in between and serving
-    # it would report yesterday's close as today's. So the cache also carries
-    # the session it was current for, and is dropped once a newer one settles.
+    # it would report yesterday's close as today's.
+    #
+    # Nor is the clock enough on its own. A cache written at 02:03, when the
+    # feed had settled Monday's ETF bars but none of its equity bars, is not
+    # made current by the fact that Monday had settled — it faithfully
+    # preserves the gap for another 24 hours, and the 07:43 run that should
+    # have picked up 8001 at 2,117.5 served 2,080.0 again.
+    #
+    # So the cache records the last session it actually covers for every
+    # symbol, and is reused only when that reaches the last settled session.
+    # A feed that was ragged when written is refetched, not preserved.
     cached = common.cache_get("price_history",
                               ttl_hours=config.PRICE_CACHE_TTL_HOURS)
     if (cached and set(symbols) <= set(cached["series"])
-            and cached.get("settled_through") == settled):
+            and cached.get("covered_through") == settled):
         idx = pd.DatetimeIndex([pd.Timestamp(d) for d in cached["dates"]])
         return pd.DataFrame(
             {sym: cached["series"][sym] for sym in symbols}, index=idx)
@@ -318,9 +327,23 @@ def fetch_history(items):
         "dates": [ts.isoformat() for ts in close.index],
         "series": {sym: [None if pd.isna(v) else float(v)
                          for v in close[sym]] for sym in close.columns},
-        "settled_through": settled,
+        "covered_through": covered_through(close),
     })
     return close
+
+
+def covered_through(close):
+    """
+    The last session on which every symbol has a price, as an ISO date.
+
+    Not the last row: the feed fills TSE single names hours after the ETFs,
+    so the last row is routinely six instruments wide out of nineteen. A
+    frame that ends in a partial session covers only the session before it.
+    """
+    for timestamp in reversed(close.index):
+        if not close.loc[timestamp].isna().any():
+            return timestamp.date().isoformat()
+    return None
 
 
 def drop_unsettled(close):

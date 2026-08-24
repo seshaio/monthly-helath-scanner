@@ -273,3 +273,43 @@ class MixedSessions(unittest.TestCase):
             sessions=common.price_sessions(self.ROWS))
         self.assertIn("not all from the same session", text)
         self.assertIn("2026-08-21", text.split("\n")[0])
+
+
+class CacheCoverage(unittest.TestCase):
+    """
+    The 07:43 incident: a cache written at 02:03, when the feed had Monday's
+    ETF bars and none of its equity bars, was still reused six hours later
+    because Monday had "settled" by the clock in both moments. The feed had
+    filled in between — 8001 was there at 2,117.5 — and the run reported
+    Friday's 2,080.0 again. A cache that was ragged when written must not be
+    preserved; only the session it genuinely covers counts.
+    """
+
+    def _frame(self, rows):
+        idx = pd.DatetimeIndex(
+            [pd.Timestamp(d, tz="Asia/Tokyo") for d, _ in rows])
+        return pd.DataFrame(
+            {"8001.T": [v[0] for _, v in rows],
+             "1655.T": [v[1] for _, v in rows]}, index=idx)
+
+    def test_a_full_last_row_covers_that_session(self):
+        frame = self._frame([("2026-08-21", (2080.0, 876.0)),
+                             ("2026-08-24", (2117.5, 876.2))])
+        self.assertEqual(indicators.covered_through(frame), "2026-08-24")
+
+    def test_a_partial_last_row_covers_only_the_session_before(self):
+        """Six ETFs filled and thirteen equities not is not Monday's data."""
+        frame = self._frame([("2026-08-21", (2080.0, 876.0)),
+                             ("2026-08-24", (np.nan, 876.2))])
+        self.assertEqual(indicators.covered_through(frame), "2026-08-21")
+
+    def test_nothing_complete_covers_nothing(self):
+        frame = self._frame([("2026-08-21", (np.nan, 876.0)),
+                             ("2026-08-24", (np.nan, 876.2))])
+        self.assertIsNone(indicators.covered_through(frame))
+
+    def test_coverage_below_the_settled_session_forces_a_refetch(self):
+        """The exact reuse condition that served a stale price at 07:43."""
+        frame = self._frame([("2026-08-21", (2080.0, 876.0)),
+                             ("2026-08-24", (np.nan, 876.2))])
+        self.assertNotEqual(indicators.covered_through(frame), "2026-08-24")
