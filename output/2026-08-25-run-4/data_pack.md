@@ -2,14 +2,7 @@
 
 You are one of several independent reviewers of a fixed list of TSE instruments. Every number below was computed by the pipeline; none was retrieved by a model. Argue from these numbers. You are not shown any other reviewer's answer, any mechanical verdict, or any prior month's call — that is deliberate.
 
-**Prices as of 2026-08-21 close (JST)**, and every figure derived from price — returns, RSI, distance to the 200d — is as of that same session. Each instrument also carries its own as-of date below; check it.
-
-**⚠ This pack mixes sessions.** The feed had not filled every name when the run started, so the instruments below are not all priced on the same day:
-
-- **2026-08-21** — 13: 1944, 2502, 4543, 6383, 7269, 7532, 7701, 7974, 8001, 8002, 8031, 8053, 8766
-- **2026-08-24** — 6: 1478, 1540, 1655, 1658, 2559, 315A
-
-The pack is stamped with the oldest of those dates. Treat the names on the older session as provisional: weigh them with lower confidence, and say in the rationale that the price is stale.
+**Prices as of 2026-08-24 close (JST)**, and every figure derived from price — returns, RSI, distance to the 200d — is as of that same session. Each instrument also carries its own as-of date below; check it.
 
 Reply with ONLY a JSON array, one object per ticker, no prose
 around it:
@@ -65,95 +58,95 @@ is dealt with afterwards, in consensus.
 ## Instruments
 
 ### 7532 — Pan Pacific International Holdings Corporation (Equity)
-- price 818.2 as of 2026-08-21 close, 12m -22.3%, RSI 36.2, vs 200d -10.6%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 0 (1.16%), ev_ebit 21 (19.00), fcf_yield 28 (3.25%), pb 33 (4.04), pe 41 (27.10)
+- price 810.7 as of 2026-08-24 close, 12m -23.8%, RSI 35.1, vs 200d -11.3%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 0 (1.17%), ev_ebit 18 (18.85), fcf_yield 27 (3.28%), pb 30 (4.00), pe 38 (26.85)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 1,061, range 900–1,300, n=17
 - reports in 79 days
 
 ### 6383 — Daifuku Co., Ltd. (Equity)
-- price 5900.0 as of 2026-08-21 close, 12m 50.6%, RSI 39.5, vs 200d -1.1%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 41 (1.42%), ev_ebit 62 (18.89), fcf_yield 26 (5.10%), pb 82 (5.04), pe 65 (29.13)
+- price 5869.0 as of 2026-08-24 close, 12m 31.6%, RSI 38.7, vs 200d -1.7%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 40 (1.43%), ev_ebit 61 (18.78), fcf_yield 26 (5.13%), pb 82 (5.01), pe 64 (28.98)
 - health: INTACT — no trigger fired
 - NOTE anchors disagree: fcf_yield at 26 vs pb at 82 — the mean describes neither
 - sell-side consensus (third-party, structurally bullish): mean 7,541, range 5,400–9,300, n=14
 
 ### 8001 — ITOCHU Corporation (Equity)
-- price 2080.0 as of 2026-08-21 close, 12m 35.0%, RSI 61.6, vs 200d 6.2%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 96 (2.02%), ev_ebit 91 (14.40), fcf_yield 87 (5.79%), pb 84 (2.22), pe 92 (16.25)
+- price 2117.5 as of 2026-08-24 close, 12m 35.5%, RSI 65.4, vs 200d 8.0%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 97 (1.98%), ev_ebit 93 (14.60), fcf_yield 89 (5.69%), pb 85 (2.26), pe 95 (16.54)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 2,403, range 2,100–2,800, n=11
 - reports in 71 days
 
 ### 8002 — Marubeni Corporation (Equity)
-- price 4893.0 as of 2026-08-21 close, 12m 58.1%, RSI 44.5, vs 200d -2.7%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 89 (2.20%), ev_ebit 83 (13.43), fcf_yield 87 (4.69%), pb 80 (1.86), pe 87 (17.52)
+- price 4982.0 as of 2026-08-24 close, 12m 57.8%, RSI 49.5, vs 200d -1.1%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 91 (2.16%), ev_ebit 86 (13.63), fcf_yield 90 (4.61%), pb 83 (1.90), pe 90 (17.84)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 6,054, range 5,100–7,020, n=12
 - reports in 70 days
 
 ### 8053 — Sumitomo Corporation (Equity)
-- price 1709.0 as of 2026-08-21 close, 12m 77.2%, RSI 53.3, vs 200d 13.5%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 96 (2.19%), ev_ebit 96 (14.91), fcf_yield 53 (8.60%), pb 96 (1.78), pe 95 (13.71)
+- price 1771.0 as of 2026-08-24 close, 12m 81.3%, RSI 61.0, vs 200d 17.4%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 98 (2.12%), ev_ebit 98 (15.28), fcf_yield 55 (8.30%), pb 97 (1.84), pe 97 (14.21)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 1,964, range 1,660–2,263, n=10
 - reports in 65 days
 
 ### 8031 — Mitsui & Co., Ltd. (Equity)
-- price 4899.0 as of 2026-08-21 close, 12m 58.7%, RSI 53.9, vs 200d -3.2%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 88 (2.35%), ev_ebit 89 (14.70), fcf_yield 95 (-1.11%), pb 79 (1.60), pe 89 (16.84)
+- price 4954.0 as of 2026-08-24 close, 12m 57.0%, RSI 56.8, vs 200d -2.2%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 89 (2.32%), ev_ebit 90 (14.82), fcf_yield 94 (-1.09%), pb 80 (1.62), pe 90 (17.03)
 - health: INTACT — no trigger fired
-- ⚠ NOTE fcf_yield is NEGATIVE (-1.11%), so its percentile of 95 is not a valuation reading. A negative yield does not mean the price is high; it means there is no yield to price. The business changed, not the multiple. This anchor is nonetheless counted among the expensive ones, so treat any 'priced at an extreme' reading of this name with suspicion.
+- ⚠ NOTE fcf_yield is NEGATIVE (-1.09%), so its percentile of 94 is not a valuation reading. A negative yield does not mean the price is high; it means there is no yield to price. The business changed, not the multiple. This anchor is nonetheless counted among the expensive ones, so treat any 'priced at an extreme' reading of this name with suspicion.
 - sell-side consensus (third-party, structurally bullish): mean 6,155, range 4,500–7,600, n=13
 - reports in 72 days
 
 ### 1944 — Kinden Corporation (Equity)
-- price 6686.0 as of 2026-08-21 close, 12m 31.1%, RSI 39.8, vs 200d -6.8%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 74 (1.94%), ev_ebit 64 (13.02), fcf_yield 20 (6.62%), pb 76 (2.00), pe 63 (19.07)
+- price 6820.0 as of 2026-08-24 close, 12m 31.9%, RSI 43.6, vs 200d -5.1%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 76 (1.91%), ev_ebit 68 (13.29), fcf_yield 26 (6.49%), pb 78 (2.04), pe 65 (19.46)
 - health: INTACT — no trigger fired
-- NOTE anchors disagree: fcf_yield at 20 vs pb at 76 — the mean describes neither
+- NOTE anchors disagree: fcf_yield at 26 vs pb at 78 — the mean describes neither
 - sell-side consensus (third-party, structurally bullish): mean 9,200, range 8,450–10,200, n=6
 - reports in 65 days
 
 ### 2502 — Asahi Group Holdings, Ltd. (Equity)
-- price 1680.5 as of 2026-08-21 close, 12m -9.6%, RSI 54.0, vs 200d 4.5%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 18 (3.09%), ev_ebit 99 (19.26), fcf_yield 86 (-1.98%), pb 14 (0.84), pe 99 (20.67)
+- price 1672.0 as of 2026-08-24 close, 12m -12.7%, RSI 52.6, vs 200d 4.0%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 17 (3.11%), ev_ebit 98 (19.20), fcf_yield 87 (-1.99%), pb 13 (0.83), pe 98 (20.57)
 - health: IMPAIRED — 2 trigger(s): operating margin 6.4% vs 9.2% a year earlier (273bp fall); net debt / EBITDA 4.01x
-- ⚠ NOTE fcf_yield is NEGATIVE (-1.98%), so its percentile of 86 is not a valuation reading. A negative yield does not mean the price is high; it means there is no yield to price. The business changed, not the multiple. This anchor is nonetheless counted among the expensive ones, so treat any 'priced at an extreme' reading of this name with suspicion.
-- NOTE anchors disagree: pb at 14 vs pe at 99 — the mean describes neither
+- ⚠ NOTE fcf_yield is NEGATIVE (-1.99%), so its percentile of 87 is not a valuation reading. A negative yield does not mean the price is high; it means there is no yield to price. The business changed, not the multiple. This anchor is nonetheless counted among the expensive ones, so treat any 'priced at an extreme' reading of this name with suspicion.
+- NOTE anchors disagree: pb at 13 vs pe at 98 — the mean describes neither
 - NOTE a trigger fired within a hair of its threshold: net_debt_to_ebitda_above at 4.01 vs threshold 4.00
 - sell-side consensus (third-party, structurally bullish): mean 2,056, range 1,670–2,700, n=15
 - reports in 72 days
 
 ### 7974 — Nintendo Co., Ltd. (Equity)
-- price 8599.0 as of 2026-08-21 close, 12m -36.1%, RSI 62.0, vs 200d -5.8%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 66 (2.55%), ev_ebit 46 (14.45), fcf_yield 69 (2.63%), pb 30 (3.39), pe 62 (23.59)
+- price 8793.0 as of 2026-08-24 close, 12m -37.3%, RSI 64.8, vs 200d -3.4%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 68 (2.49%), ev_ebit 50 (14.84), fcf_yield 70 (2.57%), pb 34 (3.46), pe 64 (24.12)
 - health: WATCH — 1 trigger(s): operating margin 15.6% vs 24.3% a year earlier (869bp fall)
 - sell-side consensus (third-party, structurally bullish): mean 10,335, range 5,000–21,260, n=25
 - reports in 70 days
 
 ### 8766 — Tokio Marine Holdings, Inc. (Equity)
-- price 7347.0 as of 2026-08-21 close, 12m 21.7%, RSI 39.7, vs 200d 10.7%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 69 (2.97%), pb 72 (1.76), pe 84 (26.32)
+- price 7261.0 as of 2026-08-24 close, 12m 20.0%, RSI 37.4, vs 200d 9.3%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 67 (3.00%), pb 68 (1.74), pe 81 (26.01)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 8,601, range 5,842–10,500, n=12
 
 ### 7701 — Shimadzu Corporation (Equity)
-- price 4109.0 as of 2026-08-21 close, 12m 27.0%, RSI 50.1, vs 200d 1.8%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 19 (1.68%), ev_ebit 21 (12.60), fcf_yield 20 (3.35%), pb 16 (2.10), pe 21 (19.62)
+- price 4115.0 as of 2026-08-24 close, 12m 23.3%, RSI 50.5, vs 200d 2.0%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 20 (1.68%), ev_ebit 22 (12.63), fcf_yield 20 (3.34%), pb 17 (2.10), pe 22 (19.65)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 5,077, range 3,400–6,500, n=12
 - reports in 72 days
 
 ### 4543 — Terumo Corporation (Equity)
-- price 2569.0 as of 2026-08-21 close, 12m 2.9%, RSI 60.5, vs 200d 15.4%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 15 (1.17%), ev_ebit 21 (21.43), fcf_yield 30 (3.40%), pb 17 (2.39), pe 17 (27.89)
+- price 2595.5 as of 2026-08-24 close, 12m -3.9%, RSI 61.9, vs 200d 16.6%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 15 (1.16%), ev_ebit 22 (21.64), fcf_yield 32 (3.37%), pb 18 (2.42), pe 18 (28.18)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 3,133, range 2,450–3,800, n=13
 
 ### 7269 — Suzuki Motor Corporation (Equity)
-- price 2103.5 as of 2026-08-21 close, 12m 21.8%, RSI 57.0, vs 200d 1.5%
-- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 44 (2.19%), ev_ebit 37 (5.04), fcf_yield 21 (7.24%), pb 49 (1.20), pe 23 (9.24)
+- price 2126.5 as of 2026-08-24 close, 12m 20.7%, RSI 58.9, vs 200d 2.6%
+- valuation vs own 5y history, percentile then value (low percentile = cheap): dividend_yield 46 (2.16%), ev_ebit 39 (5.10), fcf_yield 22 (7.16%), pb 52 (1.21), pe 23 (9.34)
 - health: INTACT — no trigger fired
 - sell-side consensus (third-party, structurally bullish): mean 2,591, range 1,800–3,300, n=17
 - reports in 72 days

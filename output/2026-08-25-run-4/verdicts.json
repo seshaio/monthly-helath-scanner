@@ -37,16 +37,16 @@
   },
   "1944": {
     "health_status": "INTACT",
-    "price": 6686.0,
-    "score": 7,
+    "price": 6820.0,
+    "score": 6,
     "structural_score": null,
     "trend_score": 1,
-    "valuation_score": 2,
+    "valuation_score": 1,
     "verdict": "KEEP"
   },
   "2502": {
     "health_status": "IMPAIRED",
-    "price": 1680.5,
+    "price": 1672.0,
     "score": 3,
     "structural_score": null,
     "trend_score": 1,
@@ -73,16 +73,16 @@
   },
   "4543": {
     "health_status": "INTACT",
-    "price": 2569.0,
-    "score": 9,
+    "price": 2595.5,
+    "score": 8,
     "structural_score": null,
-    "trend_score": 2,
+    "trend_score": 1,
     "valuation_score": 3,
     "verdict": "BUY"
   },
   "6383": {
     "health_status": "INTACT",
-    "price": 5900.0,
+    "price": 5869.0,
     "score": 7,
     "structural_score": null,
     "trend_score": 1,
@@ -91,7 +91,7 @@
   },
   "7269": {
     "health_status": "INTACT",
-    "price": 2103.5,
+    "price": 2126.5,
     "score": 9,
     "structural_score": null,
     "trend_score": 2,
@@ -100,7 +100,7 @@
   },
   "7532": {
     "health_status": "INTACT",
-    "price": 818.2000122070312,
+    "price": 810.7000122070312,
     "score": 7,
     "structural_score": null,
     "trend_score": 0,
@@ -109,16 +109,16 @@
   },
   "7701": {
     "health_status": "INTACT",
-    "price": 4109.0,
-    "score": 10,
+    "price": 4115.0,
+    "score": 9,
     "structural_score": null,
     "trend_score": 2,
-    "valuation_score": 4,
+    "valuation_score": 3,
     "verdict": "BUY"
   },
   "7974": {
     "health_status": "WATCH",
-    "price": 8599.0,
+    "price": 8793.0,
     "score": 4,
     "structural_score": null,
     "trend_score": 0,
@@ -127,7 +127,7 @@
   },
   "8001": {
     "health_status": "INTACT",
-    "price": 2080.0,
+    "price": 2117.5,
     "score": 6,
     "structural_score": null,
     "trend_score": 2,
@@ -136,16 +136,16 @@
   },
   "8002": {
     "health_status": "INTACT",
-    "price": 4893.0,
+    "price": 4982.0,
     "score": 5,
     "structural_score": null,
     "trend_score": 1,
     "valuation_score": 0,
-    "verdict": "KEEP"
+    "verdict": "TRIM"
   },
   "8031": {
     "health_status": "INTACT",
-    "price": 4899.0,
+    "price": 4954.0,
     "score": 5,
     "structural_score": null,
     "trend_score": 1,
@@ -154,7 +154,7 @@
   },
   "8053": {
     "health_status": "INTACT",
-    "price": 1709.0,
+    "price": 1771.0,
     "score": 6,
     "structural_score": null,
     "trend_score": 2,
@@ -163,7 +163,7 @@
   },
   "8766": {
     "health_status": "INTACT",
-    "price": 7347.0,
+    "price": 7261.0,
     "score": 7,
     "structural_score": null,
     "trend_score": 2,
