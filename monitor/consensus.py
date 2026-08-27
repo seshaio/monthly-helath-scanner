@@ -12,6 +12,7 @@ import os
 import sys
 
 import common
+import config
 from monitor import universe as universe_mod
 
 
@@ -60,13 +61,74 @@ def matrix(panel):
     return out
 
 
-def render(agreement, panel_names):
+def price_disputes(panel):
+    """
+    Where reviewers contradicted the pack's price.
+
+    Reported before any verdict, because a disputed price is not a difference
+    of opinion — if it is right, every number derived from that price is
+    wrong and the name's verdict is void rather than debatable. The mechanical
+    column has no view here and is skipped.
+    """
+    out = {}
+    for model, reviews in panel.items():
+        if model == "mechanical":
+            continue
+        for code, review in reviews.items():
+            check = review.get("price_check")
+            if check == "differs":
+                out.setdefault(code, []).append({
+                    "model": model,
+                    "observed": review.get("price_observed"),
+                    "rationale": review.get("rationale", ""),
+                })
+    return {code: sorted(v, key=lambda d: d["model"])
+            for code, v in sorted(out.items())}
+
+
+def unchecked_prices(panel):
+    """Reviewers that could not verify a price at all, counted per name."""
+    out = {}
+    for model, reviews in panel.items():
+        if model == "mechanical":
+            continue
+        for code, review in reviews.items():
+            if review.get("price_check") == "unchecked":
+                out.setdefault(code, []).append(model)
+    return {code: sorted(v) for code, v in sorted(out.items())}
+
+
+def render(agreement, panel_names, disputes=None, unchecked=None):
     out = [f"# Panel consensus — {len(panel_names)} reviewers "
            f"({', '.join(panel_names)})", ""]
     unanimous = {c: a for c, a in agreement.items() if a["unanimous"]}
     split = {c: a for c, a in agreement.items() if not a["unanimous"]}
     out.append(f"Unanimous on {len(unanimous)} of {len(agreement)} names.")
     out.append("")
+
+    if disputes:
+        out.append("## ⚠ Disputed prices — read before anything else")
+        out.append("")
+        out.append("A reviewer says the pack's price is wrong. If it is, every "
+                   "figure derived from it is wrong too and the verdict below "
+                   "is void, not merely contested. Check these against the "
+                   "exchange before reading on.")
+        out.append("")
+        for code, claims in disputes.items():
+            out.append(f"### {code}")
+            for claim in claims:
+                observed = claim["observed"]
+                shown = f"{observed:,.1f}" if isinstance(observed, (int, float)) else "unstated"
+                out.append(f"- *{claim['model']}* reads it at **{shown}** — "
+                           f"{claim['rationale']}")
+            out.append("")
+
+    if unchecked:
+        names = ", ".join(f"{code} ({len(models)})"
+                          for code, models in unchecked.items())
+        out.append(f"*Prices unverified by at least one reviewer: {names}. "
+                   f"Unverified is not confirmed.*")
+        out.append("")
 
     # Agreements first: the settled ground, one line each — read it, accept
     # it, move on. The reading list comes after.
@@ -96,6 +158,22 @@ def render(agreement, panel_names):
     return "\n".join(out) + "\n"
 
 
+def write_up_path(run_dir):
+    """
+    Where a run's panel write-up is filed: output/consensus/<run>.md.
+
+    The write-up is the one artifact here meant to be read months later and
+    against its neighbours — which run said what about 8001 — so it lives in
+    one folder rather than buried one per run directory. The name carries the
+    run, so nothing is ever overwritten. consensus.json stays with the run:
+    it is state for this run, not a document.
+    """
+    folder = os.path.join(os.path.abspath(config.OUTPUT_DIR), "consensus")
+    os.makedirs(folder, exist_ok=True)
+    run_name = os.path.basename(os.path.realpath(run_dir))
+    return os.path.join(folder, f"{run_name}.md")
+
+
 def main(argv=None):
     run_dir = common.latest_run()
     if not run_dir:
@@ -107,11 +185,18 @@ def main(argv=None):
               f"ingest their replies.")
         return 1
     agreement = matrix(panel)
-    text = render(agreement, sorted(panel))
-    path = os.path.join(run_dir, "consensus.md")
+    disputes = price_disputes(panel)
+    unchecked = unchecked_prices(panel)
+    text = render(agreement, sorted(panel), disputes=disputes,
+                  unchecked=unchecked)
+    path = write_up_path(run_dir)
     with open(path, "w") as fh:
         fh.write(text)
-    common.save_json(os.path.join(run_dir, "consensus.json"), agreement)
+    common.save_json(os.path.join(run_dir, "consensus.json"), {
+        "agreement": agreement,
+        "price_disputes": disputes,
+        "price_unchecked": unchecked,
+    })
     print(text)
     print(f"→ {path}")
     return 0

@@ -9,6 +9,7 @@ about a company, and none of them may reach a report as if they were.
 """
 
 import unittest
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
@@ -188,3 +189,127 @@ class Scoring(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class Settlement(unittest.TestCase):
+    """
+    The incident: a run at 00:55 JST stamped thirteen Friday closes as
+    Monday's, because six ETFs had filled and the equities had not. Its
+    cousin: a run 26 minutes after the bell read 8001 at 2072.5 against a
+    settled 2080.0. Neither is distinguishable from a good close by looking
+    at the number, so both are handled by the clock, not by inspection.
+    """
+
+    def _frame(self, days, tz="Asia/Tokyo"):
+        idx = pd.DatetimeIndex([pd.Timestamp(d, tz=tz) for d in days])
+        return pd.DataFrame({"8001.T": [1.0] * len(days)}, index=idx)
+
+    def test_a_bar_from_an_open_session_is_dropped(self):
+        """Mid-session on the 25th: that day's bar is a live price, not a close."""
+        now = datetime(2026, 8, 25, 10, 0, tzinfo=common.JST)
+        self.assertFalse(common.is_settled(datetime(2026, 8, 25).date(), now))
+
+    def test_the_bell_alone_does_not_settle_a_bar(self):
+        """15:56 was measurably still moving — the close is not final at 15:30."""
+        now = datetime(2026, 8, 25, 15, 56, tzinfo=common.JST)
+        self.assertFalse(common.is_settled(datetime(2026, 8, 25).date(), now))
+
+    def test_next_morning_is_settled(self):
+        now = datetime(2026, 8, 26, 7, 0, tzinfo=common.JST)
+        self.assertTrue(common.is_settled(datetime(2026, 8, 25).date(), now))
+
+    def test_weekend_walks_back_to_friday(self):
+        now = datetime(2026, 8, 23, 9, 0, tzinfo=common.JST)   # Sunday
+        self.assertEqual(common.last_settled_session(now).isoformat(),
+                         "2026-08-21")
+
+    def test_before_the_close_walks_back_to_the_prior_session(self):
+        now = datetime(2026, 8, 25, 8, 0, tzinfo=common.JST)   # Tue pre-open
+        self.assertEqual(common.last_settled_session(now).isoformat(),
+                         "2026-08-24")
+
+    def test_unsettled_tail_is_trimmed_and_history_kept(self):
+        frame = self._frame(["2026-08-20", "2026-08-21", "2026-08-24"])
+        original = indicators.common.is_settled
+        indicators.common.is_settled = lambda d, now=None: d.isoformat() < "2026-08-24"
+        try:
+            out = indicators.drop_unsettled(frame)
+        finally:
+            indicators.common.is_settled = original
+        self.assertEqual([str(i.date()) for i in out.index],
+                         ["2026-08-20", "2026-08-21"])
+
+    def test_settled_frame_is_untouched(self):
+        frame = self._frame(["2026-08-20", "2026-08-21"])
+        original = indicators.common.is_settled
+        indicators.common.is_settled = lambda d, now=None: True
+        try:
+            self.assertIs(indicators.drop_unsettled(frame), frame)
+        finally:
+            indicators.common.is_settled = original
+
+
+class MixedSessions(unittest.TestCase):
+    """A report is only as current as its stalest name."""
+
+    ROWS = [{"code": "8001", "as_of": "2026-08-21"},
+            {"code": "7532", "as_of": "2026-08-21"},
+            {"code": "1655", "as_of": "2026-08-24"}]
+
+    def test_sessions_group_oldest_first(self):
+        out = common.price_sessions(self.ROWS)
+        self.assertEqual(out, [("2026-08-21", ["7532", "8001"]),
+                               ("2026-08-24", ["1655"])])
+
+    def test_a_name_without_a_date_is_not_invented(self):
+        out = common.price_sessions(self.ROWS + [{"code": "9999", "as_of": None}])
+        self.assertNotIn("9999", [c for _, codes in out for c in codes])
+
+    def test_the_stamp_is_the_oldest_close_not_the_newest(self):
+        """The exact inversion that shipped Friday prices under Monday's date."""
+        from monitor import report
+        text = report.render(
+            [dict(r, asset_type="Equity") for r in self.ROWS], "2026-08-21",
+            sessions=common.price_sessions(self.ROWS))
+        self.assertIn("not all from the same session", text)
+        self.assertIn("2026-08-21", text.split("\n")[0])
+
+
+class CacheCoverage(unittest.TestCase):
+    """
+    The 07:43 incident: a cache written at 02:03, when the feed had Monday's
+    ETF bars and none of its equity bars, was still reused six hours later
+    because Monday had "settled" by the clock in both moments. The feed had
+    filled in between — 8001 was there at 2,117.5 — and the run reported
+    Friday's 2,080.0 again. A cache that was ragged when written must not be
+    preserved; only the session it genuinely covers counts.
+    """
+
+    def _frame(self, rows):
+        idx = pd.DatetimeIndex(
+            [pd.Timestamp(d, tz="Asia/Tokyo") for d, _ in rows])
+        return pd.DataFrame(
+            {"8001.T": [v[0] for _, v in rows],
+             "1655.T": [v[1] for _, v in rows]}, index=idx)
+
+    def test_a_full_last_row_covers_that_session(self):
+        frame = self._frame([("2026-08-21", (2080.0, 876.0)),
+                             ("2026-08-24", (2117.5, 876.2))])
+        self.assertEqual(indicators.covered_through(frame), "2026-08-24")
+
+    def test_a_partial_last_row_covers_only_the_session_before(self):
+        """Six ETFs filled and thirteen equities not is not Monday's data."""
+        frame = self._frame([("2026-08-21", (2080.0, 876.0)),
+                             ("2026-08-24", (np.nan, 876.2))])
+        self.assertEqual(indicators.covered_through(frame), "2026-08-21")
+
+    def test_nothing_complete_covers_nothing(self):
+        frame = self._frame([("2026-08-21", (np.nan, 876.0)),
+                             ("2026-08-24", (np.nan, 876.2))])
+        self.assertIsNone(indicators.covered_through(frame))
+
+    def test_coverage_below_the_settled_session_forces_a_refetch(self):
+        """The exact reuse condition that served a stale price at 07:43."""
+        frame = self._frame([("2026-08-21", (2080.0, 876.0)),
+                             ("2026-08-24", (np.nan, 876.2))])
+        self.assertNotEqual(indicators.covered_through(frame), "2026-08-24")

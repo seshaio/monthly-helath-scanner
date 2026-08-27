@@ -273,13 +273,29 @@ def fetch_history(items):
     """
     symbols = [common.yahoo_symbol(i["code"]) for i in items]
     period = f"{config.HISTORY_YEARS}y"
+    settled = common.last_settled_session().isoformat()
 
     # Same-day cache only. Never extended incrementally — adjusted prices
     # change retroactively with every dividend, so an appended series would
     # silently diverge from a clean fetch. See config.PRICE_CACHE_TTL_HOURS.
+    #
+    # The TTL alone is not enough: a cache written at noon is still inside its
+    # 24 hours that evening, but a session has settled in between and serving
+    # it would report yesterday's close as today's.
+    #
+    # Nor is the clock enough on its own. A cache written at 02:03, when the
+    # feed had settled Monday's ETF bars but none of its equity bars, is not
+    # made current by the fact that Monday had settled — it faithfully
+    # preserves the gap for another 24 hours, and the 07:43 run that should
+    # have picked up 8001 at 2,117.5 served 2,080.0 again.
+    #
+    # So the cache records the last session it actually covers for every
+    # symbol, and is reused only when that reaches the last settled session.
+    # A feed that was ragged when written is refetched, not preserved.
     cached = common.cache_get("price_history",
                               ttl_hours=config.PRICE_CACHE_TTL_HOURS)
-    if cached and set(symbols) <= set(cached["series"]):
+    if (cached and set(symbols) <= set(cached["series"])
+            and cached.get("covered_through") == settled):
         idx = pd.DatetimeIndex([pd.Timestamp(d) for d in cached["dates"]])
         return pd.DataFrame(
             {sym: cached["series"][sym] for sym in symbols}, index=idx)
@@ -300,13 +316,53 @@ def fetch_history(items):
     close = frame["Close"] if "Close" in frame.columns.get_level_values(0) else frame
     if isinstance(close, pd.Series):
         close = close.to_frame(symbols[0])
+    close = drop_unsettled(close)
+    if close.empty:
+        raise common.DataFeedError(
+            "no settled session in the price feed — every bar returned "
+            "belongs to a session that has not closed and settled"
+        )
 
     common.cache_put("price_history", {
         "dates": [ts.isoformat() for ts in close.index],
         "series": {sym: [None if pd.isna(v) else float(v)
                          for v in close[sym]] for sym in close.columns},
+        "covered_through": covered_through(close),
     })
     return close
+
+
+def covered_through(close):
+    """
+    The last session on which every symbol has a price, as an ISO date.
+
+    Not the last row: the feed fills TSE single names hours after the ETFs,
+    so the last row is routinely six instruments wide out of nineteen. A
+    frame that ends in a partial session covers only the session before it.
+    """
+    for timestamp in reversed(close.index):
+        if not close.loc[timestamp].isna().any():
+            return timestamp.date().isoformat()
+    return None
+
+
+def drop_unsettled(close):
+    """
+    Drop trailing bars for sessions that have not settled.
+
+    The feed opens a bar when the session opens and keeps revising it past the
+    bell, so the most recent row is routinely a live or half-finished price
+    wearing a date. It is indistinguishable from a close by inspection, which
+    is precisely why it has to go before anything downstream sees it — a
+    partial bar scored as a close prices the whole portfolio mid-session.
+
+    Only the tail is examined: the index is sorted, so once a session is
+    settled every earlier one is too.
+    """
+    keep = len(close.index)
+    while keep and not common.is_settled(close.index[keep - 1].date()):
+        keep -= 1
+    return close if keep == len(close.index) else close.iloc[:keep]
 
 
 def build(items=None, keep_series=False):
@@ -372,10 +428,16 @@ def main(argv=None):
               f"{fmt(r.get('return_12m_pct')):>8} {fmt(r.get('vs_ma_200_pct')):>7} "
               f"{fmt(r.get('volatility_1y_pct')):>6} {str(r.get('trend_score','—')):>3}")
 
-    dates = {r["as_of"] for r in rows if r.get("as_of")}
+    dates = sorted({r["as_of"] for r in rows if r.get("as_of")})
     suspect = [r["code"] for r in rows if r.get("data_suspect")]
+    # Oldest, not newest — the run is only as current as its stalest name.
     print(f"\n{len(rows)} instruments · prices as of "
-          f"{sorted(dates)[-1] if dates else 'n/a'} · {len(suspect)} suspect")
+          f"{dates[0] if dates else 'n/a'} · {len(suspect)} suspect")
+    if len(dates) > 1:
+        print("MIXED SESSIONS — the feed had not filled every name:")
+        for day in dates:
+            codes = [r["code"] for r in rows if r.get("as_of") == day]
+            print(f"  {day}: {len(codes)} — {', '.join(sorted(codes))}")
     if suspect:
         print(f"not scored, series unusable: {', '.join(suspect)}")
     return 0

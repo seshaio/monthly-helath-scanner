@@ -28,6 +28,8 @@ around it:
 [
   {
     "code": "8001",
+    "price_check": "match | differs | unchecked",
+    "price_observed": null,
     "verdict": "BUY | KEEP | TRIM | SELL | WAIT",
     "confidence": "high | medium | low",
     "rationale": "<= 50 words. Argue from the pack's numbers.",
@@ -38,7 +40,27 @@ around it:
 Rules: every ticker in the pack, exactly once. TRIM means sound but priced
 at an extreme — reduce, not exit. SELL means the thing itself has
 deteriorated. If you use knowledge beyond this pack, say so in the
-rationale."""
+rationale.
+
+PRICE CHECK — do this first, for every ticker. Each block below states the
+price and the session it closed in ("price 2080.0 as of 2026-08-21 close").
+The feed behind this pack has been caught serving a stale close under a
+fresher date, so the price is the one number here you are asked to check
+rather than accept:
+
+  "match"     — the stated price is right for that name on that date.
+  "differs"   — you have a different close for that date, or you know a
+                later session has closed since. Put the price you believe in
+                "price_observed" as a number, and name its date in the
+                rationale.
+  "unchecked" — you have no way to verify it. This is an honest answer; a
+                guessed "match" is not.
+
+Still argue your verdict from the pack's numbers even when you flag a
+difference. The pack is identical for every reviewer so that disagreement
+between you is disagreement about meaning — quietly substituting your own
+price would destroy that. Flag it and reason from the pack; the divergence
+is dealt with afterwards, in consensus."""
 
 
 def _fmt(value, nd=1):
@@ -47,21 +69,51 @@ def _fmt(value, nd=1):
     return f"{value:.{nd}f}" if isinstance(value, float) else str(value)
 
 
+def _anchor_value(name, anchor):
+    """
+    The anchor's actual number, not just its rank.
+
+    Ranks alone are what let a negative free cash flow yield read as an
+    expensive price for a whole panel — every reviewer cited "fcf 95" as
+    evidence the stock was dear, and none could see the number behind it
+    was -1.11%. A percentile hides its own sign; the value does not.
+    """
+    value = anchor.get("value")
+    if value is None:
+        return "null"
+    return f"{value:.2f}%" if anchor.get("inverted") else f"{value:.2f}"
+
+
 def _equity_block(row):
     val = row.get("valuation") or {}
     health = row.get("health") or {}
     anchors = val.get("anchors") or {}
     lines = [
         f"### {row['code']} — {universe_mod.display_name(row)} (Equity)",
-        f"- price {_fmt(row.get('last_price'))}, 12m {_fmt(row.get('return_12m_pct'))}%, "
+        f"- price {_fmt(row.get('last_price'))} as of {row.get('as_of') or 'unknown'} "
+        f"close, 12m {_fmt(row.get('return_12m_pct'))}%, "
         f"RSI {_fmt(row.get('rsi_14'))}, vs 200d {_fmt(row.get('vs_ma_200_pct'))}%",
-        f"- valuation percentiles vs own 5y history (low=cheap): "
-        + ", ".join(f"{name} {a['percentile']:.0f}" for name, a in anchors.items()),
+        f"- valuation vs own 5y history, percentile then value "
+        f"(low percentile = cheap): "
+        + ", ".join(f"{name} {a['percentile']:.0f} ({_anchor_value(name, a)})"
+                    for name, a in anchors.items()),
         f"- health: {health.get('status')} — "
         + (f"{len(health.get('fired', []))} trigger(s): "
            + "; ".join(t["detail"] for t in health.get("fired", []))
            if health.get("fired") else "no trigger fired"),
     ]
+    for name in val.get("negative_yield_anchors") or []:
+        anchor = anchors[name]
+        counted = name in (val.get("negative_yield_counted_expensive") or [])
+        lines.append(
+            f"- ⚠ NOTE {name} is NEGATIVE ({anchor['value']:.2f}%), so its "
+            f"percentile of {anchor['percentile']:.0f} is not a valuation "
+            f"reading. A negative yield does not mean the price is high; it "
+            f"means there is no yield to price. The business changed, not the "
+            f"multiple."
+            + (" This anchor is nonetheless counted among the expensive ones, "
+               "so treat any 'priced at an extreme' reading of this name with "
+               "suspicion." if counted else ""))
     if val.get("anchors_disagree"):
         d = val["disagreement"]
         lines.append(f"- NOTE anchors disagree: {d['cheapest_anchor']} at "
@@ -87,7 +139,8 @@ def _etf_block(row):
     underlying = etf.get("underlying") or {}
     lines = [
         f"### {row['code']} — {universe_mod.display_name(row)} (ETF)",
-        f"- price {_fmt(row.get('last_price'))}, 12m {_fmt(row.get('return_12m_pct'))}%, "
+        f"- price {_fmt(row.get('last_price'))} as of {row.get('as_of') or 'unknown'} "
+        f"close, 12m {_fmt(row.get('return_12m_pct'))}%, "
         f"RSI {_fmt(row.get('rsi_14'))}",
         f"- AUM ¥{profile.get('aum_jpy', 0) / 1e9:,.0f}bn, "
         f"spread {_fmt(etf.get('spread_pct'), 2)}%, fx: {row.get('fx')}",
@@ -107,6 +160,7 @@ def build(run_dir=None):
     rows = common.load_json(os.path.join(run_dir, "indicators.json"))
     macro = common.load_json(os.path.join(run_dir, "macro.json"))
     folio = common.load_json(os.path.join(run_dir, "portfolio.json"))
+    sessions = common.price_sessions(rows)
 
     out = [
         "# Monthly review data pack",
@@ -117,6 +171,30 @@ def build(run_dir=None):
         "shown any other reviewer's answer, any mechanical verdict, or any "
         "prior month's call — that is deliberate.",
         "",
+    ]
+    if sessions:
+        out.append(
+            f"**Prices as of {sessions[0][0]} close (JST)**, and every figure "
+            f"derived from price — returns, RSI, distance to the 200d — is as "
+            f"of that same session. Each instrument also carries its own "
+            f"as-of date below; check it.")
+        out.append("")
+    if len(sessions) > 1:
+        out.append(
+            "**⚠ This pack mixes sessions.** The feed had not filled every "
+            "name when the run started, so the instruments below are not all "
+            "priced on the same day:")
+        out.append("")
+        for day, codes in sessions:
+            out.append(f"- **{day}** — {len(codes)}: {', '.join(codes)}")
+        out += [
+            "",
+            "The pack is stamped with the oldest of those dates. Treat the "
+            "names on the older session as provisional: weigh them with lower "
+            "confidence, and say in the rationale that the price is stale.",
+            "",
+        ]
+    out += [
         SCHEMA,
         "",
         "## Macro (lens scores are mechanical, −2 headwind to +2 tailwind)",

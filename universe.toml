@@ -27,7 +27,7 @@ note = "Daifuku — logistics automation, sells into semi capex"
 
 [[equity]]
 code = "8001"
-held = true
+held = false
 note = "Itochu — trading house"
 
 [[equity]]
@@ -42,7 +42,7 @@ note = "Sumitomo — trading house"
 
 [[equity]]
 code = "8031"
-held = true
+held = false
 note = "Mitsui — trading house"
 
 [[equity]]
@@ -71,7 +71,7 @@ note = "Tokio Marine — non-life insurance"
 
 [[equity]]
 code = "7701"
-held = false
+held = true
 note = "Shimadzu — analytical/measuring instruments. Scanned 10/10: all five anchors in cheapest fifth of own 5y range, INTACT, full trend"
 
 [[equity]]
@@ -81,18 +81,18 @@ note = "Terumo — medical devices. Scanned 9/10: 20th pct, tight anchor agreeme
 
 [[equity]]
 code = "7269"
-held = false
+held = true
 note = "Suzuki Motor — small cars, India via Maruti. Scanned 9/10: cheap on earnings/cash, zero net debt. India story is what the numbers cannot see"
 
 [[etf]]
 code = "1540"
-held = false
+held = true
 fx = "usd_unhedged"
 note = "Physical gold, JPY-listed but USD-priced underlying"
 
 [[etf]]
 code = "315A"
-held = false
+held = true
 fx = "jpy"
 note = "Global X Japan Banks High Dividend — rate-sensitive financials"
 
@@ -104,7 +104,7 @@ note = "Japan high dividend"
 
 [[etf]]
 code = "2559"
-held = false
+held = true
 fx = "usd_unhedged"
 note = "All-country world — overlaps 1655"
 

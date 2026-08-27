@@ -55,6 +55,9 @@ def _reason(row):
 
     bits = []
     val = row.get("valuation") or {}
+    for name in val.get("negative_yield_counted_expensive") or []:
+        bits.append(f"**{name} is negative** — ranks dear, but that is cash "
+                    f"flow, not price")
     if val.get("anchors_disagree"):
         d = val["disagreement"]
         bits.append(f"**anchors disagree** — {d['cheapest_anchor']} "
@@ -189,6 +192,9 @@ def _equity_reason(row):
 
     bits = []
     val = row.get("valuation") or {}
+    for name in val.get("negative_yield_counted_expensive") or []:
+        bits.append(f"**{name} is negative** — ranks dear, but that is cash "
+                    f"flow, not price")
     if val.get("anchors_disagree"):
         d = val["disagreement"]
         bits.append(f"**anchors disagree** — {d['cheapest_anchor']} "
@@ -295,7 +301,7 @@ def _etf_table(rows, add, delta_map, title="## ETFs", preamble=True):
 
 
 def render(rows, as_of, macro=None, folio=None, delta_map=None,
-           scorecard=None, previous_run_name=None):
+           scorecard=None, previous_run_name=None, sessions=None):
     equities = [r for r in rows if r["asset_type"] == "Equity"]
     etfs = [r for r in rows if r["asset_type"] == "ETF"]
     suspect = [r for r in rows if r.get("data_suspect")]
@@ -308,6 +314,24 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
     add("> Verdicts are the mechanical output of thresholds fixed before the "
         "data was fetched — a starting point for reading, not a conclusion.")
     add("")
+
+    sessions = sessions if sessions is not None else common.price_sessions(rows)
+    if len(sessions) > 1:
+        add(f"> **⚠ Prices are not all from the same session.** This report is "
+            f"stamped **{sessions[0][0]}** — the oldest close in it. A report "
+            f"is only as current as its stalest name, so the header takes the "
+            f"oldest date rather than the newest.")
+        add(">")
+        for day, codes in sessions:
+            add(f"> - **{day}** — {len(codes)}: {', '.join(codes)}")
+        add(">")
+        add("> The feed fills TSE single names hours after the ETFs, so a run "
+            "started before those bars land mixes sessions. Every figure "
+            "derived from price — returns, RSI, distance to the 200d, the "
+            "bands, the verdicts — is as of that name's own date above, not "
+            "the header's. Re-run once the feed has caught up before acting "
+            "on anything here.")
+        add("")
 
     if macro and macro.get("market_score") is not None:
         add(f"# Market Score: {macro['market_score']}/10 — {macro['market_label']}")
@@ -365,6 +389,17 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
     if disagree:
         add(f"- **Anchors disagree** on {', '.join(r['code'] for r in disagree)} "
             f"— the mean describes none of them, so read the anchors, not the score.")
+    negative_yield = [r for r in equities
+                      if (r.get("valuation") or {}).get("negative_yield_anchors")]
+    if negative_yield:
+        add("- **A yield anchor has gone negative** on "
+            + ", ".join(
+                f"{r['code']} ({', '.join((r['valuation'])['negative_yield_anchors'])})"
+                for r in negative_yield)
+            + " — a negative yield ranks as *dear*, which reads as an "
+              "expensive price when what actually happened is that the cash "
+              "flow turned. Read those names on the business, not the "
+              "multiple. See the section below.")
     impaired = [r for r in equities
                 if (r.get("health") or {}).get("status")
                 in (config.HEALTH_IMPAIRED, config.HEALTH_BROKEN)]
@@ -519,6 +554,47 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
                     f"before acting.")
             add("")
 
+    negative_rows = [r for r in equities
+                     if (r.get("valuation") or {}).get("negative_yield_anchors")]
+    if negative_rows:
+        add("### Yield anchors that have gone negative")
+        add("")
+        add("A yield anchor ranks *low value = dear*. That inverts correctly "
+            "while the yield is positive. Below zero it does not: there is no "
+            "yield left to be dear or cheap on, so the rank stops describing "
+            "the price and starts describing the business — while still being "
+            "counted as valuation. Read these names on the figures, not the "
+            "percentile.")
+        add("")
+        for r in negative_rows:
+            val = r["valuation"]
+            add(f"**{r['code']} {universe_mod.display_name(r)}**")
+            for name in val["negative_yield_anchors"]:
+                anchor = val["anchors"][name]
+                counted = name in (val.get("negative_yield_counted_expensive") or [])
+                add(f"- {name} **{anchor['value']:.2f}%** — ranked "
+                    f"{_ordinal(anchor['percentile'])} percentile"
+                    + (", and counted toward the expensive anchors behind this "
+                       "name's verdict" if counted else ""))
+                history = (val.get("negative_yield_history") or {}).get(name) or {}
+                if history:
+                    shown = sorted(history.items())[-4:]
+                    add("  - " + ", ".join(
+                        f"{period[:7]} {value / 1e9:,.0f}bn"
+                        for period, value in shown))
+            # Naming why the cash-flow trigger stayed silent matters more than
+            # the status: on 2502 health is IMPAIRED for entirely unrelated
+            # reasons, which makes a bare status read as though the cash flow
+            # had been caught when it had not.
+            health = r.get("health") or {}
+            fired = [t["trigger"] for t in health.get("fired", [])]
+            need = config.HEALTH_TRIGGERS["fcf_negative_consecutive_years"]
+            add(f"- health reads **{health.get('status')}**"
+                + (f", on {', '.join(fired)}" if fired else "")
+                + f" — the cash-flow trigger did not fire either way: it needs "
+                  f"{need} consecutive negative years and this is the first")
+            add("")
+
     add(f"**The scale.** Soundness 0–4 + valuation 0–4 + trend 0–2. "
         f"**8–10 BUY · 4–7 KEEP · 0–3 SELL.** Soundness is health for an "
         f"equity and structure for a fund. TRIM overrides KEEP when the thing "
@@ -542,7 +618,10 @@ def render(rows, as_of, macro=None, folio=None, delta_map=None,
 
     add("---")
     add("")
-    add(f"*Prices as of {as_of} close (JST). yfinance is a free, unofficial "
+    span = (f"{sessions[0][0]} to {sessions[-1][0]} close (JST), mixed — see "
+            f"the note at the top" if len(sessions) > 1
+            else f"{as_of} close (JST)")
+    add(f"*Prices as of {span}. yfinance is a free, unofficial "
         f"feed; verify anything you act on against the filing. Not investment "
         f"advice — every threshold is a configurable assumption.*")
     return "\n".join(out) + "\n"
@@ -606,8 +685,12 @@ def main(argv=None):
     _score_equities(rows)
     macro = macro_mod.build()
     folio = portfolio_mod.build(rows)
-    dates = sorted({r["as_of"] for r in rows if r.get("as_of")})
-    as_of = dates[-1] if dates else datetime.now().strftime("%Y-%m-%d")
+    sessions = common.price_sessions(rows)
+    # The oldest, not the newest. A run that catches the ETFs on today's close
+    # and the equities still on Friday's is a Friday report with six fresh
+    # names in it, and stamping it with the newest date is how it came to say
+    # "prices as of Monday" over thirteen Friday closes.
+    as_of = sessions[0][0] if sessions else datetime.now().strftime("%Y-%m-%d")
 
     path = common.run_dir()
     previous_verdicts, previous_run_name = deltas_mod.load_previous(path)
@@ -642,6 +725,9 @@ def main(argv=None):
     common.save_json(os.path.join(path, "indicators.json"), rows)
     common.save_json(os.path.join(path, "run_meta.json"), {
         "as_of": as_of,
+        "as_of_newest": sessions[-1][0] if sessions else as_of,
+        "price_sessions": {day: codes for day, codes in sessions},
+        "mixed_sessions": len(sessions) > 1,
         "generated_at": common.utc_now(),
         "instruments": len(rows),
         "suspect": [r["code"] for r in rows if r.get("data_suspect")],
@@ -649,7 +735,8 @@ def main(argv=None):
     })
 
     md = render(rows, as_of, macro=macro, folio=folio, delta_map=delta_map,
-                scorecard=scorecard, previous_run_name=previous_run_name)
+                scorecard=scorecard, previous_run_name=previous_run_name,
+                sessions=sessions)
     report_path = os.path.join(path, f"{as_of}-report.md")
     with open(report_path, "w") as fh:
         fh.write(md)
