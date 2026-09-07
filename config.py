@@ -27,7 +27,7 @@ SIBLING_INFO_CACHE = SIBLING_DIR + "/cache/info.json"
 
 JPX_LISTED_ISSUES_URL = (
     "https://www.jpx.co.jp/markets/statistics-equities/misc/"
-    "tvdivq0000001vg2-att/data_j.xls"
+    "tvdivq0000001vg2-att/data_j.xlsx"
 )
 
 # --------------------------------------------------------------------------

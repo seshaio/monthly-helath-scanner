@@ -13,8 +13,8 @@ pandas==3.0.5
 numpy==2.5.2
 requests==2.34.2
 
-# JPX publishes its listed-issues workbook as legacy .xls; openpyxl covers
-# .xlsx if they ever switch.
+# JPX switched its listed-issues workbook from legacy .xls to .xlsx in
+# Sept 2026; openpyxl reads it. xlrd kept for any old cached .xls.
 xlrd==2.0.2
 openpyxl==3.1.5
 lxml==6.1.2
