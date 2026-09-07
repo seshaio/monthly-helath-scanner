@@ -1,154 +1,173 @@
 [
 {
+"code": "8001",
+"price_check": "match",
+"price_observed": null,
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "RSI 69.8 is near overbought, price is 11.5% above 200d, and every valuation anchor is expensive (89–98th percentile). Business health is intact, but the 38.0% 12m rise makes the risk/reward stretched. Sep-4 close 2204 verified. ([Investing.com 日本][1])",
+"red_flags": ["RSI near 70", "valuation anchors broadly extreme"]
+},
+{
+"code": "8002",
+"price_check": "match",
+"price_observed": null,
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The business remains intact, but 12m return is 57.2% and valuation percentiles are uniformly high (84–91%). RSI 53.5 is not overbought, yet the stock is richly priced relative to its own history and near its 200d. Sep-4 close 5073 verified. ([Yahoo!ファイナンス][2])",
+"red_flags": ["broadly expensive valuation"]
+},
+{
+"code": "8031",
+"price_check": "match",
+"price_observed": null,
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Health is intact and RSI 53.4 is neutral, while price is only 2.0% below the 200d. Most valuation anchors are expensive, but FCF yield is negative and explicitly invalid as a valuation signal, so an extreme-pricing verdict would be unreliable. Sep-4 close 5019 verified. ([みんかぶ][3])",
+"red_flags": ["negative FCF yield makes valuation anchor unreliable"]
+},
+{
+"code": "8053",
+"price_check": "match",
+"price_observed": null,
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The business is intact, but 12m return is 84.3%, price is 18.3% above the 200d, and most valuation measures sit at the 98–99th percentile. RSI 59.9 is elevated but not extreme; the main concern is valuation after a large rerating. Sep-4 close 1820 verified. ([Yahoo!ファイナンス][4])",
+"red_flags": ["valuation at extreme historical percentiles", "84.3% 12m gain"]
+},
+{
 "code": "7532",
 "price_check": "match",
-"price_observed": 810.7,
+"price_observed": null,
 "verdict": "BUY",
 "confidence": "high",
-"rationale": "RSI 35.1 is near oversold, price is 11.3% below 200d, 12m return is -23.8%, and health is INTACT. Valuation is relatively favorable on most anchors and consensus implies substantial upside. The stated Aug 24 close is independently confirmed. ([Investing.com][1])"
+"rationale": "RSI 34.0 is weak, price is 14.5% below the 200d, and valuation is relatively cheap across several anchors, especially EV/EBIT 4th percentile, dividend yield 0th, and FCF yield 21st. Health is intact. The combination supports a contrarian buy. Sep-4 close 776.2 verified. ([Yahoo!ファイナンス][5])",
+"red_flags": ["price 14.5% below 200d"]
 },
 {
 "code": "6383",
 "price_check": "match",
-"price_observed": 5869.0,
-"verdict": "BUY",
+"price_observed": null,
+"verdict": "KEEP",
 "confidence": "medium",
-"rationale": "RSI 38.7 supports a contrarian entry, while price is only 1.7% below 200d after a 31.6% 12m gain. FCF yield valuation is relatively cheap, but PB is expensive and the anchors disagree. Health is INTACT. Aug 24 close is independently confirmed. ([Investing.com 한국어][2])"
-},
-{
-"code": "8001",
-"price_check": "match",
-"price_observed": 2117.5,
-"verdict": "TRIM",
-"confidence": "high",
-"rationale": "Business health is INTACT and momentum is strong, but RSI 65.4 and a 8.0% premium to 200d follow a 35.5% 12m gain. Nearly all valuation anchors are at very high percentiles. Sound business, but pricing is stretched. Aug 24 close is independently confirmed. ([Investing.com 日本][3])"
-},
-{
-"code": "8002",
-"price_check": "unchecked",
-"price_observed": null,
-"verdict": "TRIM",
-"confidence": "high",
-"rationale": "Health is INTACT, but the stock has gained 57.8% in 12 months while nearly all valuation anchors sit around the 83rd-91st percentiles. RSI 49.5 is not extreme and price is near the 200d, but valuation makes this better suited to reducing exposure than adding."
-},
-{
-"code": "8053",
-"price_check": "unchecked",
-"price_observed": null,
-"verdict": "TRIM",
-"confidence": "high",
-"rationale": "Health is INTACT, but the 81.3% 12m gain and RSI 61.0 accompany exceptionally high valuation percentiles: dividend 98, EV/EBIT 98, PB 97 and PE 97. FCF yield is less extreme, but the stock looks priced for strong expectations already."
-},
-{
-"code": "8031",
-"price_check": "unchecked",
-"price_observed": null,
-"verdict": "WAIT",
-"confidence": "medium",
-"rationale": "The stock is up 57.0% over 12 months but remains 2.2% below its 200d average. Most valuation anchors look expensive, yet the negative FCF yield makes that signal explicitly unreliable. RSI 56.8 and INTACT health do not create an urgent exit or entry."
+"rationale": "Health is intact and RSI 36.8 is near oversold, but 12m return is still +23.7%. Valuation is mixed: FCF yield is cheap at the 24th percentile while P/B is 77th and P/E 59th. This is attractive on weakness, but not a clear high-conviction buy. Sep-4 close 5661 verified. ([Yahoo!ファイナンス][6])",
+"red_flags": ["valuation anchors disagree"]
 },
 {
 "code": "1944",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
-"verdict": "BUY",
-"confidence": "high",
-"rationale": "RSI 43.6 and price 5.1% below 200d provide a reasonable entry setup after a 31.9% 12m gain. FCF yield valuation is relatively cheap, health is INTACT, and consensus indicates substantial upside. Other valuation anchors are less attractive, but not extreme."
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Health is intact and RSI 50.1 is neutral. The stock gained 34.5% over 12m, while price is only 2.5% below the 200d. Valuation is moderately expensive across most anchors, so the data supports holding rather than adding aggressively or trimming. Sep-4 close 7047 verified. ([Yahoo!ファイナンス][7])",
+"red_flags": ["valuation moderately expensive"]
 },
 {
 "code": "2502",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
 "verdict": "SELL",
 "confidence": "high",
-"rationale": "The business itself has deteriorated: operating margin fell from 9.2% to 6.4%, and net debt/EBITDA is 4.01x, just above the trigger. The stock is also down 12.7% over 12 months. This is deterioration rather than simply an extreme valuation."
+"rationale": "Health is impaired: operating margin fell from 9.2% to 6.4%, and net debt/EBITDA reached 4.01x against a 4.00x trigger. Returns are -11.6%. Valuation anchors also conflict, but business deterioration is the decisive issue. Sep-4 close 1639 verified. ([Yahoo!ファイナンス][8])",
+"red_flags": ["operating-margin deterioration", "net debt/EBITDA trigger fired"]
 },
 {
 "code": "7974",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
 "verdict": "WAIT",
-"confidence": "medium",
-"rationale": "The stock is down 37.3% over 12 months and remains 3.4% below 200d, but RSI is 64.8 rather than oversold. Health is WATCH after an 869bp operating-margin decline. Valuation is mixed, so the combination argues for waiting for stabilization rather than buying aggressively."
+"confidence": "high",
+"rationale": "The stock fell 34.3% over 12m, but valuation is not clearly cheap and RSI is 59.5. More importantly, health is WATCH because operating margin dropped from 24.3% to 15.6%. The deterioration is material, but the pack does not classify it as impaired. Sep-4 close 8839 verified. ([Yahoo!ファイナンス][9])",
+"red_flags": ["operating margin down 869bp"]
 },
 {
 "code": "8766",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
-"verdict": "BUY",
+"verdict": "TRIM",
 "confidence": "high",
-"rationale": "RSI 37.4 is attractive for entry while price remains 9.3% above 200d, indicating a pullback within an established trend. Health is INTACT, dividend yield is 3.0%, and consensus implies upside. Valuation is elevated on PE, but not enough to negate the setup."
+"rationale": "Health is intact, but price is 18.4% above the 200d after a 25.4% 12m gain. P/E is at the 95th percentile, while P/B and dividend yield are also expensive. RSI 62.0 is elevated. The pack supports reducing exposure without exiting. Sep-4 close 7976 verified. ([Yahoo!ファイナンス][10])",
+"red_flags": ["high valuation percentile", "18.4% above 200d"]
 },
 {
 "code": "7701",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
 "verdict": "BUY",
 "confidence": "high",
-"rationale": "Valuation is consistently favorable versus its five-year history, with percentiles mostly around 17-22. Health is INTACT, price is 2.0% above 200d, and RSI 50.5 is neutral. Combined with 23.3% 12m growth and consensus upside, this is one of the cleaner setups."
+"rationale": "RSI 33.0 signals weakness, while price is 4.7% below the 200d and 12m return is only 6.0%. Valuation is unusually cheap across the pack: EV/EBIT 6th, FCF yield 11th, P/B 5th, and P/E 8th percentiles. Health is intact. Sep-4 close 3846 verified. ([Yahoo!ファイナンス][11])",
+"red_flags": ["RSI near oversold"]
 },
 {
 "code": "4543",
-"price_check": "unchecked",
-"price_observed": null,
-"verdict": "KEEP",
-"confidence": "medium",
-"rationale": "Health is INTACT and valuation percentiles are generally favorable, while price is 16.6% above 200d. However, RSI 61.9 limits immediate entry appeal and the 12m return is -3.9%. Fundamentals look sound, but the current position does not require aggressive action."
-},
-{
-"code": "7269",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
 "verdict": "BUY",
 "confidence": "high",
-"rationale": "Valuation is attractive across EV/EBIT, FCF yield and PE, with several anchors in the lower historical percentiles. Health is INTACT, price is 2.6% above 200d, and RSI 58.9 is still reasonable. A 20.7% 12m gain does not look excessive relative to the valuation."
+"rationale": "Health is intact, price is down 10.0% over 12m, and valuation is cheap across the main anchors, with dividend yield, FCF yield, P/B and P/E all in the 12–23rd percentiles. RSI 45.8 is neutral and price remains 9.1% above the 200d. Sep-4 close 2432 verified. ([Yahoo!ファイナンス][12])",
+"red_flags": ["12m return -10.0%"]
+},
+{
+"code": "7269",
+"price_check": "match",
+"price_observed": null,
+"verdict": "BUY",
+"confidence": "high",
+"rationale": "Health is intact, RSI 47.6 is neutral, and price is essentially at the 200d (-0.1%). Valuation is attractive: EV/EBIT 32nd, FCF yield 18th, P/E 22nd and P/B 42nd percentiles. With only a 6.6% 12m gain, the pack supports buying rather than trimming. Sep-4 close 2067 verified. ([Yahoo!ファイナンス][13])",
+"red_flags": ["trend near 200d is flat"]
 },
 {
 "code": "1540",
-"price_check": "unchecked",
-"price_observed": null,
-"verdict": "TRIM",
-"confidence": "high",
-"rationale": "RSI 71.8 is above the classic overbought threshold after a 48.1% 12m gain. This ETF has no earnings-based health signal, so the strongest pack-supported conclusion is price exhaustion rather than business deterioration. Reduce exposure rather than exit the instrument entirely."
-},
-{
-"code": "315A",
-"price_check": "unchecked",
-"price_observed": null,
-"verdict": "TRIM",
-"confidence": "medium",
-"rationale": "The ETF is up 77.1% over 12 months while its underlying index is valued about 22% above the 13x reference. RSI 44.8 is not overbought, but the price appreciation and valuation scenario are extended. Modest AUM also increases structural risk."
-},
-{
-"code": "1478",
-"price_check": "unchecked",
-"price_observed": null,
-"verdict": "WAIT",
-"confidence": "medium",
-"rationale": "The ETF gained 38.8% over 12 months and its underlying index trades about 11% above the reference valuation. RSI 59.3 is neutral-to-firm, while the 0.28% spread is explicitly wide. The pack does not show a compelling fresh entry advantage."
-},
-{
-"code": "2559",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
 "verdict": "KEEP",
 "confidence": "medium",
-"rationale": "The ETF has delivered a 33.7% 12m gain with RSI 51.8 and a tight 0.03% spread. Its AUM is substantial. The underlying P/E is explicitly marked implausible and not scored, so there is insufficient reliable valuation evidence to justify either a buy or trim."
+"rationale": "Gold has risen 40.8% over 12m, but RSI is only 49.0, so the pack does not show an overbought extreme. It has no earnings-based valuation signal. With USD unhedged exposure and no deterioration trigger, the data supports holding rather than trimming solely on performance. Sep-4 close 20930 verified. ([Yahoo!ファイナンス][14])",
+"red_flags": ["40.8% 12m gain"]
+},
+{
+"code": "315A",
+"price_check": "match",
+"price_observed": null,
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "The ETF gained 78.1% over 12m and its index trades at 17.0x versus a 13x reference, a 31% premium. RSI 59.4 is elevated. AUM is modest at ¥24bn, adding structural risk. The pack supports reducing exposure after the major rerating. Sep-4 close 1990 verified. ([Yahoo!ファイナンス][15])",
+"red_flags": ["78.1% 12m gain", "31% valuation premium", "modest AUM"]
+},
+{
+"code": "1478",
+"price_check": "match",
+"price_observed": null,
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "The ETF gained 33.7% over 12m, but RSI 57.6 is not extreme. Its index trades at 14.6x versus a 13x reference, only a 12% premium. Compared with 315A, the valuation stretch is smaller, supporting continued holding rather than trimming. Sep-4 close 5387 verified. ([Yahoo!ファイナンス][16])",
+"red_flags": ["12% valuation premium"]
+},
+{
+"code": "2559",
+"price_check": "match",
+"price_observed": null,
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "The ETF gained 31.5% over 12m, while RSI 45.1 is neutral. The pack explicitly marks its underlying P/E of 3.0 as implausible and excludes it from scoring, so there is no reliable valuation signal. With no other deterioration flag, KEEP is the defensible choice. Sep-4 close 2980 verified. ([Yahoo!ファイナンス][17])",
+"red_flags": ["underlying P/E is implausible and unscored"]
 },
 {
 "code": "1655",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "The ETF gained 31.4% over 12 months while its underlying index trades at 25.6x versus an 18x reference, a 42% premium. RSI 48.8 is not stretched, but the valuation gap is the clearest pack-supported reason to reduce exposure rather than add."
+"rationale": "The ETF gained 29.6% over 12m, while its index trades at 25.3x versus an 18x reference, a 41% premium. RSI 45.1 is neutral, so this is primarily a valuation decision rather than a momentum signal. The pack supports reducing exposure at this premium. Sep-4 close 872.6 verified. ([Yahoo!ファイナンス][18])",
+"red_flags": ["41% valuation premium"]
 },
 {
 "code": "1658",
-"price_check": "unchecked",
+"price_check": "match",
 "price_observed": null,
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "The ETF is up 45.4% over 12 months while the underlying index trades 30% above the 13x reference. RSI 50.1 is neutral, but the 0.42% spread and modest AUM add structural friction. Valuation and liquidity concerns favor reducing rather than adding."
+"rationale": "The ETF gained 44.7% over 12m, and the underlying index trades at 17.2x versus a 13x reference, a 33% premium. RSI 51.2 is neutral. The 0.41% spread and modest ¥29bn AUM also make exits costlier. The pack supports trimming rather than adding. Sep-4 close 4360 verified. ([Yahoo!ファイナンス][19])",
+"red_flags": ["33% valuation premium", "0.41% spread", "modest AUM"]
 }
 ]

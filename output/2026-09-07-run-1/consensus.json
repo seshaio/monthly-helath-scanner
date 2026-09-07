@@ -1,0 +1,378 @@
+{
+  "agreement": {
+    "1478": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    },
+    "1540": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP"
+      }
+    },
+    "1655": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "S&P 500 index valuation is high (+41% vs reference multiple), but solid 12m returns (+29.6%), neutral RSI (45.1), and calm US macro conditions (VIX 15) support holding.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "1658": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "Strong 12m performance (+44.7%) with neutral momentum (RSI 51.2). Elevated index P/E (+33% vs reference) and wide spread (0.41%) warrant maintaining current exposure.",
+          "verdict": "KEEP"
+        },
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "SELL"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "SELL",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "SELL"
+      }
+    },
+    "1944": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    },
+    "2502": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "Impaired: 273bp margin fall, 4.01x net debt/EBITDA, negative FCF. But pb 0.82 (11th pct) already prices distress, and the leverage trigger cleared threshold by 0.01x. Beyond pack: a prior operational disruption may explain the margin hit. Results in 59 days.",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "SELL",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "WAIT",
+        "gemni": "SELL",
+        "gpt": "SELL",
+        "mechanical": "SELL"
+      }
+    },
+    "2559": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP"
+      }
+    },
+    "315A": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "Strong 12m momentum (+78.1%) supported by BOJ rate normalization macro tailwind. Index P/E is elevated (+31% vs reference), but macro backdrop remains favorable.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "4543": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "6383": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    },
+    "7269": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7532": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7701": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7974": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "WAIT",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "8001": {
+      "dissents": [],
+      "spread": [
+        "TRIM"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8002": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8031": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "TRIM"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "TRIM"
+      }
+    },
+    "8053": {
+      "dissents": [],
+      "spread": [
+        "TRIM"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8766": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "KEEP"
+      }
+    }
+  },
+  "price_disputes": {},
+  "price_unchecked": {
+    "1478": [
+      "claude",
+      "gemni"
+    ],
+    "1540": [
+      "claude",
+      "gemni"
+    ],
+    "1655": [
+      "claude",
+      "gemni"
+    ],
+    "1658": [
+      "claude",
+      "gemni"
+    ],
+    "1944": [
+      "claude",
+      "gemni"
+    ],
+    "2502": [
+      "claude",
+      "gemni"
+    ],
+    "2559": [
+      "claude",
+      "gemni"
+    ],
+    "315A": [
+      "claude",
+      "gemni"
+    ],
+    "4543": [
+      "claude",
+      "gemni"
+    ],
+    "6383": [
+      "claude",
+      "gemni"
+    ],
+    "7269": [
+      "claude",
+      "gemni"
+    ],
+    "7532": [
+      "claude",
+      "gemni"
+    ],
+    "7701": [
+      "claude",
+      "gemni"
+    ],
+    "7974": [
+      "claude",
+      "gemni"
+    ],
+    "8001": [
+      "claude",
+      "gemni"
+    ],
+    "8002": [
+      "claude",
+      "gemni"
+    ],
+    "8031": [
+      "claude",
+      "gemni"
+    ],
+    "8053": [
+      "claude",
+      "gemni"
+    ],
+    "8766": [
+      "claude",
+      "gemni"
+    ]
+  }
+}

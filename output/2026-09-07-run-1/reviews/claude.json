@@ -1,0 +1,201 @@
+{
+  "ingested_at": "2026-09-07T01:07:49.072797+00:00",
+  "model": "claude",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 14.6x vs 13x is the mildest premium (+12%) among the scored ETFs, JPY-denominated with adequate AUM (¥148bn) and a 0.07% spread. Japan domestic lens is +1. RSI 57.6 is unremarkable after +33.7%.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "No valuation anchor exists for a commodity, so hold it for its role. RSI 49 is neutral after +40.8% 12m; macro geopolitics scores 0 (gold +3.2% 3m), so no stress premium to fade. AUM ¥1,476bn, 0.02% spread.",
+      "red_flags": [
+        "usd_unhedged alongside 2559 and 1655: the yen leg is a shared exposure, not diversification"
+      ],
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Richest premium in the pack: 25.3x vs an 18x reference (+41%). The AI lens is neutral (SOX -4.0% 3m), so nothing is breaking, only expensive. Exposure is duplicated inside 2559, which argues for reducing here first.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index +33% over reference (17.2x vs 13x) after +44.7% 12m, in the least liquid holding here. Low confidence because the 0.41% spread makes trimming costly, but that cost only widens if it has to be done under stress.",
+      "red_flags": [
+        "0.41% spread and ¥29bn AUM: exit costs bite",
+        "foreign_unhedged, a third currency leg not covered by the portfolio's usd_unhedged grouping"
+      ],
+      "verdict": "TRIM"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Mid-rich anchors (69-80) offset by fcf_yield 38th pct at a real 6.28%. Health intact, RSI 50.1, -2.5% vs 200d after +34.5%. Neither cheap enough to add nor extreme enough to trim.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Impaired: 273bp margin fall, 4.01x net debt/EBITDA, negative FCF. But pb 0.82 (11th pct) already prices distress, and the leverage trigger cleared threshold by 0.01x. Beyond pack: a prior operational disruption may explain the margin hit. Results in 59 days.",
+      "red_flags": [
+        "4.01x leverage with negative FCF puts the 3.17% dividend at risk",
+        "pe 95th pct against pb 11th pct: earnings are depressed, not the price high"
+      ],
+      "verdict": "WAIT"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Core global exposure with adequate liquidity (¥128bn, 0.07%) and RSI 45.1 after +31.5%. Low confidence because the underlying P/E of 3.0 is implausible and unscored, so there is no valuation input at all here.",
+      "red_flags": [
+        "no usable valuation anchor",
+        "overlaps 1655 on US weight and shares usd_unhedged with 1540 and 1655"
+      ],
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "+78.1% over 12m with the underlying index at 17.0x against a 13x reference (+31%). The BOJ normalization thesis is intact, which is why this is a trim, not a sell. Small fund adds a reason to take the gain.",
+      "red_flags": [
+        "AUM ¥24bn is modest",
+        "NAV premium cannot be checked: the feed's navPrice is flagged unreliable for this fund"
+      ],
+      "verdict": "TRIM"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "All five anchors cluster 12th-23rd pct with health intact, and price is already recovering (+9.1% vs 200d) after -10% 12m. Medium, not high: absolute PE 26.4 and ev_ebit 20.3 mean this is cheap only against its own history.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Anchors contradict: fcf_yield 24th pct against pb 77th, so no coherent valuation read. Health intact, RSI 36.8 and -5.8% vs 200d after +23.7% 12m. Nothing here argues for adding or cutting.",
+      "red_flags": [
+        "anchor disagreement (fcf 24 vs pb 77) makes any single valuation verdict unreliable"
+      ],
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Cheap in absolute terms as well as historically: ev_ebit 4.95, PE 9.08, FCF yield 7.36%, pb 1.18, all at or below the 42nd pct. Health intact, price flat on the 200d, RSI 47.6.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Cheapest anchors in the pack vs own 5y (ev_ebit 4th pct, pb 20th), health intact, RSI 34 and -14.5% below 200d. Price fell 28.7% with no trigger fired. Absolute PE 25.7 keeps this medium, not high.",
+      "red_flags": [
+        "-28.7% 12m with health INTACT: price may be discounting deterioration the triggers have not yet caught"
+      ],
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Every anchor between 5th and 15th pct with no disagreement, health intact, absolute multiples sane (ev_ebit 11.7, pb 2.0). RSI 33 and -4.7% vs 200d after a flat 12m (+6.0%). Cheapest coherent read in the pack.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "869bp margin fall is the largest deterioration in the pack, but -34.3% over 12m has already repriced it and valuation is mid-range (ev_ebit 50th, pb 35th), not stretched. Health is WATCH, not impaired.",
+      "red_flags": [
+        "sell-side range 5,000-21,260 on n=25 is not a consensus; the mean of 10,487 carries no information"
+      ],
+      "verdict": "KEEP"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Every anchor 89th-99th pct vs own 5y, RSI 69.8, +11.5% above 200d after +38% 12m. Sound business, extended price. Medium only because absolute PE 17.2 is moderate: the percentiles may be capturing a structural re-rating.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Percentiles rich (84-91) but price sits on the 200d (-0.3%) with RSI 53.5, so momentum already cooled after +57.2%. Absolute ev_ebit 13.8 and PE 18.2 are not extremes. Health intact.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Remaining anchors are rich (81-91) but price is below the 200d (-2.0%) with RSI 53.4, and the 93rd-pct fcf reading is void per the pack's note. The negative -1.08% FCF is a business fact, not an expensive multiple.",
+      "red_flags": [
+        "negative FCF yield: watch whether the capex cycle converts to cash at results"
+      ],
+      "verdict": "KEEP"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Four anchors at 98-99th pct, +84.3% 12m, +18.3% above 200d. Most extended name in the book. Tempered by a real 8.07% FCF yield (57th pct) and absolute PE 14.6, so reduce rather than exit.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "PE 95th pct at an absolute 28.6x is rich for a P&C insurer, with price +18.4% above the 200d and RSI 62. Sound and intact, so reduce rather than exit.",
+      "red_flags": [
+        "only three anchors scored: no ev_ebit or fcf cross-check on the PE reading"
+      ],
+      "verdict": "TRIM"
+    }
+  }
+}

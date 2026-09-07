@@ -1,0 +1,73 @@
+{
+  "dashboard": {
+    "gold": {
+      "chg_3m_pct": 3.245005615476626,
+      "level": 4476.60009765625
+    },
+    "nikkei": {
+      "chg_3m_pct": 3.5843887646216155,
+      "level": 66319.4921875
+    },
+    "sox": {
+      "chg_3m_pct": -3.9727480885896505,
+      "level": 11735.259765625
+    },
+    "sp500": {
+      "chg_3m_pct": 4.5350981027516335,
+      "level": 7718.60009765625
+    },
+    "topix": {
+      "chg_3m_pct": 7.481001560291967,
+      "level": 431.1000061035156
+    },
+    "us10y": {
+      "chg_3m_pct": 5.467375601052948,
+      "level": 4.783999919891357
+    },
+    "us13w": {
+      "chg_3m_pct": 3.641378468480605,
+      "level": 3.756999969482422
+    },
+    "usdjpy": {
+      "chg_3m_pct": -2.777709594758826,
+      "level": 155.9290008544922
+    },
+    "vix": {
+      "chg_3m_pct": -32.45002520519959,
+      "level": 14.529999732971191
+    },
+    "wti": {
+      "chg_3m_pct": 0.19715257301113898,
+      "level": 91.4800033569336
+    }
+  },
+  "lenses": {
+    "ai_bubble": {
+      "basis": "SOX -4.0% over 3m — neither breaking nor frothing",
+      "name": "AI bubble",
+      "score": 0
+    },
+    "geopolitics": {
+      "basis": "WTI +0.2%, gold +3.2% over 3m — calm",
+      "name": "War / geopolitics",
+      "score": 0
+    },
+    "japan_domestic": {
+      "basis": "TOPIX (via 1306) +7.5% over 3m — a real uptrend [equity trend only — no JGB/CPI in this feed]",
+      "name": "Japan domestic",
+      "score": 1
+    },
+    "us_recession": {
+      "basis": "10y−13w +1.03pp, VIX 15 — positive curve, calm volatility",
+      "name": "US recession",
+      "score": 1
+    },
+    "usdjpy": {
+      "basis": "USD/JPY 156, -2.8% over 3m — stable, which is what this portfolio wants",
+      "name": "USD/JPY",
+      "score": 1
+    }
+  },
+  "market_label": "NEUTRAL",
+  "market_score": 6
+}
