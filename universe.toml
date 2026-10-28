@@ -84,6 +84,26 @@ code = "7269"
 held = true
 note = "Suzuki Motor — small cars, India via Maruti. Scanned 9/10: cheap on earnings/cash, zero net debt. India story is what the numbers cannot see"
 
+[[equity]]
+code = "5333"
+held = false
+note = "NGK Insulators — ceramics, insulators, NAS batteries. Added 2026-10-28"
+
+[[equity]]
+code = "1801"
+held = false
+note = "Taisei — general construction. Added 2026-10-28"
+
+[[equity]]
+code = "2802"
+held = false
+note = "Ajinomoto — food, amino acids, ABF semiconductor film. Added 2026-10-28"
+
+[[equity]]
+code = "6758"
+held = false
+note = "Sony Group — games, music, image sensors. Added 2026-10-28"
+
 [[etf]]
 code = "1540"
 held = true
