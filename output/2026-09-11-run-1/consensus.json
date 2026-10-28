@@ -1,0 +1,410 @@
+{
+  "agreement": {
+    "1478": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "BUY"
+      }
+    },
+    "1540": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP"
+      }
+    },
+    "1655": {
+      "dissents": [],
+      "spread": [
+        "TRIM",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "WAIT",
+        "gpt": "WAIT",
+        "mechanical": "TRIM"
+      }
+    },
+    "1658": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    },
+    "1944": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    },
+    "2502": {
+      "dissents": [],
+      "spread": [
+        "SELL"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "SELL",
+        "gemni": "SELL",
+        "gpt": "SELL",
+        "mechanical": "SELL"
+      }
+    },
+    "2559": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "The valuation anchor is unusable (P/E 2.9 implausible), so no extreme can be asserted. RSI 29.6 is oversold. Confidence low by construction. Outside pack: ACWI's weight sits in the same US large-caps as 1655 and 1540's USD exposure.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "BUY",
+        "gpt": "BUY"
+      }
+    },
+    "315A": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "+74.2% in 12m has carried the index to 15.4x against a 13x reference (+18%) — the widest domestic premium here. The BOJ scenario note is dated 2026-08-21 and already in the price. Reduce; the rate thesis itself is unbroken.",
+          "verdict": "TRIM"
+        },
+        {
+          "model": "gpt",
+          "rationale": "The verified 2026-09-11 close is 1,963. After a 74.2% 12m gain, RSI is 54.2 and the underlying index is 18% above the reference valuation. The fund is not flagged at a NAV premium, but entry is not compelling. ([Investing.com Nigeria][7]) ",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "KEEP",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "4543": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "6383": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    },
+    "7269": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7532": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7701": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7974": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "WAIT",
+        "gemni": "WAIT",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "8001": {
+      "dissents": [],
+      "spread": [
+        "TRIM"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8002": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8031": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "TRIM"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "TRIM"
+      }
+    },
+    "8053": {
+      "dissents": [],
+      "spread": [
+        "TRIM"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8766": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "PE 28.55 at the 95th percentile of its own 5y range, pb 84th, and 17.4% above the 200d. Health intact and only three anchors available, hence TRIM not SELL — but the multiple is the extreme here.",
+          "verdict": "TRIM"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    }
+  },
+  "price_disputes": {
+    "1655": [
+      {
+        "model": "gpt",
+        "observed": 846.0,
+        "rationale": "Verified 2026-09-11 close is 846.0 versus 846.2 in the pack. RSI 30.4 is attractive, but the underlying index is 31% above its reference valuation, while AI-bubble and USD risks are both headwinds. ([Investing.com South Africa][9]) "
+      }
+    ],
+    "8002": [
+      {
+        "model": "gpt",
+        "observed": 5027.0,
+        "rationale": "Verified 2026-09-11 close is 5,027, not 5,049. Even using the pack metrics, 12m +52.9% and valuation percentiles mostly 83–91 indicate an expensive run; health is intact. ([Investing.com 日本][2]) "
+      }
+    ],
+    "8053": [
+      {
+        "model": "gpt",
+        "observed": 1827.0,
+        "rationale": "Verified 2026-09-11 close is 1,827, not 1,822. The stock gained 81.0% over 12m while RSI is 56.9 and most valuation measures sit at 98th–99th percentiles. Health remains intact. ([Investing.com 한국어][3]) "
+      }
+    ]
+  },
+  "price_unchecked": {
+    "1478": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "1540": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "1655": [
+      "claude",
+      "gemni"
+    ],
+    "1658": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "1944": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "2502": [
+      "claude",
+      "gemni"
+    ],
+    "2559": [
+      "claude",
+      "gemni"
+    ],
+    "315A": [
+      "claude",
+      "gemni"
+    ],
+    "4543": [
+      "claude",
+      "gemni"
+    ],
+    "6383": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "7269": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "7532": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "7701": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "7974": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "8001": [
+      "claude",
+      "gemni"
+    ],
+    "8002": [
+      "claude",
+      "gemni"
+    ],
+    "8031": [
+      "claude",
+      "gemni",
+      "gpt"
+    ],
+    "8053": [
+      "claude",
+      "gemni"
+    ],
+    "8766": [
+      "claude",
+      "gemni"
+    ]
+  }
+}

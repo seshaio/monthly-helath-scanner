@@ -1,0 +1,173 @@
+{
+  "1478": {
+    "health_status": null,
+    "price": 5319.0,
+    "score": 8,
+    "structural_score": 4,
+    "trend_score": 2,
+    "valuation_score": 2,
+    "verdict": "BUY"
+  },
+  "1540": {
+    "health_status": null,
+    "price": 20050.0,
+    "score": null,
+    "structural_score": 4,
+    "trend_score": 1,
+    "valuation_score": null,
+    "verdict": "—"
+  },
+  "1655": {
+    "health_status": null,
+    "price": 846.2000122070312,
+    "score": 6,
+    "structural_score": 4,
+    "trend_score": 2,
+    "valuation_score": 0,
+    "verdict": "TRIM"
+  },
+  "1658": {
+    "health_status": null,
+    "price": 4250.0,
+    "score": 5,
+    "structural_score": 1,
+    "trend_score": 2,
+    "valuation_score": 2,
+    "verdict": "KEEP"
+  },
+  "1944": {
+    "health_status": "INTACT",
+    "price": 6756.0,
+    "score": 6,
+    "structural_score": null,
+    "trend_score": 1,
+    "valuation_score": 1,
+    "verdict": "KEEP"
+  },
+  "2502": {
+    "health_status": "IMPAIRED",
+    "price": 1586.5,
+    "score": 3,
+    "structural_score": null,
+    "trend_score": 0,
+    "valuation_score": 2,
+    "verdict": "SELL"
+  },
+  "2559": {
+    "health_status": null,
+    "price": 2893.0,
+    "score": null,
+    "structural_score": 4,
+    "trend_score": 2,
+    "valuation_score": null,
+    "verdict": "—"
+  },
+  "315A": {
+    "health_status": null,
+    "price": 1963.0,
+    "score": 6,
+    "structural_score": 3,
+    "trend_score": 2,
+    "valuation_score": 1,
+    "verdict": "KEEP"
+  },
+  "4543": {
+    "health_status": "INTACT",
+    "price": 2246.0,
+    "score": 9,
+    "structural_score": null,
+    "trend_score": 1,
+    "valuation_score": 4,
+    "verdict": "BUY"
+  },
+  "6383": {
+    "health_status": "INTACT",
+    "price": 5429.0,
+    "score": 7,
+    "structural_score": null,
+    "trend_score": 1,
+    "valuation_score": 2,
+    "verdict": "KEEP"
+  },
+  "7269": {
+    "health_status": "INTACT",
+    "price": 2047.0,
+    "score": 8,
+    "structural_score": null,
+    "trend_score": 1,
+    "valuation_score": 3,
+    "verdict": "BUY"
+  },
+  "7532": {
+    "health_status": "INTACT",
+    "price": 726.0999755859375,
+    "score": 8,
+    "structural_score": null,
+    "trend_score": 0,
+    "valuation_score": 4,
+    "verdict": "BUY"
+  },
+  "7701": {
+    "health_status": "INTACT",
+    "price": 3742.0,
+    "score": 9,
+    "structural_score": null,
+    "trend_score": 1,
+    "valuation_score": 4,
+    "verdict": "BUY"
+  },
+  "7974": {
+    "health_status": "WATCH",
+    "price": 8093.0,
+    "score": 4,
+    "structural_score": null,
+    "trend_score": 0,
+    "valuation_score": 2,
+    "verdict": "KEEP"
+  },
+  "8001": {
+    "health_status": "INTACT",
+    "price": 2294.0,
+    "score": 6,
+    "structural_score": null,
+    "trend_score": 2,
+    "valuation_score": 0,
+    "verdict": "TRIM"
+  },
+  "8002": {
+    "health_status": "INTACT",
+    "price": 5049.0,
+    "score": 5,
+    "structural_score": null,
+    "trend_score": 1,
+    "valuation_score": 0,
+    "verdict": "TRIM"
+  },
+  "8031": {
+    "health_status": "INTACT",
+    "price": 5060.0,
+    "score": 5,
+    "structural_score": null,
+    "trend_score": 1,
+    "valuation_score": 0,
+    "verdict": "TRIM"
+  },
+  "8053": {
+    "health_status": "INTACT",
+    "price": 1822.0,
+    "score": 6,
+    "structural_score": null,
+    "trend_score": 2,
+    "valuation_score": 0,
+    "verdict": "TRIM"
+  },
+  "8766": {
+    "health_status": "INTACT",
+    "price": 7970.0,
+    "score": 6,
+    "structural_score": null,
+    "trend_score": 2,
+    "valuation_score": 0,
+    "verdict": "KEEP"
+  }
+}

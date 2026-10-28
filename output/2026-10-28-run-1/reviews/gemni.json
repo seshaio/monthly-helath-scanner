@@ -1,0 +1,182 @@
+{
+  "ingested_at": "2026-10-28T01:07:44.814009+00:00",
+  "model": "gemni",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index trades at an attractive P/E discount (10.2x vs 13x reference) with solid 12m momentum (+31.3%) and liquid AUM (¥146bn). Buy.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Low RSI (30.9) indicates oversold conditions for gold, backed by massive AUM (¥1,515bn) and zero spread. Keep.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Stretched index valuation (24.5x P/E vs 18x reference, +36%) suggests trimming despite robust AUM (¥192bn) and steady 12m return (+18.4%).",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation is close to reference (13.5x vs 13x) and RSI is low (35.0), suggesting holding despite wider spread (0.27%).",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Mixed valuations with cheap dividend yield (2nd percentile) and healthy status support keeping. Significant upside to consensus mean (9,292).",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is impaired by operating margin compression and elevated leverage (4.01x net debt/EBITDA), indicating fundamental business deterioration. Sell.",
+      "red_flags": [
+        "Operating margin fell 273bp to 6.4%",
+        "Net debt / EBITDA 4.01x exceeds threshold"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Reliable core global equity exposure with zero spread and substantial AUM (¥136bn) despite uninterpretable underlying P/E. Keep.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Strong 12m performance (+57.1%) and constructive bank fundamentals under BOJ normalization support keeping, despite modest AUM (¥23bn).",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Low valuation percentiles (PE/PB at 16th percentile) combined with intact health and solid upside to consensus (3,012) make it a buy.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Mixed valuation percentiles and weak RSI (36.6) suggest holding. Health is intact with solid upside to consensus mean (7,471).",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Moderate valuation percentiles (PE 25th), intact health, and stable price action support keeping.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Low valuation percentiles (pe 3rd, pb 3rd) and strong upside to sell-side mean (1,011) support a BUY despite 12m decline (-20.2%).",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Mid-range valuation percentiles, intact health, and steady momentum (RSI 66.2) support keeping the position.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is on watch due to a severe operating margin fall (-869bp). Wait for fundamental stabilization despite attractive 12m decline.",
+      "red_flags": [
+        "Operating margin dropped 869bp to 15.6%"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation percentiles near 100 (pe 100, ev_ebit 100) and strong 12m performance indicate extreme pricing. Trim to lock in gains.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation percentiles of 85-92 across multiples indicate expensive pricing following a 36.8% 12m gain. TRIM to reduce exposure.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "High valuation percentiles (pe 91, ev_ebit 93) and strong 12m performance (+40.7%) suggest trimming, accounting for negative FCF yield.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "High valuation percentiles (pe/pb 97) and robust 12m return (+62.9%) make the stock expensive. Trim position.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Extreme 12m return (+80.3%), overbought RSI (73.4), and peak valuation percentiles (pe and pb at 100) warrant trimming.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    }
+  }
+}

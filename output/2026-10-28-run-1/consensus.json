@@ -1,0 +1,425 @@
+{
+  "agreement": {
+    "1478": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "1540": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "External check confirms the 2026-10-27 close. RSI 30.9 and a 4.7% annual decline suggest a pullback that may offer an entry. Gold has no earnings valuation anchor, so the decision is based on price weakness rather than business fundamentals. citeturn628722search2",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "BUY"
+      }
+    },
+    "1655": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "Index at 24.5x against an 18x reference (+36%) is expensive. But RSI 48.8 shows no momentum extreme, and the AI and recession lenses are both +1. It is a core holding, so hold rather than add. Unhedged USD with USD/JPY at 158 adds downside if the yen strengthens.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "1658": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "External check confirms the 2026-10-27 close. RSI 35.0 indicates a pullback after an 18.4% annual gain, while the underlying index P/E is only 4% above its 13x reference. Accumulation is reasonable, but modest AUM and a 0.27% spread warrant caution. citeturn791906search1",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "BUY",
+        "mechanical": "KEEP"
+      }
+    },
+    "1944": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "Mixed valuations with cheap dividend yield (2nd percentile) and healthy status support keeping. Significant upside to consensus mean (9,292).",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "WAIT",
+        "gemni": "KEEP",
+        "gpt": "WAIT",
+        "mechanical": "WAIT"
+      }
+    },
+    "2502": {
+      "dissents": [],
+      "spread": [
+        "SELL"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "SELL",
+        "gemni": "SELL",
+        "gpt": "SELL",
+        "mechanical": "SELL"
+      }
+    },
+    "2559": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP"
+      }
+    },
+    "315A": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "KEEP"
+      }
+    },
+    "4543": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "6383": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "External check confirms the 2026-10-27 close. RSI 36.6 and a 14.8% discount to the 200-day average indicate weakness, while valuation anchors disagree. Wait for stabilization and the upcoming report before committing. citeturn694756search4",
+          "verdict": "WAIT"
+        },
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "WAIT",
+        "mechanical": "BUY"
+      }
+    },
+    "7269": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "Moderate valuation percentiles (PE 25th), intact health, and stable price action support keeping.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "KEEP",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7532": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "External check confirms the 2026-10-27 close. Valuation anchors at the 2nd–9th percentiles are attractive and health is intact, but the price remains 15.1% below its 200-day average. Wait for trend stabilization before buying. citeturn628722search1",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "WAIT",
+        "mechanical": "BUY"
+      }
+    },
+    "7701": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "BUY"
+      }
+    },
+    "7974": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "WAIT",
+        "gemni": "WAIT",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "8001": {
+      "dissents": [],
+      "spread": [
+        "TRIM"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8002": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "Valuation is rich, with anchors at the 85th–92nd percentile and PE at the 90th, but less extreme than 8001. Price is 1.4% below the 200d, so the trend is not stretched, and RSI is 62.7. Health intact. Consensus mean 5,887 is about 16% above the price. Results in 7 days.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8031": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "KEEP"
+      }
+    },
+    "8053": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "PE, PB and EV/EBIT are at the 97th–98th percentile after +62.9% over 12m, which argues for TRIM. Against that, FCF yield of 8.28% is only at the 57th percentile, so cash generation has kept pace with the price. Price is 10.4% above the 200d, RSI 55.4, health intact. A borderline call between KEEP and TRIM. Results in 5 days.",
+          "verdict": "KEEP"
+        },
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "WAIT"
+      }
+    },
+    "8766": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "KEEP"
+      }
+    }
+  },
+  "price_disputes": {},
+  "price_unchecked": {
+    "1478": [
+      "claude",
+      "gemni"
+    ],
+    "1540": [
+      "claude",
+      "gemni"
+    ],
+    "1655": [
+      "claude",
+      "gemni"
+    ],
+    "1658": [
+      "claude",
+      "gemni"
+    ],
+    "1944": [
+      "claude",
+      "gemni"
+    ],
+    "2502": [
+      "claude",
+      "gemni"
+    ],
+    "2559": [
+      "claude",
+      "gemni"
+    ],
+    "315A": [
+      "claude",
+      "gemni"
+    ],
+    "4543": [
+      "claude",
+      "gemni"
+    ],
+    "6383": [
+      "claude",
+      "gemni"
+    ],
+    "7269": [
+      "claude",
+      "gemni"
+    ],
+    "7532": [
+      "claude",
+      "gemni"
+    ],
+    "7701": [
+      "claude",
+      "gemni"
+    ],
+    "7974": [
+      "claude",
+      "gemni"
+    ],
+    "8001": [
+      "claude",
+      "gemni"
+    ],
+    "8002": [
+      "claude",
+      "gemni"
+    ],
+    "8031": [
+      "claude",
+      "gemni"
+    ],
+    "8053": [
+      "claude",
+      "gemni"
+    ],
+    "8766": [
+      "claude",
+      "gemni"
+    ]
+  }
+}

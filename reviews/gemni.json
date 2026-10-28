@@ -4,8 +4,9 @@
 "price_check": "unchecked",
 "price_observed": null,
 "verdict": "BUY",
-"confidence": "high",
-"rationale": "Valuation percentiles are near 5-year lows (EV/EBIT 4th, PB 20th percentile). Down 28.7% over 12m with RSI at 34.0. Operational health remains intact, presenting an attractive entry point."
+"confidence": "medium",
+"rationale": "Low valuation percentiles (pe 3rd, pb 3rd) and strong upside to sell-side mean (1,011) support a BUY despite 12m decline (-20.2%).",
+"red_flags": []
 },
 {
 "code": "6383",
@@ -13,7 +14,8 @@
 "price_observed": null,
 "verdict": "KEEP",
 "confidence": "medium",
-"rationale": "Health remains intact and RSI is low at 36.8. Mixed valuation anchors (FCF yield 24th vs PB 77th percentile) and price slightly below 200d (-5.8%) warrant holding current position."
+"rationale": "Mixed valuation percentiles and weak RSI (36.6) suggest holding. Health is intact with solid upside to consensus mean (7,471).",
+"red_flags": []
 },
 {
 "code": "8001",
@@ -21,15 +23,17 @@
 "price_observed": null,
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "Valuation is at 5-year extremes across multiples (PE 98th, EV/EBIT 97th, PB 89th percentile). RSI is elevated at 69.8 and price sits 11.5% above 200d. Intact health, but stretched valuation justifies trimming."
+"rationale": "Valuation percentiles near 100 (pe 100, ev_ebit 100) and strong 12m performance indicate extreme pricing. Trim to lock in gains.",
+"red_flags": []
 },
 {
 "code": "8002",
 "price_check": "unchecked",
 "price_observed": null,
-"verdict": "KEEP",
-"confidence": "medium",
-"rationale": "Health is intact, but valuation multiples are elevated vs 5-year history (PE 91st, FCF yield 91st percentile). Price has consolidated back to the 200d MA (-0.3%) with neutral RSI (53.5)."
+"verdict": "TRIM",
+"confidence": "high",
+"rationale": "Valuation percentiles of 85-92 across multiples indicate expensive pricing following a 36.8% 12m gain. TRIM to reduce exposure.",
+"red_flags": []
 },
 {
 "code": "8053",
@@ -37,23 +41,26 @@
 "price_observed": null,
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "Trading at extreme 5-year valuation percentiles (PE 98th, EV/EBIT 99th, PB 99th) and +18.3% above 200d after an 84.3% 12m run. Health is intact, but high valuation warrants taking profits."
+"rationale": "High valuation percentiles (pe/pb 97) and robust 12m return (+62.9%) make the stock expensive. Trim position.",
+"red_flags": []
 },
 {
 "code": "8031",
 "price_check": "unchecked",
 "price_observed": null,
-"verdict": "KEEP",
+"verdict": "TRIM",
 "confidence": "medium",
-"rationale": "Health is intact. Valuation percentiles are high (~90th percentile across PE, PB, EV/EBIT; FCF yield distorted negative). Price has pulled back to 200d (-2.0%) with neutral RSI, supporting a hold."
+"rationale": "High valuation percentiles (pe 91, ev_ebit 93) and strong 12m performance (+40.7%) suggest trimming, accounting for negative FCF yield.",
+"red_flags": []
 },
 {
 "code": "1944",
 "price_check": "unchecked",
 "price_observed": null,
 "verdict": "KEEP",
-"confidence": "high",
-"rationale": "Operational health intact with a solid FCF yield of 6.28% (38th percentile). Price has rested near the 200d MA (-2.5%) with neutral momentum (RSI 50.1)."
+"confidence": "medium",
+"rationale": "Mixed valuations with cheap dividend yield (2nd percentile) and healthy status support keeping. Significant upside to consensus mean (9,292).",
+"red_flags": []
 },
 {
 "code": "2502",
@@ -61,10 +68,10 @@
 "price_observed": null,
 "verdict": "SELL",
 "confidence": "high",
-"rationale": "Operational health is impaired with a 273bp drop in operating margin to 6.4% and net debt/EBITDA at 4.01x. High earnings multiples (PE 95th percentile) leave little margin of safety.",
+"rationale": "Health is impaired by operating margin compression and elevated leverage (4.01x net debt/EBITDA), indicating fundamental business deterioration. Sell.",
 "red_flags": [
 "Operating margin fell 273bp to 6.4%",
-"Net debt / EBITDA reached 4.01x (above threshold)"
+"Net debt / EBITDA 4.01x exceeds threshold"
 ]
 },
 {
@@ -73,9 +80,9 @@
 "price_observed": null,
 "verdict": "WAIT",
 "confidence": "medium",
-"rationale": "Health status on WATCH due to a steep 869bp drop in operating margin to 15.6%. Mid-range 5-year valuation percentiles and neutral RSI suggest holding off on adding capital.",
+"rationale": "Health is on watch due to a severe operating margin fall (-869bp). Wait for fundamental stabilization despite attractive 12m decline.",
 "red_flags": [
-"Operating margin fell 869bp to 15.6%"
+"Operating margin dropped 869bp to 15.6%"
 ]
 },
 {
@@ -84,39 +91,44 @@
 "price_observed": null,
 "verdict": "TRIM",
 "confidence": "high",
-"rationale": "Health is intact, but stock trades near 5-year valuation highs (PE 95th, PB 84th percentile) and +18.4% above 200d. Trimming is prudent to manage valuation risk."
+"rationale": "Extreme 12m return (+80.3%), overbought RSI (73.4), and peak valuation percentiles (pe and pb at 100) warrant trimming.",
+"red_flags": []
 },
 {
 "code": "7701",
 "price_check": "unchecked",
 "price_observed": null,
-"verdict": "BUY",
-"confidence": "high",
-"rationale": "Exceptionally cheap relative to 5-year history (PE 8th, PB 5th, EV/EBIT 6th percentile) with intact health. Low RSI (33.0) and consolidated price provide an excellent buying opportunity."
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Mid-range valuation percentiles, intact health, and steady momentum (RSI 66.2) support keeping the position.",
+"red_flags": []
 },
 {
 "code": "4543",
 "price_check": "unchecked",
 "price_observed": null,
 "verdict": "BUY",
-"confidence": "high",
-"rationale": "Health is intact and stock trades at significant valuation discounts relative to history (PE 13th, PB 13th percentile). Positioned well with intact health."
+"confidence": "medium",
+"rationale": "Low valuation percentiles (PE/PB at 16th percentile) combined with intact health and solid upside to consensus (3,012) make it a buy.",
+"red_flags": []
 },
 {
 "code": "7269",
 "price_check": "unchecked",
 "price_observed": null,
-"verdict": "BUY",
-"confidence": "high",
-"rationale": "Health is intact, offering a strong 7.36% FCF yield at low historical valuation percentiles (PE 22nd percentile at 9.08x). Price sits at the 200d MA with neutral RSI."
+"verdict": "KEEP",
+"confidence": "medium",
+"rationale": "Moderate valuation percentiles (PE 25th), intact health, and stable price action support keeping.",
+"red_flags": []
 },
 {
 "code": "1540",
 "price_check": "unchecked",
 "price_observed": null,
 "verdict": "KEEP",
-"confidence": "high",
-"rationale": "Strong 12m gain (+40.8%) backed by physical gold holdings. RSI is neutral (49.0) and macro context supports unhedged gold as a portfolio diversifier."
+"confidence": "medium",
+"rationale": "Low RSI (30.9) indicates oversold conditions for gold, backed by massive AUM (\u00a51,515bn) and zero spread. Keep.",
+"red_flags": []
 },
 {
 "code": "315A",
@@ -124,31 +136,35 @@
 "price_observed": null,
 "verdict": "KEEP",
 "confidence": "medium",
-"rationale": "Strong 12m momentum (+78.1%) supported by BOJ rate normalization macro tailwind. Index P/E is elevated (+31% vs reference), but macro backdrop remains favorable."
+"rationale": "Strong 12m performance (+57.1%) and constructive bank fundamentals under BOJ normalization support keeping, despite modest AUM (\u00a523bn).",
+"red_flags": []
 },
 {
 "code": "1478",
 "price_check": "unchecked",
 "price_observed": null,
-"verdict": "KEEP",
-"confidence": "high",
-"rationale": "Moderate index premium (+12% vs reference) with healthy 12m return (+33.7%) and neutral RSI (57.6). Benefits from Japan's positive domestic equity trend (+1 macro score)."
+"verdict": "BUY",
+"confidence": "medium",
+"rationale": "Index trades at an attractive P/E discount (10.2x vs 13x reference) with solid 12m momentum (+31.3%) and liquid AUM (\u00a5146bn). Buy.",
+"red_flags": []
 },
 {
 "code": "2559",
 "price_check": "unchecked",
 "price_observed": null,
 "verdict": "KEEP",
-"confidence": "high",
-"rationale": "Broad global equity exposure with neutral RSI (45.1) and steady 12m momentum (+31.5%). Serves its role as core unhedged USD equity exposure in a calm macro environment."
+"confidence": "medium",
+"rationale": "Reliable core global equity exposure with zero spread and substantial AUM (\u00a5136bn) despite uninterpretable underlying P/E. Keep.",
+"red_flags": []
 },
 {
 "code": "1655",
 "price_check": "unchecked",
 "price_observed": null,
-"verdict": "KEEP",
-"confidence": "high",
-"rationale": "S&P 500 index valuation is high (+41% vs reference multiple), but solid 12m returns (+29.6%), neutral RSI (45.1), and calm US macro conditions (VIX 15) support holding."
+"verdict": "TRIM",
+"confidence": "medium",
+"rationale": "Stretched index valuation (24.5x P/E vs 18x reference, +36%) suggests trimming despite robust AUM (\u00a5192bn) and steady 12m return (+18.4%).",
+"red_flags": []
 },
 {
 "code": "1658",
@@ -156,9 +172,7 @@
 "price_observed": null,
 "verdict": "KEEP",
 "confidence": "medium",
-"rationale": "Strong 12m performance (+44.7%) with neutral momentum (RSI 51.2). Elevated index P/E (+33% vs reference) and wide spread (0.41%) warrant maintaining current exposure.",
-"red_flags": [
-"Spread at 0.41% increases entry and exit costs"
-]
+"rationale": "Valuation is close to reference (13.5x vs 13x) and RSI is low (35.0), suggesting holding despite wider spread (0.27%).",
+"red_flags": []
 }
 ]

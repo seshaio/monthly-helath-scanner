@@ -1,0 +1,184 @@
+{
+  "ingested_at": "2026-09-11T13:54:06.812070+00:00",
+  "model": "gemni",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Well-capitalized fund (AUM ¥153bn) offering stable domestic yield exposure. Index P/E is reasonably valued (+8% vs reference) with neutral momentum (RSI 51.9).",
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Core macro hedge with +33.0% 12m return. Recent RSI pullback (38.7) provides a healthy consolidation phase while geopolitical lens remains calm (+0) and gold continues to perform.",
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "AI bubble macro headwind (-2, SOX -10.0% 3m) and rich underlying index valuation (23.6x, +31% vs reference) suggest caution, despite oversold RSI (30.4) and yen strength drag.",
+      "verdict": "WAIT"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Reasonable underlying valuation (13.8x P/E, +6% vs reference) and steady performance (+41.3% 12m). High bid-ask spread (0.59%) warrants holding rather than frequent trading.",
+      "red_flags": [
+        "High bid-ask spread (0.59%) increases exit transaction costs"
+      ],
+      "verdict": "KEEP"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Operational health is intact with an attractive FCF yield of 6.55% (23rd percentile). Anchor disagreement exists with elevated PB (75th percentile), but pullback below 200d MA supports holding.",
+      "red_flags": [
+        "Valuation anchor disagreement between FCF yield (23rd) and PB (75th percentile)"
+      ],
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is IMPAIRED due to deteriorating operating margin (6.4% vs 9.2% prior year) and elevated leverage (net debt/EBITDA 4.01x, breaching threshold), accompanied by negative free cash flow yield (-2.10%).",
+      "red_flags": [
+        "Operating margin deteriorated by 273bp year-over-year",
+        "Net debt / EBITDA 4.01x breached 4.00x threshold",
+        "Negative free cash flow yield (-2.10%)"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Oversold RSI (29.6) driven by recent yen strengthening against unhedged USD exposure. Core multi-asset exposure with tight bid-ask spread (0.03%) and substantial AUM (¥136bn).",
+      "red_flags": [
+        "Underlying index P/E data feed anomaly"
+      ],
+      "verdict": "BUY"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Backed by structural BOJ rate normalization tailwinds lifting bank NIMs. Despite +74.2% 12m run and 18% index valuation premium vs reference, neutral RSI (54.2) supports holding.",
+      "red_flags": [
+        "Modest AUM (¥25bn) and feed NAV unreliability"
+      ],
+      "verdict": "KEEP"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Deep valuation discount across historical metrics (PB 3rd, PE 3rd, EV/EBIT 8th percentile) with operational health INTACT. Low RSI (33.4) provides an attractive risk/reward profile.",
+      "verdict": "BUY"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is intact with strong FCF yield (5.55%), though PB percentile is elevated (75th). Recent pullback (RSI 34.5, -9.9% vs 200d MA) offers stable holding ground.",
+      "red_flags": [
+        "Valuation anchor disagreement between dividend yield (21st) and PB (75th percentile)"
+      ],
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Modestly valued with cheap absolute multiples (PE 8.99x, EV/EBIT 4.90x, FCF yield 7.44% at 17th percentile). Operational health is INTACT, offering solid fundamentals at a reasonable price.",
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Heavily discounted across 5y valuation metrics (EV/EBIT 0th, PB 5th percentile) with intact operational health. Oversold (RSI 26.9) and trading ~20% below its 200d MA, offering significant margin of safety.",
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Exceptional valuation entry point at historical 5y lows (PB 1st, PE 2nd, EV/EBIT 2nd percentile). Health remains fully INTACT, and oversold RSI (28.0) signals a strong buying opportunity.",
+      "verdict": "BUY"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Status is on WATCH following severe operating margin contraction (869bp drop to 15.6%). Although 12m price drop (-37.8%) has moderated valuations (PB 23rd percentile), wait for margin stabilization before acting.",
+      "red_flags": [
+        "Operating margin compression of 869bp year-over-year"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Operational health is intact, but stock is at 5y valuation extremes (EV/EBIT 99th, PE 99th, Div Yield 99th percentile) and overbought (RSI 74.4), making it a prime candidate to trim gains.",
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuations are historically high (PE 90th percentile), but recent consolidation back to the 200d MA (-1.4%) and neutral RSI (50.9) support holding the position while health remains intact.",
+      "verdict": "KEEP"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is intact. While PE/EV-EBIT percentiles are elevated, FCF yield is negative (-1.07%) distorting overall valuation metrics. Price sits near 200d MA (-1.7%) with neutral RSI (53.6).",
+      "red_flags": [
+        "Negative free cash flow yield (-1.07%) distorts historical percentile ranking"
+      ],
+      "verdict": "KEEP"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Strong 12m run (+81.0%) has driven multiples to 5y valuation extremes (EV/EBIT 99th, PB 98th, PE 98th percentile). Health is intact, warranting a trim rather than a sell.",
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Operational health is intact with solid 12m momentum (+28.6%). High PE percentile (95th) is balanced by strong sector dynamics and solid earnings, warranting holding the position.",
+      "verdict": "KEEP"
+    }
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "ingested_at": "2026-10-28T01:07:44.811305+00:00",
+  "model": "claude",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 10.2x against a 13x reference is 21% cheap, despite +31.3% over 12m. RSI 57.7 is neutral. Liquid (AUM ¥146bn, 0.04% spread) and yen-denominated, so it adds no FX risk. Domestic macro lens is neutral (+0).",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 30.9 is near oversold after -4.7% over 12m. Gold is +1.0% over 3m while the yen strengthened 1.5%, which explains the soft yen price. The war/geopolitics lens is -1, so it keeps its hedge role. Very large and liquid (AUM ¥1,515bn, 0.00% spread). Its USD exposure is correlated with 2559.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 24.5x against an 18x reference (+36%) is expensive. But RSI 48.8 shows no momentum extreme, and the AI and recession lenses are both +1. It is a core holding, so hold rather than add. Unhedged USD with USD/JPY at 158 adds downside if the yen strengthens.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 13.5x against a 13x reference is close to fair. RSI 35.0 is soft after +18.4% over 12m. Structurally weak: small fund (AUM ¥32bn) with a wide 0.27% spread, so this is not a vehicle to add to. Unhedged foreign-currency exposure.",
+      "red_flags": [
+        "Wide 0.27% spread on a small fund raises trading costs"
+      ],
+      "verdict": "KEEP"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The setup favours buying: dividend yield at the 2nd percentile (2.98%), FCF yield at the 17th, RSI 42.1, 10.7% below the 200d, health intact, and consensus mean 9,292 about 45% above the price. But PB at the 72nd percentile disagrees with the yield anchors, and results land in 2 days. Wait for the print, then decide.",
+      "red_flags": [
+        "Only 6 analysts cover it, so the large consensus upside rests on few estimates"
+      ],
+      "verdict": "WAIT"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is IMPAIRED. Operating margin fell 273bp to 6.4%, FCF yield is negative (-1.99%), and net debt/EBITDA is 4.01x. PE at the 97th percentile against PB at the 16th means earnings have shrunk, not that the stock is cheap. The business itself has deteriorated. The leverage trigger only just fired, which keeps confidence at medium.",
+      "red_flags": [
+        "Operating margin down 273bp in a year",
+        "Negative FCF while leverage sits at 4.01x net debt/EBITDA"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "No usable valuation: the feed's index P/E of 3.0 is implausible. RSI 43.0 and +17.9% over 12m are unremarkable. Macro lenses are supportive (positive yield curve, VIX 18). It is unhedged USD and correlated with 1540, so watch the yen.",
+      "red_flags": [
+        "Index P/E feed is broken, so the fund has no valuation anchor"
+      ],
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 13.8x against a 13x reference (+6%) is close to fair. The BOJ-normalization scenario still holds and the fund is +57.1% over 12m. RSI 42.0 shows the move has cooled. Small fund (AUM ¥23bn, 0.11% spread) and the NAV feed is unreliable, so add with care.",
+      "red_flags": [
+        "NAV feed is unreliable, so a premium or discount to NAV cannot be monitored"
+      ],
+      "verdict": "KEEP"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Cheap against its own history on every anchor (7th–24th percentile; PE 16th, PB 16th). Health intact. Price is 8.8% above the 200d with RSI 55.8 after a flat 12m (-2.4%), so this is not a falling knife. Consensus mean 3,012 is about 26% above the price, with a narrow 2,600–3,400 range.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation is mixed: dividend yield at the 15th percentile and FCF yield at the 20th look cheap, but PB at the 73rd does not, so the average describes neither. RSI 36.6 and 14.8% below the 200d point to a pullback, not damage, since health is intact and 12m is still +11%. Results in 14 days.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Low absolute multiples (PE 9.1, EV/EBIT 5.0, FCF yield 7.34%) that also sit in the lower half of its 5y range (23rd–49th percentile). Health intact. RSI 55.0, 3.7% above the 200d. Consensus mean 2,545 is about 23% above the price.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Cheap against its own 5y history on almost every anchor (PE 3rd, PB 3rd, EV/EBIT 3rd percentile, PE 20.1). Health intact. Price is 15.1% below the 200d after a 20.2% fall over 12m, and RSI 52.9 is neutral. Consensus mean 1,011 is about 36% above the price. Results are due in 15 days.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation is mid-range, with every anchor between the 33rd and 53rd percentile. Health intact. Momentum is firm (RSI 66.2, 11.2% above the 200d) but not extreme. Consensus mean 5,143 is about 16% above the price. Nothing here calls for action. Results in 9 days.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health is WATCH: operating margin fell 869bp to 15.6%. Valuation is mid-range (PB 28th, PE 60th percentile) after a 30.4% fall over 12m, and price is 1.9% above the 200d. Results in 8 days will show whether the margin drop is cyclical. From outside the pack: a new-console hardware mix could explain it.",
+      "red_flags": [
+        "Operating margin down 869bp in a year"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Every valuation anchor sits at the 96th–100th percentile of its 5y range, including PE 100 and EV/EBIT 100. Price is 16.8% above the 200d with RSI 65.9 after +41.4% over 12m. Consensus mean 2,532 leaves only about 7% upside. The business is sound and only the price is extreme, which is the definition of TRIM. Results in 7 days.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation is rich, with anchors at the 85th–92nd percentile and PE at the 90th, but less extreme than 8001. Price is 1.4% below the 200d, so the trend is not stretched, and RSI is 62.7. Health intact. Consensus mean 5,887 is about 16% above the price. Results in 7 days.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "FCF yield is negative (-1.06%), so that anchor is not a valuation signal. The remaining anchors (78th–93rd percentile) are rich but not extreme. Price is 1.4% below the 200d, RSI 59.3, health intact. Consensus mean 6,062 is about 19% above the price. Results in 7 days.",
+      "red_flags": [
+        "Negative FCF yield (-1.06%): cash flow has turned negative, which needs explaining at the results in 7 days"
+      ],
+      "verdict": "KEEP"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "PE, PB and EV/EBIT are at the 97th–98th percentile after +62.9% over 12m, which argues for TRIM. Against that, FCF yield of 8.28% is only at the 57th percentile, so cash generation has kept pace with the price. Price is 10.4% above the 200d, RSI 55.4, health intact. A borderline call between KEEP and TRIM. Results in 5 days.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "PE and PB are both at the 100th percentile (PE 31.1). RSI is 73.4 and price is 52.3% above the 200d after +80.3% over 12m. Consensus mean 592 is only about 2% above the price. This is the most stretched name in the pack. Confidence is held at medium because the yield data looks broken (see red flags).",
+      "red_flags": [
+        "A 22.47% dividend yield is implausible next to PE 31, which points to a share split not reflected in the dividend (or price) data. Verify the inputs before acting."
+      ],
+      "verdict": "TRIM"
+    }
+  }
+}

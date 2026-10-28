@@ -1,0 +1,194 @@
+{
+  "ingested_at": "2026-09-11T13:54:06.808989+00:00",
+  "model": "claude",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "14.0x against a 13x reference is an 8% premium — mild. RSI 51.9 is neutral, AUM ¥153bn deep, JPY-denominated so no FX drag from the -1 lens. Nothing here argues for action either way.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Gold +8.3% over 3m with the geopolitics lens at 0 — the move is not crisis-driven. RSI 38.7 after +33% is a pause, not a break. Deep AUM and 0.10% spread. Unhedged, so the -4.2% yen move clips JPY returns.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "23.6x versus an 18x reference is +31%, the largest premium in the pack, and it stacks with two negative lenses: AI at -2 and unhedged USD at -1. RSI 30.4 argues for trimming in steps, not at once.",
+      "red_flags": [
+        "overlaps 2559 and 1540 in the usd_unhedged bucket — the FX headwind is concentrated, not diversified"
+      ],
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "13.8x vs 13x is only a 6% premium despite +41.3% over 12m, so the run was earnings-led rather than multiple-led. RSI 43.5 neutral. Frictions argue against trading it rather than against owning it.",
+      "red_flags": [
+        "0.59% spread on ¥31bn AUM — round-trip cost makes any tactical trim self-defeating"
+      ],
+      "verdict": "KEEP"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "fcf_yield 6.55% at the 23rd percentile is the cheap anchor; pb 75 the dear one, and they disagree. EV/EBIT 13.2 is unremarkable, RSI 42.2, health intact. Consensus gap is wide but n=6 is thin evidence.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Operating margin down 273bp, fcf_yield -2.10%, net debt/EBITDA 4.01x. Negative cash generation against four turns of leverage is deterioration, not cheapness — pb 0.79 and a 3.28% yield are the price of that, not compensation for it.",
+      "red_flags": [
+        "negative FCF alongside 4.01x net debt/EBITDA",
+        "leverage trigger fired by 0.01x — marginal on its own, but corroborated by the margin fall"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The valuation anchor is unusable (P/E 2.9 implausible), so no extreme can be asserted. RSI 29.6 is oversold. Confidence low by construction. Outside pack: ACWI's weight sits in the same US large-caps as 1655 and 1540's USD exposure.",
+      "red_flags": [
+        "no valid valuation input — verdict rests on momentum and FX alone"
+      ],
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "+74.2% in 12m has carried the index to 15.4x against a 13x reference (+18%) — the widest domestic premium here. The BOJ scenario note is dated 2026-08-21 and already in the price. Reduce; the rate thesis itself is unbroken.",
+      "red_flags": [
+        "AUM ¥25bn and an unverifiable NAV premium — thin fund, no independent check on what you pay over NAV"
+      ],
+      "verdict": "TRIM"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Percentiles 3/8/8/13 with no anchor disagreement, health intact, RSI 33.4, sitting on its 200d. A 14.6% 12m decline with nothing broken is the setup the percentile screen exists to find.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Mid-range on every anchor; dividend_yield 21 vs pb 75 means no single valuation read. Health intact, RSI 34.5, modest 9.9% below 200d. Outside pack: its automation demand tracks semiconductor capex, which the -2 AI lens argues against. Hold, don't add.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "EV/EBIT 4.90 and PE 8.99 are cheap absolutely, not just on percentile, with fcf_yield 7.44% at the 17th. Health intact, RSI 47.7. Outside pack: yen strength (-1 lens) pressures export translation — sizing, not thesis.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "No verifiable close for any 2026-09-11 session is available to me, so every price here is unchecked rather than matched. Health intact, yet cheapest-quartile on four of five anchors, RSI 26.9, -19.6% vs 200d. Oversold with no fundamental trigger.",
+      "red_flags": [
+        "-31.2% over 12m with health INTACT — the drawdown is not explained by anything in this pack"
+      ],
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Cheapest name in the pack against its own history — pb 1st, ev_ebit 2nd, pe 2nd percentile — with health intact and RSI 28.0. All five anchors agree, which is rare here and worth more than any one of them.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "869bp margin fall is the largest impairment in this pack and nothing here explains it. Valuation is merely middling (ev_ebit 37th, pb 23rd) — not cheap enough to buy a WATCH trigger blind. Earnings in 53 days settles it.",
+      "red_flags": [
+        "consensus range 5,000-21,260 on n=25 — a 4x spread carries no information"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Every anchor 91-99th percentile against its own 5y history, RSI 74.4, 15.5% above 200d, and price already within 7% of a structurally bullish consensus mean. Business intact — this is a price problem, not a quality one.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Anchors 83-91st percentile say expensive, but RSI 50.9 and -1.4% vs 200d say nothing is stretched. Expensive-on-history plus neutral momentum is not the extreme that justifies trimming. Health intact.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The 90+ percentile cluster is inflated by a negative fcf_yield that carries no valuation meaning. Stripping it, the name sits at RSI 53.6 and -1.7% vs 200d — not extended. Health intact.",
+      "red_flags": [
+        "fcf_yield -1.07% — cash generation has turned negative; that is a business fact, not a multiple"
+      ],
+      "verdict": "KEEP"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "+81% in 12m, 17.2% above 200d, four anchors at 98-99th percentile. Absolute PE 14.6 is not demanding, which is why this is TRIM not SELL — reduce the extension, keep the position. Health intact.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "PE 28.55 at the 95th percentile of its own 5y range, pb 84th, and 17.4% above the 200d. Health intact and only three anchors available, hence TRIM not SELL — but the multiple is the extreme here.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "ingested_at": "2026-09-11T13:54:06.816216+00:00",
+  "model": "gpt",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The ETF is up 31.9% over 12m with RSI 51.9, so momentum is neither oversold nor extreme. The underlying index is only 8% above the reference valuation. This supports holding rather than adding aggressively. ",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Gold is up 33.0% over 12m, while RSI 38.7 shows a meaningful pullback. With no earnings valuation framework and USD-unhedged exposure, the pack supports holding the hedge rather than chasing a fresh position. ",
+      "red_flags": [
+        "USD-unhedged exposure"
+      ],
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "high",
+      "price_check": "differs",
+      "price_observed": 846.0,
+      "rationale": "Verified 2026-09-11 close is 846.0 versus 846.2 in the pack. RSI 30.4 is attractive, but the underlying index is 31% above its reference valuation, while AI-bubble and USD risks are both headwinds. ([Investing.com South Africa][9]) ",
+      "red_flags": [
+        "Price differs from pack",
+        "Underlying valuation +31%",
+        "USD-unhedged exposure"
+      ],
+      "verdict": "WAIT"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "12m return is +41.3%, RSI 43.5, and valuation is only 6% above the reference. That is more balanced than developed-market alternatives, but the 0.59% spread and modest AUM create meaningful trading friction. ",
+      "red_flags": [
+        "Spread 0.59%",
+        "AUM modest",
+        "Foreign-unhedged exposure"
+      ],
+      "verdict": "KEEP"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 42.2 and price 6.8% below 200d are mildly weak, but health is intact and valuation anchors disagree materially. With 12m return +30.9%, the pack does not show a strong enough setup for BUY or TRIM. ",
+      "red_flags": [
+        "Valuation anchors disagree"
+      ],
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": 1586.5,
+      "rationale": "The verified 2026-09-11 close is 1,586.5. Health is impaired: operating margin fell 273bp and net debt/EBITDA is 4.01x, barely above the 4.00x trigger. Negative FCF and conflicting valuation anchors reinforce caution. ([Yahoo Finance][4]) ",
+      "red_flags": [
+        "IMPAIRED health",
+        "Net debt/EBITDA 4.01x",
+        "Operating margin down 273bp"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": 2893.0,
+      "rationale": "The verified 2026-09-11 close is 2,893. RSI 29.6 after a 26.1% 12m gain signals a substantial pullback. The pack's underlying P/E is explicitly unusable, so the case rests mainly on broad diversification and oversold momentum. ([Yahoo Finance][8]) ",
+      "red_flags": [
+        "USD-unhedged exposure",
+        "Underlying P/E marked implausible"
+      ],
+      "verdict": "BUY"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": 1963.0,
+      "rationale": "The verified 2026-09-11 close is 1,963. After a 74.2% 12m gain, RSI is 54.2 and the underlying index is 18% above the reference valuation. The fund is not flagged at a NAV premium, but entry is not compelling. ([Investing.com Nigeria][7]) ",
+      "red_flags": [
+        "12m return +74.2%",
+        "Underlying valuation +18% vs reference",
+        "AUM modest"
+      ],
+      "verdict": "WAIT"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": 2246.0,
+      "rationale": "The 2026-09-11 price of 2,246 is independently reported. RSI 33.4, valuation percentiles mostly 3–13, and only 1.0% above 200d suggest a relatively attractive entry after a 14.6% 12m decline. Health is intact. ([96ut][6]) ",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 34.5 and price 9.9% below 200d support recovery potential, while 12m return remains +17.3%. Valuation anchors are mixed, with PB 75th percentile versus dividend yield 21st. Health is intact. ",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Valuation is attractive across anchors: PE 20th, EV/EBIT 30th, FCF yield 17th percentile. RSI 47.7 and price only 0.8% below 200d are neutral, while health is intact. This is a balanced value setup. ",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 26.9, price 19.6% below 200d, 12m -31.2%, and several valuation percentiles are very low. Health is intact. This is the clearest oversold/value setup in the pack. ",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 28.0 with price 6.9% below 200d and only +5.2% over 12m creates a strong technical reversal setup. Valuation percentiles are exceptionally low across all anchors, while health is intact. ",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "12m return is -37.8%, RSI 41.9, and price is 8.0% below 200d, but health is on WATCH because operating margin fell 869bp. Valuation is mixed rather than clearly cheap. Wait for business stabilization. ",
+      "red_flags": [
+        "Operating margin down 869bp",
+        "Health WATCH"
+      ],
+      "verdict": "WAIT"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": 2294.0,
+      "rationale": "Price 2,294 on 2026-09-11 matches the verified close. RSI 74.4 and valuation percentiles of 91–99 are extreme after a 39.7% 12m gain. Health is intact, so trim rather than sell. ([Kabuyoho][1]) ",
+      "red_flags": [
+        "RSI 74.4",
+        "Valuation mostly 91st–99th percentile"
+      ],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "high",
+      "price_check": "differs",
+      "price_observed": 5027.0,
+      "rationale": "Verified 2026-09-11 close is 5,027, not 5,049. Even using the pack metrics, 12m +52.9% and valuation percentiles mostly 83–91 indicate an expensive run; health is intact. ([Investing.com 日本][2]) ",
+      "red_flags": [
+        "Price differs from pack",
+        "Valuation mostly above 80th percentile"
+      ],
+      "verdict": "TRIM"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 53.6 and price 1.7% below 200d are neutral. Most valuation anchors are expensive, but negative FCF yield makes that signal unreliable by the pack's own warning. Health is intact, so KEEP rather than TRIM. ",
+      "red_flags": [
+        "Negative FCF yield makes valuation signal unreliable"
+      ],
+      "verdict": "KEEP"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "high",
+      "price_check": "differs",
+      "price_observed": 1827.0,
+      "rationale": "Verified 2026-09-11 close is 1,827, not 1,822. The stock gained 81.0% over 12m while RSI is 56.9 and most valuation measures sit at 98th–99th percentiles. Health remains intact. ([Investing.com 한국어][3]) ",
+      "red_flags": [
+        "Price differs from pack",
+        "12m return +81.0%",
+        "Extreme valuation percentiles"
+      ],
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": 7970.0,
+      "rationale": "Verified 2026-09-11 close is 7,970. The stock is +28.6% over 12m, RSI 59.1, and 17.4% above 200d. Health is intact, but valuation is elevated, especially PE at the 95th percentile. ([Kabuyoho][5]) ",
+      "red_flags": [
+        "PE 95th percentile"
+      ],
+      "verdict": "KEEP"
+    }
+  }
+}
