@@ -1,0 +1,218 @@
+{
+  "ingested_at": "2026-10-28T01:54:29.868095+00:00",
+  "model": "gpt",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. The underlying index trades at 10.2x versus a 13x reference, a 21% discount. A 31.3% annual gain has not pushed RSI above 60, and AUM of ¥146bn with a 0.04% spread supports practical tradability. citeturn714940search2",
+      "verdict": "BUY"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. RSI 30.9 and a 4.7% annual decline indicate a pullback. The ETF has ¥1,515bn AUM and a reported 0.00% spread, supporting liquidity. Because gold has no earnings valuation and is unhedged for USD exposure, keep the position's diversification role in mind. citeturn801936search3",
+      "verdict": "BUY"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. The S&P 500 index valuation is 24.5x versus an 18x reference, a 36% premium. RSI 48.8 and an 18.4% annual gain do not show an oversold entry, while the 0.02% spread and ¥192bn AUM support retaining a reduced position. citeturn104533search2",
+      "red_flags": [
+        "Index P/E is 24.5x versus an 18x reference, a 36% premium."
+      ],
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The exact 2026-10-27 closing price could not be independently confirmed from a dated historical row. The pack shows RSI 35.0 and a valuation near its 13x reference, but AUM is modest at ¥32bn and the spread is wide at 0.27%, making a cautious entry preferable.",
+      "verdict": "WAIT"
+    },
+    "1801": {
+      "code": "1801",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. EV/EBIT and P/E are at the 4th and 2nd historical percentiles, respectively. The share price is 20.9% below the 200-day average, while health remains intact. FCF-yield and P/B anchors disagree, but the valuation case remains attractive. citeturn714940search1",
+      "red_flags": [
+        "FCF-yield percentile 1 and P/B percentile 68 give conflicting valuation signals."
+      ],
+      "verdict": "BUY"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The exact 2026-10-27 closing price could not be independently confirmed from a dated historical row. From the pack, the share price is 10.7% below its 200-day average, but dividend-yield and P/B anchors disagree. With earnings in two days, wait for clarification.",
+      "verdict": "WAIT"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. The company is marked IMPAIRED: operating margin fell from 9.2% to 6.4%, and net debt/EBITDA reached 4.01x against a 4.00x threshold. Negative FCF yield and conflicting valuation anchors further weaken the investment case. citeturn400115search3",
+      "red_flags": [
+        "Operating margin fell 273 basis points year over year.",
+        "Net debt/EBITDA is 4.01x, only 0.01x above the stated trigger."
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. Annual performance is 17.9%, RSI is 43.0, AUM is ¥136bn and the reported spread is 0.00%. The stated index P/E of 3.0 is implausible and explicitly unscored, so it cannot support a valuation-driven buy or sell decision. citeturn104533search5",
+      "verdict": "KEEP"
+    },
+    "2802": {
+      "code": "2802",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. EV/EBIT and P/E are at the 97th percentiles, but P/B is at the 16th. Negative FCF yield makes its percentile unreliable. With intact health and the share price 5.6% above its 200-day average, the mixed valuation signals do not justify a decisive entry. citeturn374032search0",
+      "red_flags": [
+        "Negative FCF yield of -1.99% makes its percentile unusable as a conventional valuation signal."
+      ],
+      "verdict": "WAIT"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent Japanese historical quote confirms the 2026-10-27 close. After a 57.1% annual gain, RSI 42.0 offers some pullback but not a clear bargain: the underlying index trades at 13.8x versus a 13x reference. Modest AUM and a 0.11% spread favour patience. citeturn373614search1",
+      "red_flags": [
+        "AUM is modest at ¥23bn, and the spread is 0.11%."
+      ],
+      "verdict": "WAIT"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. All five valuation anchors sit at the 7th–24th historical percentiles. Despite a slightly negative annual return, the price remains 8.8% above its 200-day average, and health is intact. Earnings in 15 days are a near-term risk. citeturn714940search0",
+      "verdict": "BUY"
+    },
+    "5333": {
+      "code": "5333",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. RSI 33.5 and an 8.3% discount to the 200-day average suggest a technical pullback, but the 90.2% annual gain leaves all valuation anchors at the 74th–84th percentiles. Earnings in two days argue for patience. citeturn374032search3",
+      "verdict": "WAIT"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. RSI 36.6 and a 14.8% discount to the 200-day average suggest a potential recovery entry with intact business health. Valuation is mixed, however, with P/B at the 73rd percentile and EV/EBIT at the 36th. citeturn811237search0",
+      "verdict": "BUY"
+    },
+    "6758": {
+      "code": "6758",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. ROE of -4.0% is a meaningful health warning, while the share price remains 15.2% above its 200-day average. Valuation anchors are mixed and the next report is in eight days, favouring reassessment before adding or exiting. citeturn747327search0",
+      "red_flags": [
+        "ROE is negative at -4.0%."
+      ],
+      "verdict": "WAIT"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. EV/EBIT is at the 38th percentile, FCF yield at the 23rd and P/E at the 25th. With a 4.9% annual decline, intact health and a price only 3.7% above the 200-day average, valuation supports buying selectively. citeturn374032search5",
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. All five valuation anchors fall between the 2nd and 9th historical percentiles. Despite a 20.2% annual decline and a 15.1% discount to the 200-day average, business health remains intact. Earnings in 15 days add uncertainty. citeturn811237search2",
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The exact 2026-10-27 closing price could not be independently confirmed from a dated historical row. Using the pack, valuation anchors are broadly moderate at percentiles 33–53, business health is intact, and the share price is 11.2% above its 200-day average. RSI 66.2 warrants monitoring.",
+      "verdict": "KEEP"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. The 30.4% annual decline coincides with operating margin falling from 24.3% to 15.6%. The substantial profitability deterioration is more concerning than the mixed valuation anchors; the next report in eight days may clarify the outlook. citeturn400115search0",
+      "red_flags": [
+        "Operating margin declined 869 basis points year over year."
+      ],
+      "verdict": "SELL"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. All five valuation anchors are at the 96th–100th historical percentiles. After a 41.4% annual gain, RSI 65.9 and a 16.8% premium to the 200-day average reinforce the case for reducing exposure while health remains intact. citeturn400115search2",
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. Annual gains of 36.8% accompany valuation percentiles of 85–92 across all five anchors. Health remains intact, but the elevated multiples and RSI 62.7 leave limited evidence of a substantial valuation cushion. citeturn801936search0",
+      "verdict": "TRIM"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. EV/EBIT, P/B and P/E percentiles are elevated, alongside a 40.7% annual gain. The negative FCF yield makes its 89th-percentile FCF anchor unreliable, so the expensive-valuation conclusion deserves caution. citeturn104533search4",
+      "red_flags": [
+        "Negative FCF yield of -1.06% makes its percentile unusable as a conventional valuation signal."
+      ],
+      "verdict": "TRIM"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. Four valuation anchors are above the 90th historical percentile, while the share price has gained 62.9% in 12 months and stands 10.4% above its 200-day average. Intact health supports trimming rather than exiting. citeturn374032search1",
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Independent historical quote confirms the 2026-10-27 close. A 73.4 RSI, an 80.3% annual gain and a 52.3% premium to the 200-day average indicate extreme momentum. P/E and P/B are at their 100th historical percentiles, although the dividend-yield anchor conflicts. citeturn400115search1",
+      "red_flags": [
+        "RSI 73.4 and a 52.3% premium to the 200-day average indicate an extended price."
+      ],
+      "verdict": "TRIM"
+    }
+  }
+}

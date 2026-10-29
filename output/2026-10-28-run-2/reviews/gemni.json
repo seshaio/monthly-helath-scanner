@@ -1,0 +1,190 @@
+{
+  "ingested_at": "2026-10-28T01:54:29.867148+00:00",
+  "model": "gemni",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Solid high-dividend equity exposure with a healthy RSI of 57.7 and a modest valuation discount relative to the 13x reference index (-21%).",
+      "verdict": "KEEP"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Commodity ETF with zero spread and massive AUM. RSI is oversold at 30.9, providing a stable portfolio hedge against macroeconomic geopolitical headwinds.",
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Standard S&P 500 exposure benefiting from positive US curve and low VIX conditions, though index P/E trades at a premium (+36%) to historical reference.",
+      "verdict": "KEEP"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "RSI is weak at 35.0 and structural notes highlight a wide spread (0.27%) alongside modest AUM (32bn), suggesting better entry points can be awaited.",
+      "verdict": "WAIT"
+    },
+    "1801": {
+      "code": "1801",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Extremely cheap valuation with EV/EBIT at the 4th percentile and PE at the 2nd percentile, despite trading 20.9% below its 200d. Health is intact with massive consensus upside.",
+      "verdict": "BUY"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Dividend yield sits at the 2nd percentile (cheap) alongside moderate PE (54th percentile), while trading 10.7% below its 200d. Healthy profile with strong consensus upside.",
+      "verdict": "BUY"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Health is impaired with dual triggers: a 273bp drop in operating margin and high net debt/EBITDA at 4.01x. Negative FCF yield and stretched PE (97th percentile) signal deteriorating fundamentals.",
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Core global equity diversification vehicle tracking MSCI ACWI with zero spread and strong liquidity, maintaining stability amid calm US volatility and stable USD/JPY.",
+      "verdict": "KEEP"
+    },
+    "2802": {
+      "code": "2802",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Stable consumer staple with health intact and balanced RSI of 46.5. Valuations are slightly elevated in PB (89th percentile) but offset by solid mid-range PE and FCF percentiles.",
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Strong 57.1% 12m return supported by a constructive macro lens on BOJ policy normalization and bank NIM expansion. Modest AUM of 23bn, but fundamentally aligned with current monetary trends.",
+      "verdict": "KEEP"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Attractive entry with PE and PB both sitting at the 16th percentile. Health is intact and price sits slightly above the 200d with strong analyst consensus backing.",
+      "verdict": "BUY"
+    },
+    "5333": {
+      "code": "5333",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Despite a strong 90.2% 12m gain, RSI has cooled to 33.5 and price sits 8.3% below the 200d. Health is intact and valuation percentiles are reasonable for the growth observed.",
+      "verdict": "KEEP"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "RSI is weak at 36.6 with price sitting 14.8% below its 200d. Conflicting valuation metrics (dividend yield at 15th percentile vs PB at 73rd) suggest no clear entry edge ahead of earnings in 14 days.",
+      "verdict": "WAIT"
+    },
+    "6758": {
+      "code": "6758",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Health is on watch due to negative return on equity (-4.0%). Although momentum is firm with an RSI of 66.3, governance/return triggers argue for waiting on upcoming earnings clarity.",
+      "verdict": "WAIT"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Solid valuation metrics across PE (25th percentile) and FCF yield (23rd percentile) with health remaining intact. Price action is stable near the 200d.",
+      "verdict": "KEEP"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Deep value across PE (3rd percentile) and PB (3rd percentile) despite a 12m decline of -20.2%. Health is intact, and sell-side consensus points significantly higher to 1,011 with reports due in 15 days.",
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Valuations hover near balanced mid-range percentiles (33rd to 53rd) with health fully intact and RSI at a healthy 66.2. Maintain position ahead of upcoming earnings.",
+      "verdict": "KEEP"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Health is on watch due to an 869bp operating margin compression, and 12m performance is down -30.4%. However, valuation is moderate (PE 60th percentile) and price sits near the 200d.",
+      "verdict": "KEEP"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Priced at valuation extremes across all metrics (PE, PB, FCF yield, and dividend yield all at the 99th-100th percentile). Strong 12m gain of 41.4% and elevated RSI of 65.9 warrant trimming despite intact health.",
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Valuations are elevated near the 85th-92nd percentiles following a 36.8% 12m rise, but health remains intact and RSI is balanced at 62.7. Hold ahead of upcoming earnings reports.",
+      "verdict": "KEEP"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Health is intact with a steady RSI of 59.3. While valuation percentiles are high, negative FCF yield distorts traditional multiple comparisons, making a hold appropriate ahead of results.",
+      "verdict": "KEEP"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "medium",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Trading near historical valuation peaks (97th-98th percentiles for PE and PB) following a massive 62.9% 12m surge. Sound fundamentals, but the extreme pricing calls for a partial reduction.",
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "high",
+      "price_check": "match",
+      "price_observed": null,
+      "rationale": "Exceptional 12m surge of 80.3% has pushed RSI to an overbought 73.4 and valuation multiples to the 100th percentile for PE and PB. Reduce exposure despite intact health.",
+      "verdict": "TRIM"
+    }
+  }
+}

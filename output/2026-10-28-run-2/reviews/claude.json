@@ -1,0 +1,243 @@
+{
+  "ingested_at": "2026-10-28T01:54:29.865667+00:00",
+  "model": "claude",
+  "reviews": {
+    "1478": {
+      "code": "1478",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 10.2x is 21% below its 13x reference, the cheapest ETF in the pack. JPY exposure, 0.04% spread, ¥146bn AUM, RSI 57.7. Japan domestic lens is neutral (0). Cannot verify close.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "1540": {
+      "code": "1540",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "RSI 30.9 is near oversold after a -4.7% year. The geopolitics lens (-1) supports holding gold as a hedge. Deep AUM and zero spread. Shares USD-unhedged exposure with 2559, a concentration to watch rather than a reason to act. Cannot verify close.",
+      "red_flags": [
+        "usd_unhedged correlation with 2559"
+      ],
+      "verdict": "KEEP"
+    },
+    "1655": {
+      "code": "1655",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 24.5x is 36% over its 18x reference, the richest ETF in the pack. The macro lenses (US recession +1, AI +1) are supportive, hence low confidence. Sound but priced at an extreme. Cannot verify close.",
+      "red_flags": [
+        "+36% vs reference P/E"
+      ],
+      "verdict": "TRIM"
+    },
+    "1658": {
+      "code": "1658",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 13.5x is about at its 13x reference (+4%), and RSI 35 is weak. The 0.27% spread and ¥32bn AUM make trading costly, which argues against adding or churning. Cannot verify close.",
+      "red_flags": [
+        "spread 0.27% wide",
+        "AUM ¥32bn modest"
+      ],
+      "verdict": "KEEP"
+    },
+    "1801": {
+      "code": "1801",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "pe at the 2nd percentile, ev_ebit 4th, fcf_yield 1st. The high pb (68) points to higher ROE, not an expensive price. Price is 20.9% below the 200d with RSI 44.2, and health is INTACT. Reports in 14 days. Cannot verify close.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "1944": {
+      "code": "1944",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Dividend yield at the 2nd percentile and fcf_yield at 17th look cheap, against mid pe (54) and pb (72). Price is 10.7% below the 200d with RSI 42.1. Health INTACT, and the lowest target (8,450) is far above price. Results in 2 days argue against acting now. Cannot verify close.",
+      "red_flags": [
+        "reports in 2 days"
+      ],
+      "verdict": "KEEP"
+    },
+    "2502": {
+      "code": "2502",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Health IMPAIRED: operating margin down 273bp, net debt/EBITDA 4.01x, free cash flow negative, pe at the 97th percentile. That is deterioration, not a multiple story. Low confidence because the leverage trigger fired by a hair. Beyond the pack: the 2025 cyberattack may make the margin hit partly one-off.",
+      "red_flags": [
+        "leverage trigger at threshold",
+        "negative FCF",
+        "margin compression"
+      ],
+      "verdict": "SELL"
+    },
+    "2559": {
+      "code": "2559",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "The valuation can't be scored: an index P/E of 3.0 is a data error. RSI 43 is neutral, the year was +17.9%, AUM is deep and the spread zero. Overlaps 1540 on USD-unhedged exposure and 1655 on US equity. Cannot verify close.",
+      "red_flags": [
+        "index P/E 3.0 implausible — data error"
+      ],
+      "verdict": "KEEP"
+    },
+    "2802": {
+      "code": "2802",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "pb at the 89th percentile and an absolute pe of 36.9 are rich, but pe (58) and ev_ebit (62) are mid-range against its own history, so not an extreme. Health INTACT, RSI 46.5, price 5.6% above the 200d. Cannot verify close.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "315A": {
+      "code": "315A",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Index at 13.8x is 6% over its 13x reference, roughly fair after +57.1%. RSI 42 is neutral. The bank thesis rests on BOJ normalization, and the pack has no JGB or CPI data to test it. AUM is modest and NAV is unverifiable. Cannot verify close.",
+      "red_flags": [
+        "NAV feed unreliable; AUM ¥23bn"
+      ],
+      "verdict": "KEEP"
+    },
+    "4543": {
+      "code": "4543",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Cheap against its own 5y history on every anchor (7–24th percentile). Health INTACT, RSI 55.8, price 8.8% above the 200d. Consensus low 2,600 is above price. Reports in 15 days. Cannot verify close.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "5333": {
+      "code": "5333",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Anchors at 74–84 after a +90.2% year are elevated but not extreme. RSI 33.5 and price 8.3% below the 200d show a pullback underway. Health INTACT. Results in 2 days, so no action now. Cannot verify close.",
+      "red_flags": [
+        "reports in 2 days"
+      ],
+      "verdict": "KEEP"
+    },
+    "6383": {
+      "code": "6383",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Anchors disagree (dividend_yield 15 vs pb 73) and pe 42 is mid-range, so this is not an extreme. Health INTACT. Price is 14.8% below the 200d with RSI 36.6, weak but not broken. Reports in 14 days. Cannot verify the close past my June 2026 cutoff.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "6758": {
+      "code": "6758",
+      "confidence": "low",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "WATCH: return on equity is -4.0%. Beyond the pack, this may be a 2025 financial-unit spin-off accounting effect rather than an operating decline. Anchors disagree (dividend_yield 7 vs pb 89). RSI 66.3, price 15.2% above the 200d. Reports in 8 days. Cannot verify close.",
+      "red_flags": [
+        "negative ROE"
+      ],
+      "verdict": "KEEP"
+    },
+    "7269": {
+      "code": "7269",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "pe 9.1 (25th percentile), ev_ebit 4.97 (38th), fcf_yield 7.34% (23rd). Health INTACT and the trend is neutral (RSI 55, price 3.7% above the 200d). Consensus mean 2,545 is 23% above price. Cannot verify close.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7532": {
+      "code": "7532",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Cheap across most anchors: pe 3rd, pb 3rd, ev_ebit 3rd percentile. Health INTACT. Price is 15.1% below the 200d, RSI 52.9 is neutral, and consensus low (800) sits above price. My knowledge ends June 2026, so I cannot verify the Oct-27 close.",
+      "red_flags": [],
+      "verdict": "BUY"
+    },
+    "7701": {
+      "code": "7701",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Anchors sit between the 33rd and 53rd percentile, fair value against its own history. Health INTACT. Price is 11.2% above the 200d with RSI 66.2, firm momentum but not extreme. Reports in 9 days. Cannot verify close.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "7974": {
+      "code": "7974",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "WATCH: operating margin fell 869bp. Valuation is mid-range (pe 60, ev_ebit 43, pb 28) after a -30.4% year, and price is 1.9% above the 200d. Beyond the pack: the drop is likely from the low-margin Switch 2 hardware mix. Reports in 8 days. Cannot verify close.",
+      "red_flags": [
+        "869bp margin fall"
+      ],
+      "verdict": "KEEP"
+    },
+    "8001": {
+      "code": "8001",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Every anchor is at the 96–100th percentile of its own 5y history. Price is 16.8% above the 200d, RSI 65.9, and within 7% of consensus mean. The business is sound (INTACT) but priced at an extreme. Reports in 7 days. Close unverifiable past June 2026.",
+      "red_flags": [
+        "all valuation anchors 96-100th percentile"
+      ],
+      "verdict": "TRIM"
+    },
+    "8002": {
+      "code": "8002",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Anchors at 85–92 are elevated but short of 8001's extreme. Price is flat to the 200d (-1.4%), RSI 62.7, health INTACT, and consensus low 5,100 is about at price. Hold through earnings in 7 days. Cannot verify close.",
+      "red_flags": [],
+      "verdict": "KEEP"
+    },
+    "8031": {
+      "code": "8031",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "Free cash flow is negative (-1.06%), so the 89 percentile is not a valuation reading, as the pack itself notes. The remaining anchors (78–93) are elevated, not extreme. Health INTACT, price flat to the 200d. Watch whether the FCF turn reverses at earnings in 7 days. Cannot verify close.",
+      "red_flags": [
+        "negative FCF counted as an expensive anchor"
+      ],
+      "verdict": "KEEP"
+    },
+    "8053": {
+      "code": "8053",
+      "confidence": "medium",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "pe 97, pb 97, ev_ebit 98, dividend_yield 93 after a +62.9% year, 10.4% above the 200d. Only fcf_yield (57) is moderate. Sound (INTACT) but stretched. Reports in 5 days. Cannot verify close.",
+      "red_flags": [],
+      "verdict": "TRIM"
+    },
+    "8766": {
+      "code": "8766",
+      "confidence": "high",
+      "price_check": "unchecked",
+      "price_observed": null,
+      "rationale": "pe and pb both at the 100th percentile, RSI 73.4, price 52.3% above the 200d after +80.3%, and price is basically at consensus mean (592). Sound but extreme. The dividend yield of 22.47% at a P/E of 31 is internally impossible, which suggests a share-count or split error in the feed.",
+      "red_flags": [
+        "dividend_yield 22.47% inconsistent with P/E 31.09 — likely data error",
+        "price scale differs from my pre-cutoff memory; possible unadjusted split"
+      ],
+      "verdict": "TRIM"
+    }
+  }
+}

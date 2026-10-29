@@ -1,0 +1,483 @@
+{
+  "agreement": {
+    "1478": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "Solid high-dividend equity exposure with a healthy RSI of 57.7 and a modest valuation discount relative to the 13x reference index (-21%).",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "KEEP",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "1540": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "Independent historical quote confirms the 2026-10-27 close. RSI 30.9 and a 4.7% annual decline indicate a pullback. The ETF has ¥1,515bn AUM and a reported 0.00% spread, supporting liquidity. Because gold has no earnings valuation and is unhedged for USD exposure, keep the position's diversification role in mind. citeturn801936search3",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "BUY"
+      }
+    },
+    "1655": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "Standard S&P 500 exposure benefiting from positive US curve and low VIX conditions, though index P/E trades at a premium (+36%) to historical reference.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "1658": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "WAIT",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "1801": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "1944": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "Dividend yield at the 2nd percentile and fcf_yield at 17th look cheap, against mid pe (54) and pb (72). Price is 10.7% below the 200d with RSI 42.1. Health INTACT, and the lowest target (8,450) is far above price. Results in 2 days argue against acting now. Cannot verify close.",
+          "verdict": "KEEP"
+        },
+        {
+          "model": "gemni",
+          "rationale": "Dividend yield sits at the 2nd percentile (cheap) alongside moderate PE (54th percentile), while trading 10.7% below its 200d. Healthy profile with strong consensus upside.",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "BUY",
+        "gpt": "WAIT",
+        "mechanical": "WAIT"
+      }
+    },
+    "2502": {
+      "dissents": [],
+      "spread": [
+        "SELL"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "SELL",
+        "gemni": "SELL",
+        "gpt": "SELL",
+        "mechanical": "SELL"
+      }
+    },
+    "2559": {
+      "dissents": [],
+      "spread": [
+        "KEEP"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP"
+      }
+    },
+    "2802": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "Independent historical quote confirms the 2026-10-27 close. EV/EBIT and P/E are at the 97th percentiles, but P/B is at the 16th. Negative FCF yield makes its percentile unreliable. With intact health and the share price 5.6% above its 200-day average, the mixed valuation signals do not justify a decisive entry. citeturn374032search0",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "315A": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "Independent Japanese historical quote confirms the 2026-10-27 close. After a 57.1% annual gain, RSI 42.0 offers some pullback but not a clear bargain: the underlying index trades at 13.8x versus a 13x reference. Modest AUM and a 0.11% spread favour patience. citeturn373614search1",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "4543": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "5333": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "WAIT",
+        "mechanical": "WAIT"
+      }
+    },
+    "6383": {
+      "dissents": [
+        {
+          "model": "claude",
+          "rationale": "Anchors disagree (dividend_yield 15 vs pb 73) and pe 42 is mid-range, so this is not an extreme. Health INTACT. Price is 14.8% below the 200d with RSI 36.6, weak but not broken. Reports in 14 days. Cannot verify the close past my June 2026 cutoff.",
+          "verdict": "KEEP"
+        },
+        {
+          "model": "gemni",
+          "rationale": "RSI is weak at 36.6 with price sitting 14.8% below its 200d. Conflicting valuation metrics (dividend yield at 15th percentile vs PB at 73rd) suggest no clear entry edge ahead of earnings in 14 days.",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "WAIT",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "6758": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "WAIT",
+        "gpt": "WAIT",
+        "mechanical": "KEEP"
+      }
+    },
+    "7269": {
+      "dissents": [
+        {
+          "model": "gemni",
+          "rationale": "Solid valuation metrics across PE (25th percentile) and FCF yield (23rd percentile) with health remaining intact. Price action is stable near the 200d.",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "KEEP",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7532": {
+      "dissents": [],
+      "spread": [
+        "BUY"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "BUY",
+        "gemni": "BUY",
+        "gpt": "BUY",
+        "mechanical": "BUY"
+      }
+    },
+    "7701": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "BUY"
+        }
+      ],
+      "spread": [
+        "BUY",
+        "KEEP"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "KEEP",
+        "mechanical": "BUY"
+      }
+    },
+    "7974": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "Independent historical quote confirms the 2026-10-27 close. The 30.4% annual decline coincides with operating margin falling from 24.3% to 15.6%. The substantial profitability deterioration is more concerning than the mixed valuation anchors; the next report in eight days may clarify the outlook. citeturn400115search0",
+          "verdict": "SELL"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "SELL"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "SELL",
+        "mechanical": "KEEP"
+      }
+    },
+    "8001": {
+      "dissents": [],
+      "spread": [
+        "TRIM"
+      ],
+      "unanimous": true,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8002": {
+      "dissents": [],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "TRIM"
+      }
+    },
+    "8031": {
+      "dissents": [
+        {
+          "model": "gpt",
+          "rationale": "Independent historical quote confirms the 2026-10-27 close. EV/EBIT, P/B and P/E percentiles are elevated, alongside a 40.7% annual gain. The negative FCF yield makes its 89th-percentile FCF anchor unreliable, so the expensive-valuation conclusion deserves caution. citeturn104533search4",
+          "verdict": "TRIM"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "KEEP",
+        "gemni": "KEEP",
+        "gpt": "TRIM",
+        "mechanical": "KEEP"
+      }
+    },
+    "8053": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "WAIT"
+        }
+      ],
+      "spread": [
+        "TRIM",
+        "WAIT"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "WAIT"
+      }
+    },
+    "8766": {
+      "dissents": [
+        {
+          "model": "mechanical",
+          "rationale": "threshold output",
+          "verdict": "KEEP"
+        }
+      ],
+      "spread": [
+        "KEEP",
+        "TRIM"
+      ],
+      "unanimous": false,
+      "votes": {
+        "claude": "TRIM",
+        "gemni": "TRIM",
+        "gpt": "TRIM",
+        "mechanical": "KEEP"
+      }
+    }
+  },
+  "price_disputes": {},
+  "price_unchecked": {
+    "1478": [
+      "claude"
+    ],
+    "1540": [
+      "claude"
+    ],
+    "1655": [
+      "claude"
+    ],
+    "1658": [
+      "claude",
+      "gpt"
+    ],
+    "1801": [
+      "claude"
+    ],
+    "1944": [
+      "claude",
+      "gpt"
+    ],
+    "2502": [
+      "claude"
+    ],
+    "2559": [
+      "claude"
+    ],
+    "2802": [
+      "claude"
+    ],
+    "315A": [
+      "claude"
+    ],
+    "4543": [
+      "claude"
+    ],
+    "5333": [
+      "claude"
+    ],
+    "6383": [
+      "claude"
+    ],
+    "6758": [
+      "claude"
+    ],
+    "7269": [
+      "claude"
+    ],
+    "7532": [
+      "claude"
+    ],
+    "7701": [
+      "claude",
+      "gpt"
+    ],
+    "7974": [
+      "claude"
+    ],
+    "8001": [
+      "claude"
+    ],
+    "8002": [
+      "claude"
+    ],
+    "8031": [
+      "claude"
+    ],
+    "8053": [
+      "claude"
+    ],
+    "8766": [
+      "claude"
+    ]
+  }
+}
